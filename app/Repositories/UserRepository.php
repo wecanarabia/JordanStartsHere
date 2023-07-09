@@ -40,11 +40,11 @@ class UserRepository extends AbstractRepository
     {
 
         $model = $this->model->create([
-            'first_name'=>$data->first_name,
+            'name'=>$data->name,
             'last_name'=>$data->last_name,
             'email'=>$data->email,
            'phone'=>$data->phone,
-           'code'=>$data->code,
+           'profile_image_id'=>'1',
             'password'=>Hash::make($data->password),
         ]);
 
@@ -57,7 +57,7 @@ class UserRepository extends AbstractRepository
     public function edit($data,$user)
     {
 
-        $user->update($data->except('image'));
+        $user->update($data->all());
 
 
          return $user->fresh();
