@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\IntroductionController;
 use App\Http\Controllers\Api\ProfileImageController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\HelpController;
+use App\Http\Controllers\Api\SectionController;
+use App\Http\Controllers\Api\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +23,8 @@ use App\Http\Controllers\Api\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
 
 //Auth
 Route::post('login', [AuthController::class, 'login']);
@@ -57,6 +62,42 @@ Route::post('image-create', [ProfileImageController::class, 'save']);
 Route::get('image/{id}', [ProfileImageController::class, 'view']);
 Route::get('image/delete/{id}', [ProfileImageController::class, 'delete']);
 Route::post('image/edit/{id}', [ProfileImageController::class, 'edit']);
+
+
+//helps
+Route::get('helps', [HelpController::class, 'list']);
+Route::post('help-create', [HelpController::class, 'save']);
+Route::get('help/{id}', [HelpController::class, 'view']);
+Route::get('help/delete/{id}', [HelpController::class, 'delete']);
+Route::post('help/edit/{id}', [HelpController::class, 'edit']);
+
+//sections
+Route::get('sections', [SectionController::class, 'list']);
+Route::post('section-create', [SectionController::class, 'save']);
+Route::get('section/{id}', [SectionController::class, 'view']);
+Route::get('section/delete/{id}', [SectionController::class, 'delete']);
+Route::post('section/edit/{id}', [SectionController::class, 'edit']);
+
+
+//blogs
+Route::get('blogs', [BlogController::class, 'list']);
+Route::post('blog-create', [BlogController::class, 'save']);
+Route::get('blog/{id}', [BlogController::class, 'view']);
+Route::get('blog/delete/{id}', [BlogController::class, 'delete']);
+Route::post('blog/edit/{id}', [BlogController::class, 'edit']);
+
+//recentBlogs
+Route::get('recent-blogs', [BlogController::class, 'recentBlogs']);
+
+//mostWatchedBlogs
+Route::get('most-watched-blogs', [BlogController::class, 'mostWatchedBlogs']);
+
+//getblogsbysection
+Route::get('get-blogs/{id}', [BlogController::class, 'getBlogs']);
+
+//getrandomblogsbysection
+Route::get('get-random-blogs/{id}', [BlogController::class, 'getRandomBlogs']);
+
 });
 
 
