@@ -24,7 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('last_name');
+            $table->dropColumn('phone');
+            $table->dropColumn('profile_image_id');
         });
     }
 };
