@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\AdviceController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\AreaController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\SubcategoryController;
 
 
 /*
@@ -127,6 +129,21 @@ Route::post('area-create', [AreaController::class, 'save']);
 Route::get('area/{id}', [AreaController::class, 'view']);
 Route::get('area/delete/{id}', [AreaController::class, 'delete']);
 Route::post('area/edit/{id}', [AreaController::class, 'edit']);
+
+//Category
+Route::get('categories', [CategoryController::class, 'list']);
+Route::post('category-create', [CategoryController::class, 'save']);
+Route::get('category/{id}', [CategoryController::class, 'view']);
+Route::get('category/delete/{id}', [CategoryController::class, 'delete']);
+Route::post('category/edit/{id}', [CategoryController::class, 'edit']);
+
+
+//Subcategory
+Route::get('subcategories', [SubcategoryController::class, 'list']);
+Route::post('subcategory-create', [SubcategoryController::class, 'save']);
+Route::get('subcategory/{id}', [SubcategoryController::class, 'view']);
+Route::get('subcategory/delete/{id}', [SubcategoryController::class, 'delete']);
+Route::post('subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
 
 });
 
