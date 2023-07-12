@@ -13,7 +13,8 @@ use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\AreaController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SubcategoryController;
-
+use App\Http\Controllers\Api\PartnerController;
+use App\Http\Controllers\Api\BranchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::post('user-reg', [AuthController::class, 'store']);
 
+
+Route::post('sociallogin', [AuthController::class, 'sociallogin']);
 
 Route::get('user/{id}', [AuthController::class, 'userProfile']);
 
@@ -144,6 +147,24 @@ Route::post('subcategory-create', [SubcategoryController::class, 'save']);
 Route::get('subcategory/{id}', [SubcategoryController::class, 'view']);
 Route::get('subcategory/delete/{id}', [SubcategoryController::class, 'delete']);
 Route::post('subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
+
+
+//partner
+Route::get('partners', [PartnerController::class, 'list']);
+Route::post('partner-create', [PartnerController::class, 'save']);
+Route::get('partner/{id}', [PartnerController::class, 'view']);
+Route::get('partner/delete/{id}', [PartnerController::class, 'delete']);
+Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
+
+//get suggested partner
+Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner']);
+
+//Branch
+Route::get('branches', [BranchController::class, 'list']);
+Route::post('branch-create', [BranchController::class, 'save']);
+Route::get('branch/{id}', [BranchController::class, 'view']);
+Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
+Route::post('branch/edit/{id}', [BranchController::class, 'edit']);
 
 });
 
