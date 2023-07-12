@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdviceController;
 use App\Http\Controllers\Admin\IntroductionController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ServiceImageController;
@@ -27,6 +28,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         // Route::resource('vouchers', VoucherController::class)->only(['index'])->middleware('can:services');
         // Route::resource('enterprise-copones', EnterpriseCoponeController::class)->only(['index'])->middleware('can:enterprises');
         Route::resource('introductions', IntroductionController::class);
+        Route::resource('advices', AdviceController::class);
         // Route::resource('pages', PageController::class)->middleware('can:pages');
         Route::resource('admins', AdminController::class)->except(['show']);
         // Route::get('slider/sort/{id}/{direction}',[SliderController::class,'sortData'])->name('slider.sort')->middleware('can:slider');
