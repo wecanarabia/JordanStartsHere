@@ -45,8 +45,8 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>English Title</th>
-                                                                    <th>Arabic Title</th>
+                                                                    <th>Title-En</th>
+                                                                    <th>Title-Ar</th>
 
 
                                                                     <th>actions</th>
@@ -99,12 +99,6 @@
                                                                                         href="{{ route('admin.pages.edit', $page->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
                                                                                         href="{{ route('admin.pages.show', $page->id) }}">Show</a>
-
-                                                                                    <button class="dropdown-item"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $page->id }}"
-                                                                                        data-name="{{ $page->title }}">Delete</button>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
@@ -140,44 +134,5 @@
             Content body end
         ***********************************-->
     <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Page</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('admin.pages.destroy', 'test') }}" method="post">
-                    {{ method_field('delete') }}
-                    @csrf
-                    <div class="modal-body">
-                        <p>Are you sure to delete?</p><br>
-                        <input type="hidden" name="id" id="id" value="">
-                        <input class="form-control" name="name" id="name" type="text" readonly>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            aria-label="Close">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                    </div>
-            </div>
-            </form>
-        </div>
-    </div>
-    </div>
 
-
-
-    @push('javasc')
-        <script>
-            $('#deleteModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget)
-                var id = button.data('id')
-                var name = button.data('name')
-                var modal = $(this)
-                modal.find('.modal-body #id').val(id);
-                modal.find('.modal-body #name').val(name);
-            })
-        </script>
-    @endpush
 </x-admin-layouts.admin-app>

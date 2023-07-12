@@ -29,7 +29,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         // Route::resource('enterprise-copones', EnterpriseCoponeController::class)->only(['index'])->middleware('can:enterprises');
         Route::resource('introductions', IntroductionController::class);
         Route::resource('advices', AdviceController::class);
-        // Route::resource('pages', PageController::class)->middleware('can:pages');
+        Route::resource('pages', PageController::class)->except(['destroy']);
         Route::resource('admins', AdminController::class)->except(['show']);
         // Route::get('slider/sort/{id}/{direction}',[SliderController::class,'sortData'])->name('slider.sort')->middleware('can:slider');
         // Route::resource('areas', AreaController::class)->except(['show'])->middleware('can:areas');

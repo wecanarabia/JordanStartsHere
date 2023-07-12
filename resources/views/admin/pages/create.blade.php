@@ -31,40 +31,79 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">English Title<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="english_title" placeholder="English Title" value="{{ old('english_title') }}">
-                                        @error('english_title')
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title (En)<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_en" value="{{ old('title_en') }}">
+                                        @error('title_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputsecond" class="form-label">Arabic Title<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputsecond" name="arabic_title" placeholder="Arabic Title" value="{{ old('arabic_title') }}">
-                                        @error('arabic_title')
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title (Ar)<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_ar" value="{{ old('title_ar') }}">
+                                        @error('title_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor" class="form-label">English Body<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title (Fr)<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_fr" value="{{ old('title_fr') }}">
+
+                                    </div>
+
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title (Es)<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_es" value="{{ old('title_es') }}">
+
+                                    </div>
+
+
+                                       <div class="col-xl-8 mb-3">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title (Ko)<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_ko" value="{{ old('title_ko') }}">
+
+                                    </div>
+
+
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor" class="form-label">Body-En<span class="text-danger">*</span></label>
                                         <div class="card-body custom-ekeditor">
-                                            <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="english_body">{{ old('english_body') }}</textarea>
+                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
                                         </div>
-                                        @error('english_body')
+                                        @error('body_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor1" class="form-label">Arabic Body<span class="text-danger">*</span></label>
+                                        <label for="ckeditor1" class="form-label">Body-Ar<span class="text-danger">*</span></label>
                                         <div class="card-body custom-ekeditor">
-
-                                        <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="arabic_body">{{ old('arabic_body') }}</textarea>
+                                        <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="body_ar">{{ old('body_ar') }}</textarea>
                                         </div>
-                                        @error('arabic_body')
+                                        @error('body_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
+                                    <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="body_fr">{{ old('body_fr') }}</textarea>
+                                    </div>
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
+                                        <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="body_es">{{ old('body_es') }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
+                                        <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko') }}</textarea>
+                                        </div>
                                     </div>
 
 
@@ -94,7 +133,22 @@
     @push('javasc')
     <script>
     ClassicEditor
-    .create( document.querySelector( '#ckeditor1' ),{language: 'en'} )
+    .create( document.querySelector( '#ckeditor1'),{language: 'en'} )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+    .create( document.querySelector( '#ckeditor2'),{language: 'fr'} )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+    .create( document.querySelector( '#ckeditor3'),{language: 'es'} )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
         .catch( error => {
             console.error( error );
         } );

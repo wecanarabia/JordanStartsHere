@@ -31,13 +31,19 @@ class PageController extends Controller
      */
     public function store(PageRequest $request)
     {
-        $request['title']=['en'=>$request->english_title,'ar'=>$request->arabic_title];
-        $request['body']=['en'=>$request->english_body,'ar'=>$request->arabic_body];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ko];
+        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ko];
         Page::create($request->except([
-            'english_title',
-            'arabic_title',
-            'english_body',
-            'arabic_body',
+            'title_en',
+            'title_ar',
+            'title_fr',
+            'title_es',
+            'title_ko',
+            'body_en',
+            'body_ar',
+            'body_fr',
+            'body_es',
+            'body_ko',
         ]));
 
 
@@ -69,13 +75,19 @@ class PageController extends Controller
     public function update(PageRequest $request, string $id)
     {
         $page = Page::findOrFail($id);
-        $request['title']=['en'=>$request->english_title,'ar'=>$request->arabic_title];
-        $request['body']=['en'=>$request->english_body,'ar'=>$request->arabic_body];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ko];
+        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ko];
         $page->update($request->except([
-            'english_title',
-            'arabic_title',
-            'english_body',
-            'arabic_body',
+            'title_en',
+            'title_ar',
+            'title_fr',
+            'title_es',
+            'title_ko',
+            'body_en',
+            'body_ar',
+            'body_fr',
+            'body_es',
+            'body_ko',
         ]));
 
 
@@ -83,12 +95,4 @@ class PageController extends Controller
                         ->with('success','Page has been updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Request $request)
-    {
-        Page::findOrFail($request->id)->delete();
-        return redirect()->route('admin.pages.index')->with('success','Page has been removed successfully');
-    }
 }

@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Advice extends Model
+class Page extends Model
 {
-
     use HasFactory,HasTranslations;
-    protected $table='advices';
     protected $guarded=[];
-    public $translatable = ['body'];
+    public $translatable = ['title','body'];
 }
