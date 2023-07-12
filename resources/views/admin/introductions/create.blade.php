@@ -65,7 +65,7 @@
                                     <div class="col-xl-6 mb-3">
                                         <label for="exampleFormControlInputfirst" class="form-label">Title One(Fr)<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_fr" value="{{ old('title_one_fr') }}">
-                                   
+
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
@@ -99,34 +99,41 @@
 
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputThird" class="form-label">Body-En<span class="text-danger">*</span></label>
-                                        <textarea id="exampleFormControlInputThird" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
+                                        <label for="ckeditor" class="form-label">Body-En<span class="text-danger">*</span></label>
+                                        <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
+                                        </div>
                                         @error('body_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputFourth" class="form-label">Body-Ar<span class="text-danger">*</span></label>
-                                        <textarea id="exampleFormControlInputFourth" class="form-txtarea form-control" rows="8" name="body_ar">{{ old('body_ar') }}</textarea>
+                                        <label for="ckeditor1" class="form-label">Body-Ar<span class="text-danger">*</span></label>
+                                        <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="body_ar">{{ old('body_ar') }}</textarea>
+                                        </div>
                                         @error('body_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputFourth" class="form-label">Body-Fr<span class="text-danger">*</span></label>
-                                        <textarea id="exampleFormControlInputFourth" class="form-txtarea form-control" rows="8" name="body_fr">{{ old('body_fr') }}</textarea>
-
+                                        <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
+                                    <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="body_fr">{{ old('body_fr') }}</textarea>
+                                    </div>
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputFourth" class="form-label">Body-Es<span class="text-danger">*</span></label>
-                                        <textarea id="exampleFormControlInputFourth" class="form-txtarea form-control" rows="8" name="body_es">{{ old('body_es') }}</textarea>
-
+                                        <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
+                                        <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="body_es">{{ old('body_es') }}</textarea>
+                                        </div>
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputFourth" class="form-label">Body-Ko<span class="text-danger">*</span></label>
-                                        <textarea id="exampleFormControlInputFourth" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko') }}</textarea>
-
+                                        <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
+                                        <div class="card-body custom-ekeditor">
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko') }}</textarea>
+                                        </div>
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
@@ -161,5 +168,29 @@
     <!--**********************************
         Content body end
     ***********************************-->
+    @push('javasc')
+    <script>
 
+        ClassicEditor
+    .create( document.querySelector( '#ckeditor1'),{language: 'en'} )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+    .create( document.querySelector( '#ckeditor2'),{language: 'fr'} )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+    .create( document.querySelector( '#ckeditor3'),{language: 'es'} )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
+    @endpush
 </x-admin-layouts.admin-app>
