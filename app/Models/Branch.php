@@ -6,20 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Area extends Model
+class Branch extends Model
 {
     use HasFactory,HasTranslations;
 
     protected $guarded=[];
     public $translatable = ['name'];
 
-    public function city()
+    public function partner()
 	{
-		return $this->belongsTo(City::class);
+		return $this->belongsTo(Partner::class);
 	}
 
-    public function branches()
+    public function area()
 	{
-		return $this->hasMany(Branch::class);
+		return $this->belongsTo(Area::class);
 	}
 }

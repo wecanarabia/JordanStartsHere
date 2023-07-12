@@ -137,47 +137,6 @@ class AuthController extends Controller
         return $this->returnError('Code not sent User not found');
     }
 
-    public function sociallogin(Request $request)
-    {
-
-        $user = User::where([
-            ['email', $request->email]
-        ])->first();
-
-        if ($user) {
-
-            $accessToken = $user->createToken('authToken')->accessToken;
-
-            //$user->token = $request->token;
-            $user->save();
-            Auth::login($user);
-
-
-            return response(['status' => true, 'code' => 200, 'msg' => 'success', 'data' => [
-                'token' => $accessToken,
-                'user' => $user
-            ]]);
-        }
-
-
-        $user = User::create([
-            'name' => $request->username,
-            'email' => $request->email,
-            'image' => '',
-            'password' => Hash::make('1234'),
-        ]);
-
-
-
-        Auth::login($user);
-
-        $accessToken = $user->createToken('authToken')->accessToken;
-
-        return response(['status' => true, 'code' => 200, 'msg' => 'success', 'data' => [
-            'token' => $accessToken,
-            'user' => UserResource::make(Auth::user()),
-        ]]);
-    }
 
     public function checkUser(Request $request)
     {
@@ -213,6 +172,51 @@ class AuthController extends Controller
         }
 
         return $this->returnError('User not found!');
+    }
+
+
+    public function sociallogin(Request $request)
+    {
+
+        $user = User::where([
+            ['email', $request->email]
+        ])->first();
+
+        if ($user) {
+
+            $accessToken = $user->createToken('authToken')->accessToken;
+
+            //$user->token = $request->token;
+            $user->save();
+            Auth::login($user);
+
+
+            return response(['status' => true, 'code' => 200, 'msg' => 'success', 'data' => [
+                'token' => $accessToken,
+                'user' => $user
+            ]]);
+        }
+
+
+        $user = User::create([
+            'name' => $request->name,
+            'last_name'=>$request->last_name,
+            'email' => $request->email,
+            'phone'=>$request->phone,
+            'profile_image_id'=>'1',
+            'password' => Hash::make('1234'),
+        ]);
+
+
+
+        Auth::login($user);
+
+        $accessToken = $user->createToken('authToken')->accessToken;
+
+        return response(['status' => true, 'code' => 200, 'msg' => 'success', 'data' => [
+            'token' => $accessToken,
+            'user' => UserResource::make(Auth::user()),
+        ]]);
     }
 
 
