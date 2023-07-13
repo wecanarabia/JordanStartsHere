@@ -13,7 +13,11 @@ use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\AreaController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SubcategoryController;
-
+use App\Http\Controllers\Api\PartnerController;
+use App\Http\Controllers\Api\BranchController;
+use App\Http\Controllers\Api\PortraitImageController;
+use App\Http\Controllers\Api\LandscapeImageController;
+use App\Http\Controllers\Api\PartnerSubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +42,11 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('user-reg', [AuthController::class, 'store']);
 
 
+Route::post('sociallogin', [AuthController::class, 'sociallogin']);
+
 Route::get('user/{id}', [AuthController::class, 'userProfile']);
+
+Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 
 
 
@@ -144,6 +152,47 @@ Route::post('subcategory-create', [SubcategoryController::class, 'save']);
 Route::get('subcategory/{id}', [SubcategoryController::class, 'view']);
 Route::get('subcategory/delete/{id}', [SubcategoryController::class, 'delete']);
 Route::post('subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
+
+
+//partner
+Route::get('partners', [PartnerController::class, 'list']);
+Route::post('partner-create', [PartnerController::class, 'save']);
+Route::get('partner/{id}', [PartnerController::class, 'view']);
+Route::get('partner/delete/{id}', [PartnerController::class, 'delete']);
+Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
+
+//get suggested partner
+Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner']);
+
+//Branch
+Route::get('branches', [BranchController::class, 'list']);
+Route::post('branch-create', [BranchController::class, 'save']);
+Route::get('branch/{id}', [BranchController::class, 'view']);
+Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
+Route::post('branch/edit/{id}', [BranchController::class, 'edit']);
+
+
+//portrait image
+Route::get('portraits', [PortraitImageController::class, 'list']);
+Route::post('portrait-create', [PortraitImageController::class, 'save']);
+Route::get('portrait/{id}', [PortraitImageController::class, 'view']);
+Route::get('portrait/delete/{id}', [PortraitImageController::class, 'delete']);
+Route::post('portrait/edit/{id}', [PortraitImageController::class, 'edit']);
+
+//landscape image
+Route::get('landscapes', [LandscapeImageController::class, 'list']);
+Route::post('landscape-create', [LandscapeImageController::class, 'save']);
+Route::get('landscape/{id}', [LandscapeImageController::class, 'view']);
+Route::get('landscape/delete/{id}', [LandscapeImageController::class, 'delete']);
+Route::post('landscape/edit/{id}', [LandscapeImageController::class, 'edit']);
+
+
+//partnersubcategory
+
+Route::post('partnersub-create', [PartnerSubcategoryController::class, 'save']);
+
+Route::get('partnersub/delete/{id}', [PartnerSubcategoryController::class, 'delete']);
+
 
 });
 
