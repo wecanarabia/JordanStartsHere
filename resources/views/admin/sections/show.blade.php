@@ -1,28 +1,22 @@
 <x-admin-layouts.admin-app>
     <!--**********************************
-            Content body start
-        ***********************************-->
+        Content body start
+    ***********************************-->
     <div class="content-body">
         <!-- row -->
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li>
-                    <h5 class="bc-title">{{ __('Faqs') }}</h5>
-                </li>
+                <li><h5 class="bc-title">{{ $section->name }}</h5></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
-                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z"
-                                stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                        Home </a>
+                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Faqs') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ $section->name }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.faqs.create') }}">+ Add Faq</a>
+            <a class="text-primary fs-13" href="{{ route('admin.sections.index') }}" >{{  __('Sections') }}</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -31,10 +25,27 @@
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
-                                    <x-admin-layouts.alerts />
+                                <h4 class="heading mb-5"> {{ $section->title }}</h4>
+
+                                    <p class="mb-3"><strong>Name-En : </strong> {!! $section->getTranslation('name', 'en') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ar : </strong> {!! $section->getTranslation('name', 'ar') !!}</p>
+                                    <p class="mb-3"><strong>Name-Fr : </strong> {!! $section->getTranslation('name', 'fr') !!}</p>
+                                    <p class="mb-3"><strong>Name-Es : </strong> {!! $section->getTranslation('name', 'es') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ko : </strong> {!! $section->getTranslation('name', 'ko') !!}</p>
+
+                                </div>
+
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="offcanvas-body">
+                                <div class="container-fluid">
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Faqs') }}</h4>
+                                            <h4 class="heading mb-0"> {{ __('Section blogs') }}</h4>
                                         </div>
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="Preview" role="tabpanel"
@@ -45,21 +56,26 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Question-En</th>
-                                                                    <th>Question-Ar</th>
+                                                                    <th>Title-En</th>
+                                                                    <th>Title-Ar</th>
+                                                                    <th>Number of views</th>
 
 
                                                                     <th>actions</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @forelse ($data as $faq)
+                                                                @forelse ($section->blogs as $blog)
                                                                     <tr>
 
-                                                                        <td><span>{{ $faq->getTranslation('question', 'en') }}</span>
+                                                                        <td><span>{{ $blog->getTranslation('title', 'en') }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $faq->getTranslation('question', 'ar') }}</span>
+                                                                            <span>{{ $blog->getTranslation('title', 'ar') }}</span>
+                                                                        </td>
+
+                                                                         <td>
+                                                                            <span>{{ $blog->number_of_views }}</span>
                                                                         </td>
 
 
@@ -96,17 +112,10 @@
                                                                                 </button>
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.faqs.edit', $faq->id) }}">Edit</a>
+                                                                                        href="{{ route('admin.blogs.edit', $blog->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.faqs.show', $faq->id) }}">Show</a>
+                                                                                        href="{{ route('admin.blogs.show', $blog->id) }}">Show</a>
 
-                                                                                    <button class="dropdown-item"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $faq->id }}"
-                                                                                        data-name="{{ $faq->question }}">Delete</button>
-                                                                                </div>
-                                                                            </div>
                                                                         </td>
                                                                     </tr>
 
@@ -137,47 +146,7 @@
     </div>
 
     <!--**********************************
-            Content body end
-        ***********************************-->
-    <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Faq</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('admin.faqs.destroy', 'test') }}" method="post">
-                    {{ method_field('delete') }}
-                    @csrf
-                    <div class="modal-body">
-                        <p>Are you sure to delete?</p><br>
-                        <input type="hidden" name="id" id="id" value="">
-                        <input class="form-control" name="name" id="name" type="text" readonly>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            aria-label="Close">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                    </div>
-            </div>
-            </form>
-        </div>
-    </div>
-    </div>
+        Content body end
+    ***********************************-->
 
-
-
-    @push('javasc')
-        <script>
-            $('#deleteModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget)
-                var id = button.data('id')
-                var name = button.data('name')
-                var modal = $(this)
-                modal.find('.modal-body #id').val(id);
-                modal.find('.modal-body #name').val(name);
-            })
-        </script>
-    @endpush
 </x-admin-layouts.admin-app>

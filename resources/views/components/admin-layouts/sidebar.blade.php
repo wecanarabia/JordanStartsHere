@@ -58,6 +58,36 @@
 							<span class="nav-text">Pages</span>
 						</a>
                     </li>
+
+                    <li><a href="{{ route('admin.emergencies.index') }}" class="" aria-expanded="false">
+                        <div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+						</div>
+							<span class="nav-text">Emergency</span>
+						</a>
+                    </li>
+                    <li><a href="{{ route('admin.faqs.index') }}" class="" href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>                                              </div>
+						<span class="nav-text">Faqs</span>
+						</a>
+
+					</li>
+                    <li><a href="{{ route('admin.sections.index') }}" class="" href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <span class="nav-text">Sections</span>
+						</a>
+
+					</li>
+                    <li><a href="{{ route('admin.blogs.index') }}" class="" href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg>                        </div>
+                        <span class="nav-text">Blogs</span>
+						</a>
+
+					</li>
                     {{-- @can('pages')
                     <li><a href="{{ route('admin.pages.index') }}" class="" aria-expanded="false">
                         <div class="menu-icon">

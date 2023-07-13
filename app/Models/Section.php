@@ -12,6 +12,12 @@ class Section extends Model
     protected $guarded=[];
     public $translatable = ['name'];
 
+    protected static function booted()
+    {
+        static::deleted(function ($section) {
+            if($section->blogs)$section->blogs()->delete();
+        });
+    }
     public function blogs()
 	{
 		return $this->hasMany(Blog::class);

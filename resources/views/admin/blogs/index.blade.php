@@ -7,7 +7,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">{{ __('Faqs') }}</h5>
+                    <h5 class="bc-title">{{ __('Blogs') }}</h5>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -20,9 +20,9 @@
                         </svg>
                         Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Faqs') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Blogs') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.faqs.create') }}">+ Add Faq</a>
+            <a class="text-primary fs-13" href="{{ route('admin.blogs.create') }}">+ Add Blog</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -34,7 +34,7 @@
                                     <x-admin-layouts.alerts />
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Faqs') }}</h4>
+                                            <h4 class="heading mb-0"> {{ __('Blogs') }}</h4>
                                         </div>
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="Preview" role="tabpanel"
@@ -45,21 +45,29 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Question-En</th>
-                                                                    <th>Question-Ar</th>
+                                                                    <th>Title-En</th>
+                                                                    <th>Title-Ar</th>
+                                                                    <th>Section</th>
+                                                                    <th>Number of views</th>
 
 
                                                                     <th>actions</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @forelse ($data as $faq)
+                                                                @forelse ($data as $blog)
                                                                     <tr>
 
-                                                                        <td><span>{{ $faq->getTranslation('question', 'en') }}</span>
+                                                                        <td><span>{{ $blog->getTranslation('title', 'en') }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $faq->getTranslation('question', 'ar') }}</span>
+                                                                            <span>{{ $blog->getTranslation('title', 'ar') }}</span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span><a href="{{ route('admin.sections.show',$blog->section->id) }}"> {{ $blog->section->name }}</a></span>
+                                                                        </td>
+                                                                         <td>
+                                                                            <span>{{ $blog->number_of_views }}</span>
                                                                         </td>
 
 
@@ -96,15 +104,15 @@
                                                                                 </button>
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.faqs.edit', $faq->id) }}">Edit</a>
+                                                                                        href="{{ route('admin.blogs.edit', $blog->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.faqs.show', $faq->id) }}">Show</a>
-
-                                                                                    <button class="dropdown-item"
+                                                                                        href="{{ route('admin.blogs.show', $blog->id) }}">Show</a>
+                                                                                        <button class="dropdown-item"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $faq->id }}"
-                                                                                        data-name="{{ $faq->question }}">Delete</button>
+                                                                                        data-id="{{ $blog->id }}"
+                                                                                        data-name="{{ $blog->title }}">Delete</button>
+
                                                                                 </div>
                                                                             </div>
                                                                         </td>
@@ -140,44 +148,45 @@
             Content body end
         ***********************************-->
     <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Faq</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('admin.faqs.destroy', 'test') }}" method="post">
-                    {{ method_field('delete') }}
-                    @csrf
-                    <div class="modal-body">
-                        <p>Are you sure to delete?</p><br>
-                        <input type="hidden" name="id" id="id" value="">
-                        <input class="form-control" name="name" id="name" type="text" readonly>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            aria-label="Close">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                    </div>
+   <!-- Modal -->
+   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Blog</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            </form>
+            <form action="{{ route('admin.blogs.destroy', 'test') }}" method="post">
+                {{ method_field('delete') }}
+                @csrf
+                <div class="modal-body">
+                    <p>Are you sure to delete?</p><br>
+                    <input type="hidden" name="id" id="id" value="">
+                    <input class="form-control" name="name" id="name" type="text" readonly>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        aria-label="Close">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </div>
         </div>
+        </form>
     </div>
-    </div>
+</div>
+</div>
 
 
 
-    @push('javasc')
-        <script>
-            $('#deleteModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget)
-                var id = button.data('id')
-                var name = button.data('name')
-                var modal = $(this)
-                modal.find('.modal-body #id').val(id);
-                modal.find('.modal-body #name').val(name);
-            })
-        </script>
-    @endpush
+@push('javasc')
+    <script>
+        $('#deleteModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var name = button.data('name')
+            var modal = $(this)
+            modal.find('.modal-body #id').val(id);
+            modal.find('.modal-body #name').val(name);
+        })
+    </script>
+@endpush
 </x-admin-layouts.admin-app>

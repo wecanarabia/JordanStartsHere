@@ -14,7 +14,7 @@
                     </svg>
                     Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ $introduction->title }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ $introduction->title_one }} </a></li>
             </ol>
             <a class="text-primary fs-13" href="{{ route('admin.introductions.index') }}" >{{  __('Introductions') }}</a>
         </div>
@@ -25,7 +25,7 @@
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
-                                <h4 class="heading mb-5"> {{ $introduction->title }}</h4>
+                                <h4 class="heading mb-5"> {{ $introduction->title_one }}</h4>
 
                                     <p class="mb-3"><strong>Title One(En) : </strong> {{ $introduction->getTranslation('title_one','en') }}</p>
                                     <p class="mb-3"><strong>Title One(Ar) : </strong> {{ $introduction->getTranslation('title_one','ar') }}</p>

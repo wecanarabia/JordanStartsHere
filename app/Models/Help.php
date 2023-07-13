@@ -21,4 +21,13 @@ class Help extends Model
             $this->attributes['logo'] =  'logo/helps/'.$filename;
         }
     }
+
+ protected static function booted()
+    {
+        static::deleted(function ($emergency) {
+                if ($emergency->logo  && \Illuminate\Support\Facades\File::exists($emergency->logo)) {
+                unlink($emergency->logo);
+            }
+        });
+    }   
 }

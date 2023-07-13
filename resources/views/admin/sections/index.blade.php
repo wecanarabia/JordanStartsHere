@@ -7,7 +7,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">{{ __('Faqs') }}</h5>
+                    <h5 class="bc-title">{{ __('Sections') }}</h5>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -20,9 +20,9 @@
                         </svg>
                         Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Faqs') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Sections') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.faqs.create') }}">+ Add Faq</a>
+            <a class="text-primary fs-13" href="{{ route('admin.sections.create') }}">+ Add Section</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -34,7 +34,7 @@
                                     <x-admin-layouts.alerts />
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Faqs') }}</h4>
+                                            <h4 class="heading mb-0"> {{ __('Sections') }}</h4>
                                         </div>
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="Preview" role="tabpanel"
@@ -45,23 +45,25 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Question-En</th>
-                                                                    <th>Question-Ar</th>
+                                                                    <th>Id</th>
+                                                                    <th>Name-En</th>
+                                                                    <th>Blogs Count</th>
 
 
                                                                     <th>actions</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @forelse ($data as $faq)
+                                                                @forelse ($data as $section)
                                                                     <tr>
 
-                                                                        <td><span>{{ $faq->getTranslation('question', 'en') }}</span>
+                                                                        <td><span>{{ $section->id }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $faq->getTranslation('question', 'ar') }}</span>
+                                                                            <span>{!! $section->getTranslation('name', 'en') !!}</span>
                                                                         </td>
-
+                                                                        <td><span>{{ $section->blogs()->count() }}</span>
+                                                                        </td>
 
                                                                         <td>
                                                                             <div class="dropdown">
@@ -96,15 +98,14 @@
                                                                                 </button>
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.faqs.edit', $faq->id) }}">Edit</a>
+                                                                                        href="{{ route('admin.sections.edit', $section->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.faqs.show', $faq->id) }}">Show</a>
-
+                                                                                        href="{{ route('admin.sections.show', $section->id) }}">Show</a>
                                                                                     <button class="dropdown-item"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $faq->id }}"
-                                                                                        data-name="{{ $faq->question }}">Delete</button>
+                                                                                        data-id="{{ $section->id }}"
+                                                                                        data-name="{{ $section->name }}">Delete</button>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
@@ -144,10 +145,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Faq</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Section</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('admin.faqs.destroy', 'test') }}" method="post">
+                <form action="{{ route('admin.sections.destroy', 'test') }}" method="post">
                     {{ method_field('delete') }}
                     @csrf
                     <div class="modal-body">
