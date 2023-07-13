@@ -36,4 +36,15 @@ class Partner extends Model
 	{
 		return $this->hasMany(Branch::class);
 	}
+
+    public function portraits()
+	{
+		return $this->hasMany(PortraitImage::class);
+	}
+
+    public function landscapes()
+	{
+		return $this->hasMany(LandscapeImage::class);
+	}
+
 }
