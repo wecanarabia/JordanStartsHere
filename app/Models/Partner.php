@@ -17,7 +17,7 @@ class Partner extends Model
             $file = $value;
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $filename =time().mt_rand(1000,9999).'.'.$extension;
-            $file->move(public_path('logo/partners/'), $filename);
+            $file->move(base_path('../logo/partners/'), $filename);
             $this->attributes['logo'] =  'logo/partners/'.$filename;
         }
     }
@@ -27,7 +27,7 @@ class Partner extends Model
             $file = $value;
             $extension = $file->getClientOriginalExtension(); // getting file extension
             $filename =time().mt_rand(1000,9999).'.'.$extension;
-            $file->move(public_path('file/partners/'), $filename);
+            $file->move(base_path('../file/partners/'), $filename);
             $this->attributes['file'] =  'file/partners/'.$filename;
         }
     }
