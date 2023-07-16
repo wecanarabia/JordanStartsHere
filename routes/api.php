@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\BranchController;
 use App\Http\Controllers\Api\PortraitImageController;
 use App\Http\Controllers\Api\LandscapeImageController;
 use App\Http\Controllers\Api\PartnerSubcategoryController;
+use App\Http\Controllers\Api\WorkdayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -197,6 +198,13 @@ Route::post('partnersub-create', [PartnerSubcategoryController::class, 'save']);
 
 Route::get('partnersub/delete/{id}', [PartnerSubcategoryController::class, 'delete']);
 
+
+//workday
+Route::get('workdays', [WorkdayController::class, 'list']);
+Route::post('workday-create', [WorkdayController::class, 'save']);
+Route::get('workday/{id}', [WorkdayController::class, 'view']);
+Route::get('workday/delete/{id}', [WorkdayController::class, 'delete']);
+Route::post('workday/edit/{id}', [WorkdayController::class, 'edit']);
 
 });
 

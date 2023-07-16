@@ -32,7 +32,7 @@ class PartnerResource extends JsonResource
             'branches' => BranchResource::collection($this->branches),
             'portrait_images' => PortraitImageResource::collection($this->portraits),
             'landscape_images' => LandscapeImageResource::collection($this->landscapes),
-
+            'workdays' => WorkdayResource::collection($this?->workdays),
         ];
     }
 }
