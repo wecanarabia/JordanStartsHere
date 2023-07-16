@@ -21,7 +21,14 @@ class PortraitImage extends Model
         }
     }
 
-
+    protected static function booted()
+    {
+        static::deleted(function ($partner) {
+                if ($partner->image  && \Illuminate\Support\Facades\File::exists($partner->image)) {
+                unlink($partner->image);
+            }
+        });
+    }
 
     public function partner()
 	{

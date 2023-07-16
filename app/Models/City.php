@@ -22,6 +22,15 @@ class City extends Model
         }
     }
 
+    protected static function booted()
+    {
+        static::deleted(function ($city) {
+                if ($city->image  && \Illuminate\Support\Facades\File::exists($city->image)) {
+                unlink($city->image);
+            }
+        });
+    }
+
     public function areas()
 	{
 		return $this->hasMany(Area::class);

@@ -32,6 +32,17 @@ class Partner extends Model
         }
     }
 
+    protected static function booted()
+    {
+        static::deleted(function ($partner) {
+                if ($partner->logo  && \Illuminate\Support\Facades\File::exists($partner->logo)) {
+                    unlink($partner->logo);
+                if ($partner->file  && \Illuminate\Support\Facades\File::exists($partner->file)) {
+                    unlink($partner->file);
+            }
+        });
+    }
+
     public function branches()
 	{
 		return $this->hasMany(Branch::class);
