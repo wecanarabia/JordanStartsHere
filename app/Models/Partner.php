@@ -49,6 +49,11 @@ class Partner extends Model
 		return $this->hasMany(Branch::class);
 	}
 
+    public function workdays()
+	{
+		return $this->hasMany(Workday::class);
+	}
+
     public function portraits()
 	{
 		return $this->hasMany(PortraitImage::class);
