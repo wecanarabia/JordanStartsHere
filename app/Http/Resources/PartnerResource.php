@@ -27,6 +27,7 @@ class PartnerResource extends JsonResource
             'file' => $this->file,
             'price_rate' => $this->price_rate,
             'start_price' => $this->start_price,
+            'category' => $this?->subcategories?->first()->category?->name,
             'branches' => BranchResource::collection($this->branches),
             'portrait_images' => PortraitImageResource::collection($this->portraits),
             'landscape_images' => LandscapeImageResource::collection($this->landscapes),

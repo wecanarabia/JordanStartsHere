@@ -59,4 +59,9 @@ class Partner extends Model
 		return $this->hasMany(LandscapeImage::class);
 	}
 
+    public function subcategories(){
+
+        return $this->belongsToMany(Subcategory::class,'partner_subcategories','partner_id','subcategory_id');
+    }
+
 }
