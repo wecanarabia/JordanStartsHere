@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Partner;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Requests\PartnerRequest;
@@ -36,6 +37,22 @@ class PartnerController extends ApiController
 
         if ($model) {
             return $this->returnData('data', new $this->resource($model), __('Get successfully'));
+        }
+
+        return $this->returnError(__('Sorry! Failed to get!'));
+    }
+
+
+    public function getPartnerByCity($id)
+    {
+
+        $city = City::find($id);
+
+        // dd($city->areas?->first()->branches?->first()->partner->id);
+
+
+        if ($city) {
+            return $this->returnData('data', new $this->resource($city->areas?->first()->branches?->first()->partner), __('Get successfully'));
         }
 
         return $this->returnError(__('Sorry! Failed to get!'));

@@ -164,6 +164,10 @@ Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
 //get suggested partner
 Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner']);
 
+//getPartnerByCity
+Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
+
+
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
