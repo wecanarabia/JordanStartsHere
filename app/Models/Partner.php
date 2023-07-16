@@ -37,6 +37,7 @@ class Partner extends Model
         static::deleted(function ($partner) {
                 if ($partner->logo  && \Illuminate\Support\Facades\File::exists($partner->logo)) {
                     unlink($partner->logo);
+                }
                 if ($partner->file  && \Illuminate\Support\Facades\File::exists($partner->file)) {
                     unlink($partner->file);
             }
