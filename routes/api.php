@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\PortraitImageController;
 use App\Http\Controllers\Api\LandscapeImageController;
 use App\Http\Controllers\Api\PartnerSubcategoryController;
 use App\Http\Controllers\Api\WorkdayController;
+use App\Http\Controllers\Api\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -205,6 +206,13 @@ Route::post('workday-create', [WorkdayController::class, 'save']);
 Route::get('workday/{id}', [WorkdayController::class, 'view']);
 Route::get('workday/delete/{id}', [WorkdayController::class, 'delete']);
 Route::post('workday/edit/{id}', [WorkdayController::class, 'edit']);
+
+//reviews
+Route::get('reviews', [ReviewController::class, 'activeReviews']);
+Route::post('review-create', [ReviewController::class, 'save']);
+Route::get('review/{id}', [ReviewController::class, 'view']);
+Route::get('review/delete/{id}', [ReviewController::class, 'delete']);
+Route::post('review/edit/{id}', [ReviewController::class, 'edit']);
 
 });
 
