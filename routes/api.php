@@ -169,6 +169,9 @@ Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner'
 //getPartnerByCity
 Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
 
+//getPartnersByCategory
+Route::get('partners-by-category/{id}', [PartnerController::class, 'getPartnersByCategory']);
+
 
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
