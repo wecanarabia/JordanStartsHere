@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Review;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Requests\ReviewRequest;
@@ -37,6 +38,20 @@ class ReviewController extends ApiController
 
 
         return $this->update($id,$request->all());
+
+    }
+
+
+
+    public function getReviewsByPartner($id){
+
+        $partner = Partner::find( $id );
+        if( $partner->reviews() ){
+
+            return $this->returnData('data',  ReviewResource::collection( $partner->reviews ), __('Get  succesfully'));
+        }
+
+        return $this->returnError(__('Sorry! Failed to get !'));
 
     }
 

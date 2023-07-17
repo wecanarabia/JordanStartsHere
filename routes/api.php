@@ -173,6 +173,7 @@ Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity'
 Route::get('partners-by-category/{id}', [PartnerController::class, 'getPartnersByCategory']);
 
 
+
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
@@ -216,6 +217,11 @@ Route::post('review-create', [ReviewController::class, 'save']);
 Route::get('review/{id}', [ReviewController::class, 'view']);
 Route::get('review/delete/{id}', [ReviewController::class, 'delete']);
 Route::post('review/edit/{id}', [ReviewController::class, 'edit']);
+
+
+//getReviewsByPartner
+Route::get('reviews-by-partner/{id}', [ReviewController::class, 'getReviewsByPartner']);
+
 
 });
 
