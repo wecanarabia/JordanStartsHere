@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Partner;
 use App\Models\City;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Requests\PartnerRequest;
@@ -106,5 +107,13 @@ public function getPartnerByCity($id)
 
     return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
 }
+
+public function getPartnersByCategory($id)
+    {
+        $partners = Partner::whereHas('subcategories', function ($query) use ($id) {
+        $query->where('category_id', $id);
+    })->get();
+        return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+    }
 
 }

@@ -20,6 +20,7 @@ class ReviewResource extends JsonResource
             'content'=>$this->content,
             'points'=>$this->points,
             'status'=>$this->status,
+            'created_at'=> $this->created_at,
             'user'=>new UserResource($this->user),
             'partner_id'=>$this->partner?->id,
             // 'partner'=>new PartnerResource($this->partner)
