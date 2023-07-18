@@ -25,8 +25,9 @@ class City extends Model
     protected static function booted()
     {
         static::deleted(function ($city) {
-                if ($city->image  && \Illuminate\Support\Facades\File::exists($city->image)) {
-                unlink($city->image);
+            if($city->areas)$city->areas()->delete();
+            if ($city->image  && \Illuminate\Support\Facades\File::exists($city->image)) {
+            unlink($city->image);
             }
         });
     }

@@ -6,6 +6,7 @@ use App\Models\Area;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AreaRequest;
+use App\Models\City;
 
 class AreaController extends Controller
 {
@@ -14,7 +15,7 @@ class AreaController extends Controller
      */
     public function index()
     {
-        $data = Area::orderBy('order','asc')->get();
+        $data = Area::all();
         return view('admin.areas.index',compact('data'));
     }
 
@@ -23,7 +24,8 @@ class AreaController extends Controller
      */
     public function create()
     {
-        return view('admin.areas.create');
+        $cities = City::all();
+        return view('admin.areas.create',compact('cities'));
     }
 
     /**
@@ -31,25 +33,33 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
-        $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
         $request['order']=Area::max('order') + 1;
         Area::create($request->except([
-            'english_name',
-            'arabic_name',
+            'name_en',
+            'name_ar',
+            'name_fr',
+            'name_es',
+            'name_ko',
         ]));
 
         return redirect()->route('admin.areas.index')
                         ->with('success','Area has been added successfully');
     }
 
-
+    public function show(string $id)
+    {
+        $area = Area::with('city')->findOrFail($id);
+        return view('admin.areas.show',compact('area'));
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $area = Area::findOrFail($id);
-        return view('admin.areas.edit',compact('area'));
+        $cities = City::all();
+        return view('admin.areas.edit',compact('area','cities'));
     }
 
     /**
@@ -58,10 +68,13 @@ class AreaController extends Controller
     public function update(AreaRequest $request, string $id)
     {
         $area = Area::findOrFail($id);
-        $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
         $area->update($request->except([
-            'english_name',
-            'arabic_name',
+            'name_en',
+            'name_ar',
+            'name_fr',
+            'name_es',
+            'name_ko',
         ]));
 
 
@@ -101,7 +114,7 @@ class AreaController extends Controller
             $order = $model->when($page->order, function ($query, $pageOrder) {
                 return $query->where("order", '<', $pageOrder);
             })->orderBy('order','desc')->firstOrFail();
-        } else {
+        } else if ($direction == 'down'){
             $order = $model->when($page->order, function ($query, $pageOrder) {
                 return $query->where("order", '>', $pageOrder);
             })->orderBy('order','asc')->firstOrFail();

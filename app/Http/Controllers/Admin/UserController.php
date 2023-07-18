@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\UserRequest;
 use App\Models\Offer;
+use App\Models\ProfileImage;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\Admin\UserRequest;
 
 class UserController extends Controller
 {
@@ -15,20 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::with('subscription')->paginate(10);
-
-        foreach ($data as $user) {
-            if (!empty($user->vouchers)) {
-                $total=0;
-                foreach($user->vouchers as $voucher){
-                    $total+=$voucher->offer->discount_value;
-                }
-                $user['saving']=$total;
-            }else{
-                $user['saving']=0;
-            }
-
-        }
+        $data = User::get();
         return view('admin.users.index',compact('data'));
     }
 
@@ -37,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $profiles = ProfileImage::all();
+        return view('admin.users.create',compact('profiles'));
     }
 
     /**
@@ -58,21 +47,15 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::with(['subscriptions','subscription','enterprise_copnes'])->findOrFail($id);
-        if (!empty($user->vouchers)) {
-            $total=0;
-            foreach($user->vouchers as $voucher){
-                $total+=$voucher->offer->discount_value;
-            }
-            $user['saving']=$total;
-        }
+        $user = User::with('profile')->findOrFail($id);
         return view('admin.users.show',compact('user'));
     }
 
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('admin.users.edit',compact('user'));
+        $profiles = ProfileImage::all();
+        return view('admin.users.edit',compact('user','profiles'));
     }
 
     /**

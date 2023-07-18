@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data = Admin::with('adminRole')->latest()->get();
+        $data = Admin::latest()->get();
         return view('admin.admins.index',compact('data'));
     }
 
@@ -24,8 +24,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('roleable_id',0)->get();
-        return view('admin.admins.create',compact('roles'));
+        return view('admin.admins.create');
     }
 
     /**
@@ -47,8 +46,7 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $admin = Admin::findOrFail($id);
-        $roles = Role::where('roleable_id',0)->get();
-        return view('admin.admins.edit',compact('admin','roles'));
+        return view('admin.admins.edit',compact('admin'));
     }
 
     /**

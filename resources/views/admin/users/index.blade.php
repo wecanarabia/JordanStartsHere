@@ -47,10 +47,7 @@
                                                     <th>Last Name</th>
                                                     <th>Email</th>
                                                     <th>Phone</th>
-                                                    <th>Join Date</th>
-                                                    <th>Subscreption Expiry date</th>
-                                                    <th>Total Saving</th>
-                                                    <th>Type</th>
+
 
 
                                                     <th>actions</th>
@@ -60,7 +57,7 @@
                                                 @forelse ($data as $user)
                                                     <tr>
 
-                                                        <td><span>{{ $user->first_name }}</span></td>
+                                                        <td><span>{{ $user->name }}</span></td>
                                                         <td><span>{{ $user->last_name }}</span></td>
                                                         <td>
                                                             <span>{{ $user->email }}</span>
@@ -69,26 +66,6 @@
                                                             <span>{{ $user->phone }}</span>
                                                         </td>
 
-                                                        <td>
-                                                            <span>{{ \Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}</span>
-                                                        </td>
-                                                        <td>
-                                                            @if (!empty($user->subscription))
-                                                                <span>{{ $user->subscription->end_date }}</span>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            <span>{{ $user['saving'] }}</span>
-                                                        </td>
-                                                        @if(!empty($user->subscription))
-                                                            @if ($user->subscription->plan->id==4)
-                                                                <td>Enterprise</td>
-                                                            @else
-                                                                <td>Paid</td>
-                                                            @endif
-                                                        @else
-                                                            <td>No subscription</td>
-                                                        @endif
 
                                                         <td>
                                                             <div class="dropdown">
@@ -117,7 +94,7 @@
                                                                     href="{{ route('admin.users.show', $user->id) }}">Show</a>
 
                                                                     <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                                    data-id="{{ $user->id }}" data-name="{{ $user->first_name }}">Delete</button>
+                                                                    data-id="{{ $user->id }}" data-name="{{ $user->name }}">Delete</button>
                                                                 </div>
                                                             </div>
                                                         </td>

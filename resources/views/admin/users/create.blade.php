@@ -32,8 +32,8 @@
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
                                         <label class="form-label">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="first_name" placeholder="first_name" value="{{ old('first_name') }}">
-                                        @error('first_name')
+                                        <input type="text" class="form-control" name="name" placeholder="fname" value="{{ old('name') }}">
+                                        @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -70,7 +70,18 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
+                                    <div class="col-xl-8 mb-3">
+                                        <label class="form-label">Profile<span class="text-danger">*</span></label>
+                                        <select class="default-select form-control wide mb-3" name="profile_image_id" tabindex="null">
+											<option selected disabled>Select Profile id</option>
+                                            @foreach ($profiles as $profile)
+                                                <option value="{{ $profile->id }}" @selected(old('profile_image_id')==$profile->id)>{{ $profile->id }}</option>
+                                            @endforeach
+										</select>
+                                        @error('profile_image_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                         @enderror
+                                    </div>
 
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Save'>

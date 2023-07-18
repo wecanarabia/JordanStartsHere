@@ -38,7 +38,7 @@
                                 <p class="mb-3"><strong>Body-Ko : </strong> {!! $blog->getTranslation('description', 'ko') !!}</p>
                                 <p class="mb-3"><strong>Section : </strong><a href="{{ route('admin.sections.show',$blog->section->id) }}"> {{ $blog->section->name }}</a></p>
                                 <p class="mb-3"><strong>Number of views : </strong> {{ $blog->number_of_views }}</p>
-                                <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $blog->image ) }}" alt="{{ $blog->image }}">
+                                <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $blog->image ) }}" alt="{{ $blog->title }}">
 
 
                         </div>

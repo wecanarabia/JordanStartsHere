@@ -45,8 +45,10 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>English Name</th>
-                                                                    <th>Arabic Name</th>
+                                                                    <th>Order</th>
+                                                                    <th>Name-En</th>
+                                                                    <th>Name-Ar</th>
+                                                                    <th>City</th>
                                                                     <th>Sort</th>
 
 
@@ -56,11 +58,15 @@
                                                             <tbody>
                                                                 @forelse ($data as $area)
                                                                     <tr>
-
+                                                                        <td><span>{{ $area->order }}</span>
+                                                                        </td>
                                                                         <td><span>{{ $area->getTranslation('name', 'en') }}</span>
                                                                         </td>
                                                                         <td>
                                                                             <span>{{ $area->getTranslation('name', 'ar') }}</span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span><a href="{{ route('admin.cities.show',$area->city->id) }}">{{ $area->city->name }}</a></span>
                                                                         </td>
                                                                         <td class="align-center">
                                                                             @if ($data->count()>1)
@@ -123,6 +129,8 @@
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
                                                                                         href="{{ route('admin.areas.edit', $area->id) }}">Edit</a>
+                                                                                    <a class="dropdown-item"
+                                                                                        href="{{ route('admin.areas.show', $area->id) }}">Show</a>
 
                                                                                     <button class="dropdown-item"
                                                                                         data-bs-toggle="modal"

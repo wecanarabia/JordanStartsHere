@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\EmergencyController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\IntroductionController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\ProfileImageController;
 use App\Http\Controllers\Admin\ServiceImageController;
 
 Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
@@ -36,9 +38,13 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::resource('blogs', BlogController::class);
         Route::resource('pages', PageController::class)->except(['destroy']);
         Route::resource('admins', AdminController::class)->except(['show']);
+        Route::resource('profile-images', ProfileImageController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('cities', CityController::class);
+        Route::resource('areas', AreaController::class);
+        Route::get('areas/sort/{id}/{direction}',[AreaController::class,'sortData'])->name('areas.sort');
+
         // Route::get('slider/sort/{id}/{direction}',[SliderController::class,'sortData'])->name('slider.sort')->middleware('can:slider');
-        // Route::resource('areas', AreaController::class)->except(['show'])->middleware('can:areas');
-        // Route::get('areas/sort/{id}/{direction}',[AreaController::class,'sortData'])->name('areas.sort')->middleware('can:areas');
         // Route::resource('tags', TagController::class)->except(['show'])->middleware('can:tags');
         // Route::resource('features', FeatureController::class)->except(['show'])->middleware('can:features');
         // Route::resource('notifications', NotificationController::class)->except(['edit','update'])->middleware('can:notifications');
@@ -62,7 +68,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         // 'update'=>'service-images.update',
         // 'destroy'=>'service-images.destroy',
         // ])->except(['show'])->middleware('can:services');
-        // Route::resource('users', UserController::class)->middleware('can:users');
         // Route::resource('roles', RoleController::class)->middleware('can:roles');
         Route::resource('faqs', FaqController::class);
         // Route::resource('enterprises', EnterpriseSubscriptionController::class)->middleware('can:enterprises');
