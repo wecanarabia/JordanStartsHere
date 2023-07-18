@@ -117,18 +117,33 @@ public function getPartnersByCategory($id)
         return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
     }
 
-    public function getPartnersBySubcategory($id){
+   public function getPartnersBySubcategoryId($id)
+{
+$partners = Partner::whereHas('subcategories', function ($query) use ($id) {
+$query->where('subcategory_id', $id);
+})->get();
+return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+}
 
-        $partners = Partner::whereHas('subcategories')->get();
+
+     public function getPartnersByName(Request $request)
+     {
 
 
-        if( $sub->partners() ){
 
-            return $this->returnData('data',  PartnerResource::collection( $sub->partners ), __('Get  succesfully'));
-        }
+            $partners = Partner::where( "name->".$request->header('X-localization'), 'like', '%' . $request->name . '%' )->get();
+            return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
 
-        return $this->returnError(__('Sorry! Failed to get !'));
+     }
 
-    }
+
+     public function getPartnersByNameAndCategory(Request $request,$id, $name)
+{
+    $partners = Partner::whereHas('subcategories', function ($query) use ($id) {
+        $query->where('category_id', $id);
+    })->where("name->".$request->header('X-localization'), 'like', '%'.$name.'%')->get();
+
+    return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+}
 
 }
