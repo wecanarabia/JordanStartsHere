@@ -109,6 +109,16 @@
                             <li><a href="{{ route('admin.areas.index') }}">Area</a></li>
                         </ul>
 					</li>
+                    <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></div>
+                        <span class="nav-text">Categories</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="{{ route('admin.categories.index') }}">Categories</a></li>
+                            <li><a href="{{ route('admin.subcategories.index') }}">Subcategories</a></li>
+                        </ul>
+					</li>
                     {{-- @can('pages')
                     <li><a href="{{ route('admin.pages.index') }}" class="" aria-expanded="false">
                         <div class="menu-icon">

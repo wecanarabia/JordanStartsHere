@@ -7,7 +7,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">{{ __('Categories') }}</h5>
+                    <h5 class="bc-title">{{ __('Subcategories') }}</h5>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -20,9 +20,9 @@
                         </svg>
                         Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Categories') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Subcategories') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.categories.create') }}">+ Add Category</a>
+            <a class="text-primary fs-13" href="{{ route('admin.subcategories.create') }}">+ Add Subcategory</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -34,7 +34,7 @@
                                     <x-admin-layouts.alerts />
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Categories') }}</h4>
+                                            <h4 class="heading mb-0"> {{ __('Subcategories') }}</h4>
                                         </div>
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="Preview" role="tabpanel"
@@ -47,19 +47,23 @@
                                                                 <tr>
                                                                     <th>Name-En</th>
                                                                     <th>Name-Ar</th>
+                                                                    <th>Category</th>
 
 
                                                                     <th>actions</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @forelse ($data as $category)
+                                                                @forelse ($data as $subcategory)
                                                                     <tr>
 
-                                                                        <td><span>{{ $category->getTranslation('name', 'en') }}</span>
+                                                                        <td><span>{{ $subcategory->getTranslation('name', 'en') }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $category->getTranslation('name', 'ar') }}</span>
+                                                                            <span>{{ $subcategory->getTranslation('name', 'ar') }}</span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span><a href="{{ route('admin.categories.show', $subcategory->category->id) }}">{{ $subcategory->category->name }}</a></span>
                                                                         </td>
 
 
@@ -96,14 +100,14 @@
                                                                                 </button>
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.categories.edit', $category->id) }}">Edit</a>
+                                                                                        href="{{ route('admin.subcategories.edit', $subcategory->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.categories.show', $category->id) }}">Show</a>
+                                                                                        href="{{ route('admin.subcategories.show', $subcategory->id) }}">Show</a>
                                                                                     <button class="dropdown-item"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $category->id }}"
-                                                                                        data-name="{{ $category->name }}">Delete</button>
+                                                                                        data-id="{{ $subcategory->id }}"
+                                                                                        data-name="{{ $subcategory->name }}">Delete</button>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
@@ -144,10 +148,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Category</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Subcategory</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('admin.categories.destroy', 'test') }}" method="post">
+                <form action="{{ route('admin.subcategories.destroy', 'test') }}" method="post">
                     {{ method_field('delete') }}
                     @csrf
                     <div class="modal-body">

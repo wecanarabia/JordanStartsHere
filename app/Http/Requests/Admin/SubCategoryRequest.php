@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Models\Category;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class SubCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +25,7 @@ class CategoryRequest extends FormRequest
         return [
             'name_en' => 'required|min:4|max:255',
             'name_ar' => 'required|min:4|max:255',
-            'image'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:4000',
+            'category_id'=>'required|exists:categories,id',
         ];
     }
     public function attributes(): array
@@ -35,7 +33,7 @@ class CategoryRequest extends FormRequest
         return [
             'name_en' => 'English Name',
             'name_ar' => 'Arabic Name',
+            'category_id' => 'Category',
         ];
     }
-
 }

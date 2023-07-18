@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmergencyController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\IntroductionController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileImageController;
@@ -43,6 +44,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::resource('cities', CityController::class);
         Route::resource('areas', AreaController::class);
         Route::get('areas/sort/{id}/{direction}',[AreaController::class,'sortData'])->name('areas.sort');
+        Route::resource('categories', CategoryController::class);
+        Route::resource('subcategories', SubCategoryController::class);
 
         // Route::get('slider/sort/{id}/{direction}',[SliderController::class,'sortData'])->name('slider.sort')->middleware('can:slider');
         // Route::resource('tags', TagController::class)->except(['show'])->middleware('can:tags');
@@ -70,7 +73,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         // ])->except(['show'])->middleware('can:services');
         // Route::resource('roles', RoleController::class)->middleware('can:roles');
         Route::resource('faqs', FaqController::class);
-        // Route::resource('enterprises', EnterpriseSubscriptionController::class)->middleware('can:enterprises');
         Route::get('/{any}', function($any){
             return abort('405');
         })->where('any', '.*');

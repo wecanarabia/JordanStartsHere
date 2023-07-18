@@ -24,8 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::parent()->get();
-        return view('admin.categories.create',compact('categories'));
+        return view('admin.categories.create');
     }
 
     /**
@@ -33,10 +32,13 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
         Category::create($request->except([
-            'english_name',
-            'arabic_name',
+            'name_en',
+            'name_ar',
+            'name_fr',
+            'name_es',
+            'name_ko',
         ]));
 
 
@@ -48,7 +50,7 @@ class CategoryController extends Controller
 
     public function show(string $id)
     {
-        $category = Category::with(['parentcategory','features'])->findOrFail($id);
+        $category = Category::findOrFail($id);
         return view('admin.categories.show',compact('category'));
     }
 
@@ -57,9 +59,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::with('parentcategory')->findOrFail($id);
-        $categories = Category::parent()->get();
-        return view('admin.categories.edit',compact('category','categories'));
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -71,10 +72,13 @@ class CategoryController extends Controller
         if ($request->has('image')&&$category->image  && File::exists($category->image)) {
             unlink($category->image);
         }
-        $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
         $category->update($request->except([
-            'english_name',
-            'arabic_name',
+            'name_en',
+            'name_ar',
+            'name_fr',
+            'name_es',
+            'name_ko',
         ]));
 
 
