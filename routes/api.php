@@ -172,6 +172,15 @@ Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity'
 //getPartnersByCategory
 Route::get('partners-by-category/{id}', [PartnerController::class, 'getPartnersByCategory']);
 
+//getPartnersBySubcategoryId
+Route::get('partners-by-subcategory/{id}', [PartnerController::class, 'getPartnersBySubcategoryId']);
+
+// getPartnersByName
+Route::post('partners-by-name', [PartnerController::class, 'getPartnersByName']);
+
+//getPartnersByNameAndCategory (get partners by name which exist in specific category)
+Route::post('search/{id}/{name}', [PartnerController::class, 'getPartnersByNameAndCategory']);
+
 
 
 //Branch
@@ -180,6 +189,9 @@ Route::post('branch-create', [BranchController::class, 'save']);
 Route::get('branch/{id}', [BranchController::class, 'view']);
 Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
 Route::post('branch/edit/{id}', [BranchController::class, 'edit']);
+
+//nearbyBranchesIn5 kilometers
+Route::post('nearest-branches', [BranchController::class, 'nearest']);
 
 
 //portrait image
