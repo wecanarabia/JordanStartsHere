@@ -27,10 +27,14 @@ class PartnerResource extends JsonResource
             'file' => $this->file,
             'price_rate' => $this->price_rate,
             'start_price' => $this->start_price,
+            'rating'=>(double)$this?->reviews?->avg('points'),
+            'category' => $this?->subcategories?->first()->category?->name,
+            'category_image' => $this?->subcategories?->first()->category?->image,
             'branches' => BranchResource::collection($this->branches),
             'portrait_images' => PortraitImageResource::collection($this->portraits),
             'landscape_images' => LandscapeImageResource::collection($this->landscapes),
-
+            'workdays' => WorkdayResource::collection($this?->workdays),
+            'reviews' => ReviewResource::collection($this?->reviews),
         ];
     }
 }

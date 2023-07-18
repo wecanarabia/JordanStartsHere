@@ -18,6 +18,8 @@ use App\Http\Controllers\Api\BranchController;
 use App\Http\Controllers\Api\PortraitImageController;
 use App\Http\Controllers\Api\LandscapeImageController;
 use App\Http\Controllers\Api\PartnerSubcategoryController;
+use App\Http\Controllers\Api\WorkdayController;
+use App\Http\Controllers\Api\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -164,12 +166,32 @@ Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
 //get suggested partner
 Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner']);
 
+//getPartnerByCity
+Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
+
+//getPartnersByCategory
+Route::get('partners-by-category/{id}', [PartnerController::class, 'getPartnersByCategory']);
+
+//getPartnersBySubcategoryId
+Route::get('partners-by-subcategory/{id}', [PartnerController::class, 'getPartnersBySubcategoryId']);
+
+// getPartnersByName
+Route::post('partners-by-name', [PartnerController::class, 'getPartnersByName']);
+
+//getPartnersByNameAndCategory (get partners by name which exist in specific category)
+Route::post('search/{id}/{name}', [PartnerController::class, 'getPartnersByNameAndCategory']);
+
+
+
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
 Route::get('branch/{id}', [BranchController::class, 'view']);
 Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
 Route::post('branch/edit/{id}', [BranchController::class, 'edit']);
+
+//nearbyBranchesIn5 kilometers
+Route::post('nearest-branches', [BranchController::class, 'nearest']);
 
 
 //portrait image
@@ -192,6 +214,25 @@ Route::post('landscape/edit/{id}', [LandscapeImageController::class, 'edit']);
 Route::post('partnersub-create', [PartnerSubcategoryController::class, 'save']);
 
 Route::get('partnersub/delete/{id}', [PartnerSubcategoryController::class, 'delete']);
+
+
+//workday
+Route::get('workdays', [WorkdayController::class, 'list']);
+Route::post('workday-create', [WorkdayController::class, 'save']);
+Route::get('workday/{id}', [WorkdayController::class, 'view']);
+Route::get('workday/delete/{id}', [WorkdayController::class, 'delete']);
+Route::post('workday/edit/{id}', [WorkdayController::class, 'edit']);
+
+//reviews
+Route::get('reviews', [ReviewController::class, 'activeReviews']);
+Route::post('review-create', [ReviewController::class, 'save']);
+Route::get('review/{id}', [ReviewController::class, 'view']);
+Route::get('review/delete/{id}', [ReviewController::class, 'delete']);
+Route::post('review/edit/{id}', [ReviewController::class, 'edit']);
+
+
+//getReviewsByPartner
+Route::get('reviews-by-partner/{id}', [ReviewController::class, 'getReviewsByPartner']);
 
 
 });

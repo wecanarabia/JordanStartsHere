@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Partner;
+use App\Models\City;
+use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Requests\PartnerRequest;
@@ -40,4 +43,107 @@ class PartnerController extends ApiController
 
         return $this->returnError(__('Sorry! Failed to get!'));
     }
+
+
+    // public function getPartnerByCity($id)
+    // {
+
+    //     $city = City::find($id);
+
+    //     // dd($city->areas?->first()->branches?->first()->partner->id);
+
+
+    //     if ($city) {
+    //         return $this->returnData('data', new $this->resource($city->areas?->first()->branches?->first()->partner), __('Get successfully'));
+    //     }
+
+    //     return $this->returnError(__('Sorry! Failed to get!'));
+    // }
+
+
+//     public function getPartnerByCity($id)
+// {
+//     $city = City::find($id);
+
+//     if (!$city) {
+//         return $this->returnError(__('Sorry! Failed to get!'));
+//     }
+
+//     $partners = collect();
+
+//     foreach ($city->areas as $area) {
+//         foreach ($area->branches as $branch) {
+//             $partners->push($branch->partner);
+//         }
+//     }
+
+//     if ($partners->isEmpty()) {
+//         return $this->returnError(__('No partners found for the specified city!'));
+//     }
+
+//     return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+// }
+
+public function getPartnerByCity($id)
+{
+    $city = City::find($id);
+
+    if (!$city) {
+        return $this->returnError(__('Sorry! Failed to get!'));
+    }
+
+    $partners = Partner::whereIn('id', function ($query) use ($city) {
+        $query->select('partner_id')
+            ->from('branches')
+            ->whereIn('area_id', function ($query) use ($city) {
+                $query->select('id')
+                    ->from('areas')
+                    ->where('city_id', $city->id);
+            });
+    })->get();
+
+    if ($partners->isEmpty()) {
+        return $this->returnError(__('No partners found for the specified city!'));
+    }
+
+    return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+}
+
+public function getPartnersByCategory($id)
+    {
+        $partners = Partner::whereHas('subcategories', function ($query) use ($id) {
+        $query->where('category_id', $id);
+    })->get();
+        return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+    }
+
+   public function getPartnersBySubcategoryId($id)
+{
+$partners = Partner::whereHas('subcategories', function ($query) use ($id) {
+$query->where('subcategory_id', $id);
+})->get();
+return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+}
+
+
+     public function getPartnersByName(Request $request)
+     {
+
+
+
+            $partners = Partner::where( "name->".$request->header('X-localization'), 'like', '%' . $request->name . '%' )->get();
+            return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+
+     }
+
+
+     public function getPartnersByNameAndCategory(Request $request,$id, $name)
+{
+    $partners = Partner::whereHas('subcategories', function ($query) use ($id) {
+        $query->where('category_id', $id);
+    })->where("name->".$request->header('X-localization'), 'like', '%'.$name.'%')->get();
+
+    return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
+}
+
 }

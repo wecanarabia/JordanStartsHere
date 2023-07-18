@@ -49,6 +49,11 @@ class Partner extends Model
 		return $this->hasMany(Branch::class);
 	}
 
+    public function workdays()
+	{
+		return $this->hasMany(Workday::class);
+	}
+
     public function portraits()
 	{
 		return $this->hasMany(PortraitImage::class);
@@ -58,5 +63,17 @@ class Partner extends Model
 	{
 		return $this->hasMany(LandscapeImage::class);
 	}
+
+    public function subcategories(){
+
+        return $this->belongsToMany(Subcategory::class,'partner_subcategories','partner_id','subcategory_id');
+    }
+
+
+
+    public function reviews()
+{
+    return $this->hasMany(Review::class, 'partner_id')->where('status',1);
+}
 
 }
