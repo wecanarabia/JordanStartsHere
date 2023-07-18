@@ -73,7 +73,7 @@ class Partner extends Model
 
     public function reviews()
 {
-    return $this->hasMany(Review::class, 'partner_id')->where('status',1);
+    return $this->hasMany(Review::class, 'partner_id')->where('status',1)->orderBy('id', 'desc');
 }
 
 }
