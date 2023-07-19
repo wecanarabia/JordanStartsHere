@@ -119,6 +119,18 @@
                             <li><a href="{{ route('admin.subcategories.index') }}">Subcategories</a></li>
                         </ul>
 					</li>
+                    <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M21 12H3M12 3v18"/></svg>
+                        </div>
+                        <span class="nav-text">Partners Info</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="{{ route('admin.partners.index') }}">Partners</a></li>
+                            <li><a href="{{ route('admin.portraits.index') }}">Portrait Images</a></li>
+                            <li><a href="{{ route('admin.landscapes.index') }}">landscape Images</a></li>
+                        </ul>
+					</li>
                     {{-- @can('pages')
                     <li><a href="{{ route('admin.pages.index') }}" class="" aria-expanded="false">
                         <div class="menu-icon">

@@ -22,7 +22,7 @@
                 </li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Partners') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.services.create') }}">+ Add Partner</a>
+            <a class="text-primary fs-13" href="{{ route('admin.partners.create') }}">+ Add Partner</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -45,13 +45,11 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>English Name</th>
-                                                                    <th>Arabic Name</th>
-                                                                    <th>Email</th>
+                                                                    <th>Name-En</th>
+                                                                    <th>Name-Ar</th>
                                                                     <th>Phone</th>
-                                                                    <th>Status</th>
-                                                                    <th>Admin</th>
-                                                                    <th>Cassification</th>
+                                                                    <th>Start Price</th>
+                                                                    <th>Suggest as start</th>
                                                                     <th>Created At</th>
 
 
@@ -59,34 +57,30 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @forelse ($data as $service)
+                                                                @forelse ($data as $partner)
                                                                     <tr>
 
-                                                                        <td><span>{{ $service->getTranslation('name', 'en') }}</span>
+                                                                        <td><span>{{ $partner->getTranslation('name', 'en') }}</span>
                                                                         </td>
 
                                                                         <td>
-                                                                            <span>{{ $service->getTranslation('name', 'ar') }}</span>
+                                                                            <span>{{ $partner->getTranslation('name', 'ar') }}</span>
+                                                                        </td>
+
+                                                                        <td>
+                                                                            <span>{{ $partner->phone }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $service->email }}</span>
+                                                                            <span>{{ $partner?->start_price }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $service->phone }}</span>
+                                                                            <span>{{ $partner->start_status == 1? 'Suggested' : 'Not Suggested' }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $service->status == 1 ? 'Active' : 'InActive' }}</span>
+                                                                            <span>{{ $partner->created_at }}</span>
                                                                         </td>
-                                                                        <td>
-                                                                            <span>{{ $service?->admin?->name }}</span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span>{{ $service->created_at }}</span>
-                                                                        </td>
-                                                                        
-                                                                        <td>
-                                                                            <span>{{ $service->cassification }}</span>
-                                                                        </td>
+
+                                                                    
 
                                                                         <td>
                                                                             <div class="dropdown">
@@ -121,16 +115,14 @@
                                                                                 </button>
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.services.edit', $service->id) }}">Edit</a>
+                                                                                        href="{{ route('admin.partners.edit', $partner->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.services.show', $service->id) }}">Show</a>
-                                                                                    @can('all-services')
+                                                                                        href="{{ route('admin.partners.show', $partner->id) }}">Show</a>
                                                                                         <button class="dropdown-item"
                                                                                             data-bs-toggle="modal"
                                                                                             data-bs-target="#deleteModal"
-                                                                                            data-id="{{ $service->id }}"
-                                                                                            data-name="{{ $service->name }}">Delete</button>
-                                                                                    @endcan
+                                                                                            data-id="{{ $partner->id }}"
+                                                                                            data-name="{{ $partner->name }}">Delete</button>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
@@ -165,7 +157,6 @@
     <!--**********************************
             Content body end
         ***********************************-->
-    @can('all-services')
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -174,7 +165,7 @@
                         <h5 class="modal-title" id="deleteModalLabel">Delete Partner</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('admin.services.destroy', 'test') }}" method="post">
+                    <form action="{{ route('admin.partners.destroy', 'test') }}" method="post">
                         {{ method_field('delete') }}
                         @csrf
                         <div class="modal-body">
@@ -207,5 +198,4 @@
                 })
             </script>
         @endpush
-    @endcan
 </x-admin-layouts.admin-app>

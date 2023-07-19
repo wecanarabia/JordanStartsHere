@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceImageRequest extends FormRequest
+class PortraitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class ServiceImageRequest extends FormRequest
             'images'=>'required_without:id|array|min:1',
             'images.*'=>'required_without:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
             'image'=>'required_with:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
-            'service_id'=>'required|exists:services,id',
+            'partner_id'=>'required|exists:partners,id',
         ];
     }
 

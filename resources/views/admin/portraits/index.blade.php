@@ -7,7 +7,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">{{ __('Partner Images') }}</h5>
+                    <h5 class="bc-title">{{ __('Portrait Images') }}</h5>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -20,9 +20,9 @@
                         </svg>
                         Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Partner Images') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Portrait Images') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.service-images.create') }}">+ Add Partner Image</a>
+            <a class="text-primary fs-13" href="{{ route('admin.portraits.create') }}">+ Add Portrait Image</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -34,7 +34,7 @@
                                     <x-admin-layouts.alerts />
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Partner Images') }}</h4>
+                                            <h4 class="heading mb-0"> {{ __('Portrait Images') }}</h4>
                                         </div>
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="Preview" role="tabpanel"
@@ -61,7 +61,7 @@
                                                                                     alt=""></span></td>
 
                                                                         <td><span><a
-                                                                                    href="{{ route('admin.services.show', $image->service->id) }}">{{ $image->service->name }}</a></span>
+                                                                                    href="{{ route('admin.partners.show', $image->partner->id) }}">{{ $image->partner->name }}</a></span>
                                                                         </td>
 
                                                                         <td>
@@ -97,7 +97,7 @@
                                                                                 </button>
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.service-images.edit', $image->id) }}">Edit</a>
+                                                                                        href="{{ route('admin.portraits.edit', $image->id) }}">Edit</a>
                                                                                     <button class="dropdown-item"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#deleteModal"
@@ -142,10 +142,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Partner Image</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Portrait Image</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('admin.service-images.destroy', 'test') }}" method="post">
+                <form action="{{ route('admin.portraits.destroy', 'test') }}" method="post">
                     {{ method_field('delete') }}
                     @csrf
                     <div class="modal-body">
