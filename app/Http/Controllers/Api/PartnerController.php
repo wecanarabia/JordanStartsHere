@@ -348,9 +348,10 @@ if (!is_null($request->start_price)) {
 }
 
 if (!is_null($request->avg)) {
-    $partners = Partner::whereHas('reviews', function($query) use ($request) {
-        $query->havingRaw('AVG(points) = ?', [$request->avg]);
-    })->get();
+    $partners = Partner::select('partners.*')
+    ->join(DB::raw('(SELECT partner_id, AVG(points) as avg_points FROM reviews GROUP BY partner_id) as review_avg'), 'partners.id', '=', 'review_avg.partner_id')
+    ->where('review_avg.avg_points', '>=', $request->avg)
+    ->get();
 
     foreach ($partners as $partner) {
         if ($partner->subcategories->contains('id', $request->subcategory_id) && !isset($resources[$partner->id])) {

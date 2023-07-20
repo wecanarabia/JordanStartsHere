@@ -189,8 +189,7 @@ Route::post('filter', [PartnerController::class, 'getPartners']);
 //filter in specific sub
 Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubcategory']);
 
-//getMinAndMaxOfPrice
-Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
+
 
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
