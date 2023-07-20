@@ -76,4 +76,14 @@ class Partner extends Model
     return $this->hasMany(Review::class, 'partner_id')->where('status',1)->orderBy('id', 'desc');
 }
 
+public function areas()
+{
+    return $this->hasManyThrough(Area::class, Branch::class);
+}
+
+public function cities()
+{
+    return $this->hasManyThrough(City::class, Area::class);
+}
+
 }
