@@ -35,27 +35,11 @@ class Partner extends Model
     protected static function booted()
     {
         static::deleted(function ($partner) {
-
-            if ($partner->branches)$partner->branches()->delete();
-            if ($partner->workdays)$partner->workdays()->delete();
-            if ($partner->portraits){
-                foreach ($partner->portraits as $portrait) {
-                    unlink($portrait->image);
+                if ($partner->logo  && \Illuminate\Support\Facades\File::exists($partner->logo)) {
+                    unlink($partner->logo);
                 }
-                $partner->portraits()->delete();
-            }
-
-            if ($partner->landscapes){
-                foreach ($partner->landscapes as $landscape) {
-                    unlink($landscape->image);
-                }
-                $partner->landscapes()->delete();
-            }
-            if ($partner->logo  && \Illuminate\Support\Facades\File::exists($partner->logo)) {
-                unlink($partner->logo);
-            }
-            if ($partner->file  && \Illuminate\Support\Facades\File::exists($partner->file)) {
-                unlink($partner->file);
+                if ($partner->file  && \Illuminate\Support\Facades\File::exists($partner->file)) {
+                    unlink($partner->file);
             }
         });
     }
@@ -89,7 +73,9 @@ class Partner extends Model
 
     public function reviews()
 {
-    return $this->hasMany(Review::class, 'partner_id')->where('status',1);
+    return $this->hasMany(Review::class)->where('status',1)->orderBy('id', 'desc');
 }
+
+
 
 }
