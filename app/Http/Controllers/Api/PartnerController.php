@@ -251,14 +251,27 @@ public function getPartners(Request $request)
         }
     }
 
+//server
+    // if (!is_null($request->avg)) {
+    //     $partners = Partner::whereHas('reviews', function($query) use ($request) {
+    //         $query->select('partner_id', DB::raw('AVG(points) as avg_points'))
+    //               ->havingRaw('AVG(points) = ?', [$request->avg])
+    //               ->groupBy('id', 'name', 'description', 'logo', 'video_url', 'file', 'price_rate', 'start_price', 'phone','whatsapp','start_status','created_at', 'updated_at'
+    //             );
+    //         })->get();
+
+    //     foreach ($partners as $partner) {
+    //         $resource = new PartnerResource($partner);
+    //         $resources[$partner->id] = $resource;
+    //     }
+    // }
+
 
     if (!is_null($request->avg)) {
-        $partners = Partner::whereHas('reviews', function($query) use ($request) {
-            $query->select('partner_id', DB::raw('AVG(points) as avg_points'))
-                  ->havingRaw('AVG(points) = ?', [$request->avg])
-                  ->groupBy('id', 'name', 'description', 'logo', 'video_url', 'file', 'price_rate', 'start_price', 'phone','whatsapp','start_status','created_at', 'updated_at'
-                );
-            })->get();
+        $partners = Partner::select('partners.*')
+            ->join(DB::raw('(SELECT partner_id, AVG(points) as avg_points FROM reviews GROUP BY partner_id) as review_avg'), 'partners.id', '=', 'review_avg.partner_id')
+            ->where('review_avg.avg_points', '=', $request->avg)
+            ->get();
 
         foreach ($partners as $partner) {
             $resource = new PartnerResource($partner);
@@ -267,6 +280,7 @@ public function getPartners(Request $request)
     }
 
 
+    //local
     // if (!is_null($request->avg)) {
     //     $partners = Partner::whereHas('reviews', function($query) use ($request) {
     //         $query->havingRaw('AVG(points) = ?', [$request->avg]);
