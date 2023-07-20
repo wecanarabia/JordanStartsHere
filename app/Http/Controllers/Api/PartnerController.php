@@ -259,7 +259,7 @@ public function getPartners(Request $request)
     if (!is_null($request->avg)) {
         $partners = Partner::select('partners.*')
             ->join(DB::raw('(SELECT partner_id, AVG(points) as avg_points FROM reviews GROUP BY partner_id) as review_avg'), 'partners.id', '=', 'review_avg.partner_id')
-            ->where('review_avg.avg_points', '<=', $request->avg)
+            ->where('review_avg.avg_points', '=>', $request->avg)
             ->get();
 
         foreach ($partners as $partner) {
@@ -333,7 +333,11 @@ if (isset($request->areas)) {
 }
 
 if (!is_null($request->start_price)) {
-    $partners = Partner::where('start_price', '>=', $request->start_price)->get();
+    $partners = Partner::where(function ($query) use ($request) {
+        $query->where('start_price', '<=', $request->start_price)
+              ->orWhereNull('start_price');
+    })->get();
+
 
     foreach ($partners as $partner) {
         if ($partner->subcategories->contains('id', $request->subcategory_id) && !isset($resources[$partner->id])) {
