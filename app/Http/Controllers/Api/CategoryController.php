@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
-use App\Http\Requests\CategoryRequest;
-use App\Http\Resources\CategoryResource;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\CategoryWithSubResource;
 
 class CategoryController extends ApiController
 {
@@ -27,6 +28,13 @@ class CategoryController extends ApiController
 
 
         return $this->update($id,$request->all());
+
+    }
+
+    public function getParnersByCategory($id)
+    {
+        $category = Category::with(['subcategories','subcategories.partners'])->find($id);
+        return $this->returnData('data', new CategoryWithSubResource($category), __('Get successfully'));
 
     }
 
