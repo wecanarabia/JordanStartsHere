@@ -226,18 +226,8 @@ public function getPartners(Request $request)
         }
     }
 
-    // if (!is_null($request->start_price)) {
 
-    //    $partners=Partner::where('start_price', '==', $request->start_price)
-    //    ->orWhere('start_price', '<', $request->start_price)
-    //    ->get();
 
-    //         foreach ($partners as $partner) {
-    //             $resource = new PartnerResource($partner);
-    //             $resources[$partner->id] = $resource;
-    //         }
-
-    // }
 
     if (!is_null($request->start_price)) {
         $partners = Partner::where(function ($query) use ($request) {
@@ -310,6 +300,69 @@ public function getMinAndMaxOfPrice(Request $request)
     return $this->returnData('data', ['min' => $min, 'max' => $max], 'Get min and max of partners successfully');
 }
 
+public function getPartnersOfSubcategory(Request $request)
+{
+
+    $resources = [];
+
+if (isset($request->cities)) {
+    $cityIds = $request->cities;
+    $partners = Partner::whereHas('branches.area.city', function ($query) use ($cityIds) {
+        $query->whereIn('id', $cityIds);
+    })->get();
+
+    foreach ($partners as $partner) {
+        if ($partner->subcategories->contains('id', $request->subcategory_id)) {
+            $resource = new PartnerResource($partner);
+            $resources[$partner->id] = $resource;
+        }
+    }
+}
+
+if (isset($request->areas)) {
+    $areaIds = $request->areas;
+    $partners = Partner::whereHas('branches.area', function ($query) use ($areaIds) {
+        $query->whereIn('id', $areaIds);
+    })->get();
+
+    foreach ($partners as $partner) {
+        if ($partner->subcategories->contains('id', $request->subcategory_id) && !isset($resources[$partner->id])) {
+            $resource = new PartnerResource($partner);
+            $resources[$partner->id] = $resource;
+        }
+    }
+}
+
+if (!is_null($request->start_price)) {
+    $partners = Partner::where('start_price', '>=', $request->start_price)->get();
+
+    foreach ($partners as $partner) {
+        if ($partner->subcategories->contains('id', $request->subcategory_id) && !isset($resources[$partner->id])) {
+            $resource = new PartnerResource($partner);
+            $resources[$partner->id] = $resource;
+        }
+    }
+}
+
+if (!is_null($request->avg)) {
+    $partners = Partner::whereHas('reviews', function($query) use ($request) {
+        $query->havingRaw('AVG(points) = ?', [$request->avg]);
+    })->get();
+
+    foreach ($partners as $partner) {
+        if ($partner->subcategories->contains('id', $request->subcategory_id) && !isset($resources[$partner->id])) {
+            $resource = new PartnerResource($partner);
+            $resources[$partner->id] = $resource;
+        }
+    }
+}
+
+$resources = array_values($resources);
+
+return $this->returnData('data', $resources, __('Get partners successfully'));
+
+
+}
 
 
 }
