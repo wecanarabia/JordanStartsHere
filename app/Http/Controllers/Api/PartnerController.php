@@ -12,6 +12,7 @@ use App\Http\Requests\PartnerRequest;
 use App\Http\Resources\PartnerResource;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\DB;
 
 class PartnerController extends ApiController
 {
