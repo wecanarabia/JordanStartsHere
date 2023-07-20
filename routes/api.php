@@ -187,7 +187,7 @@ Route::post('search/{id}/{name}', [PartnerController::class, 'getPartnersByNameA
 Route::post('filter', [PartnerController::class, 'getPartners']);
 
 //getMinAndMaxOfPrice
-Route::get('partners-range', [PartnerController::class, 'getPartners']);
+Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
