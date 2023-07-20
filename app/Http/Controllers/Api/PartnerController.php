@@ -226,22 +226,23 @@ public function getPartners(Request $request)
         }
     }
 
+    // if (!is_null($request->start_price)) {
+
+    //    $partners=Partner::where('start_price', '==', $request->start_price)
+    //    ->orWhere('start_price', '<', $request->start_price)
+    //    ->get();
+
+    //         foreach ($partners as $partner) {
+    //             $resource = new PartnerResource($partner);
+    //             $resources[$partner->id] = $resource;
+    //         }
+
+    // }
+
     if (!is_null($request->start_price)) {
-
-       $partners=Partner::where('start_price', '==', $request->start_price)
-       ->orWhere('start_price', '<', $request->start_price)
-       ->get();
-
-            foreach ($partners as $partner) {
-                $resource = new PartnerResource($partner);
-                $resources[$partner->id] = $resource;
-            }
-
-    }
-
-    if (!is_null($request->avg)) {
-        $partners = Partner::whereHas('reviews', function($query) use ($request) {
-            $query->havingRaw('AVG(points) = ?', [$request->avg]);
+        $partners = Partner::where(function ($query) use ($request) {
+            $query->where('start_price', '<=', $request->start_price)
+                  ->orWhereNull('start_price');
         })->get();
 
         foreach ($partners as $partner) {
@@ -250,58 +251,40 @@ public function getPartners(Request $request)
         }
     }
 
-    $resources = array_values($resources);
-
-    return $this->returnData('data', $resources, __('Get partners successfully'));
-}
-
-
-public function getPartnersOfSubcategory(Request $request)
-{
-    $resources = [];
-
-    $partners = Partner::whereHas('subcategories', function ($query) use ($request) {
-        $query->where('subcategory_id', $request->subcategory_id);
-    });
-
-    if (isset($request->cities)) {
-        $cityIds = $request->cities;
-        $partners->whereHas('branches.area.city', function ($query) use ($cityIds) {
-            $query->whereIn('id', $cityIds);
-        });
-    }
-
-    if (isset($request->areas)) {
-        $areaIds = $request->areas;
-        $partners->whereHas('branches.area', function ($query) use ($areaIds) {
-            $query->whereIn('id', $areaIds);
-        });
-    }
-
-    if (!is_null($request->start_price)) {
-       $partners->where(function ($query) use ($request) {
-           $query->where('start_price', '==', $request->start_price)
-                 ->orWhere('start_price', '<', $request->start_price);
-       });
-    }
 
     if (!is_null($request->avg)) {
-        $partners->whereHas('reviews', function($query) use ($request) {
-            $query->havingRaw('AVG(points) = ?', [$request->avg]);
-        });
+        $partners = Partner::whereHas('reviews', function($query) use ($request) {
+            $query->select('partner_id', DB::raw('AVG(points) as avg_points'))
+                  ->havingRaw('AVG(points) = ?', [$request->avg])
+                  ->groupBy('id', 'name', 'description', 'logo', 'video_url', 'file', 'price_rate', 'start_price', 'phone','whatsapp','start_status','created_at', 'updated_at'
+                );
+            })->get();
+
+        foreach ($partners as $partner) {
+            $resource = new PartnerResource($partner);
+            $resources[$partner->id] = $resource;
+        }
     }
 
-    $partners = $partners->get();
 
-    foreach ($partners as $partner) {
-        $resource = new PartnerResource($partner);
-        $resources[$partner->id] = $resource;
-    }
+    // if (!is_null($request->avg)) {
+    //     $partners = Partner::whereHas('reviews', function($query) use ($request) {
+    //         $query->havingRaw('AVG(points) = ?', [$request->avg]);
+    //     })->get();
+
+    //     foreach ($partners as $partner) {
+    //         $resource = new PartnerResource($partner);
+    //         $resources[$partner->id] = $resource;
+    //     }
+    // }
 
     $resources = array_values($resources);
 
     return $this->returnData('data', $resources, __('Get partners successfully'));
 }
+
+
+
 
 public function getMinAndMaxOfPrice(Request $request)
 {
@@ -312,5 +295,7 @@ public function getMinAndMaxOfPrice(Request $request)
 
     return $this->returnData('data', ['min' => $min, 'max' => $max], 'Get min and max of partners successfully');
 }
+
+
 
 }
