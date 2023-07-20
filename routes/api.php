@@ -183,6 +183,8 @@ Route::post('partners-by-name', [PartnerController::class, 'getPartnersByName'])
 Route::post('search/{id}/{name}', [PartnerController::class, 'getPartnersByNameAndCategory']);
 
 
+//filter
+Route::post('filter', [PartnerController::class, 'getPartners']);
 
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
