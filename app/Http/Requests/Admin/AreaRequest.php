@@ -22,16 +22,19 @@ class AreaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'english_name' => 'required|min:4|max:255',
-            'arabic_name' => 'required|min:4|max:255',
+            'name_en' => 'required|min:4|max:255',
+            'name_ar' => 'required|min:4|max:255',
+            'city_id' => 'required|exists:cities,id',
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'english_name' => 'English Name',
-            'arabic_name' => 'Arabic Name',
+
+            'name_en' => 'English Name',
+            'name_ar' => 'Arabic Name',
+            'city_id' => 'City',
         ];
     }
 }

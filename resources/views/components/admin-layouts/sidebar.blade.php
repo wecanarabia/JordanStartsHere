@@ -88,6 +88,49 @@
 						</a>
 
 					</li>
+                    <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+						</div>
+						<span class="nav-text">Users Info</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="{{ route('admin.users.index') }}">Users</a></li>
+                            <li><a href="{{ route('admin.profile-images.index') }}">Profile images</a></li>
+                        </ul>
+					</li>
+                    <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>						</div>
+						<span class="nav-text">Locations</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="{{ route('admin.cities.index') }}">Cities</a></li>
+                            <li><a href="{{ route('admin.areas.index') }}">Area</a></li>
+                        </ul>
+					</li>
+                    <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></div>
+                        <span class="nav-text">Categories</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="{{ route('admin.categories.index') }}">Categories</a></li>
+                            <li><a href="{{ route('admin.subcategories.index') }}">Subcategories</a></li>
+                        </ul>
+					</li>
+                    <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M21 12H3M12 3v18"/></svg>
+                        </div>
+                        <span class="nav-text">Partners Info</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="{{ route('admin.partners.index') }}">Partners</a></li>
+                            <li><a href="{{ route('admin.portraits.index') }}">Portrait Images</a></li>
+                            <li><a href="{{ route('admin.landscapes.index') }}">landscape Images</a></li>
+                        </ul>
+					</li>
                     {{-- @can('pages')
                     <li><a href="{{ route('admin.pages.index') }}" class="" aria-expanded="false">
                         <div class="menu-icon">

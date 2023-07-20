@@ -23,24 +23,18 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $categories = Category::parent()->pluck('id')->toArray();
-        if (!$this->has('parent_id')||$this['type']=='parent') {
-            $this['parent_id'] = null;
-        };
-        unset($this['type']);
+
         return [
-            'english_name' => 'required|min:4|max:255',
-            'arabic_name' => 'required|min:4|max:255',
-            'image'=>[Rule::requiredIf($this->parent_id==null),'mimes:jpg,jpeg,gif,png','max:4000'],
-            'parent_id'=>[ 'nullable', Rule::in($categories)],
+            'name_en' => 'required|min:4|max:255',
+            'name_ar' => 'required|min:4|max:255',
+            'image'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:4000',
         ];
     }
     public function attributes(): array
     {
         return [
-            'parent_id' => 'Parent Category',
-            'english_name' => 'English Name',
-            'arabic_name' => 'Arabic Name',
+            'name_en' => 'English Name',
+            'name_ar' => 'Arabic Name',
         ];
     }
 

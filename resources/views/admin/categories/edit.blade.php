@@ -33,19 +33,36 @@
                                 <div class="row">
                                         <input name="id" type="hidden" value="{{ $category->id }}">
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">English Name<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="english_name" placeholder="English Name" value="{{ $category->getTranslation('name', 'en')??  old('english_name') }}">
-                                            @error('english_name')
+                                            <label for="ckeditor" class="form-label">Name-En<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_en" value="{{ old('name_en',$category->getTranslation('name','en')) }}">
+
+                                            @error('name_en')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputsecond" class="form-label">Arabic Name<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="exampleFormControlInputsecond" name="arabic_name" placeholder="Arabic Name" value="{{ $category->getTranslation('name', 'ar')??old('arabic_name') }}">
-                                            @error('arabic_name')
+                                            <label for="ckeditor1" class="form-label">Name-Ar<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ar" value="{{ old('name_ar',$category->getTranslation('name','ar')) }}">
+
+                                            @error('name_ar')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
+                                        </div>
+                                        <div class="col-xl-8 mb-3">
+                                            <label for="ckeditor2" class="form-label">Name-Fr<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_fr" value="{{ old('name_fr',$category->getTranslation('name','fr')) }}">
+
+                                        </div>
+                                        <div class="col-xl-8 mb-3">
+                                            <label for="ckeditor3" class="form-label">Name-Es<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_es" value="{{ old('name_es',$category->getTranslation('name','es')) }}">
+
+                                        </div>
+                                        <div class="col-xl-8 mb-3">
+                                            <label for="ckeditor4" class="form-label">Name-Ko<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko',$category->getTranslation('name','ko')) }}">
+
                                         </div>
                                         <div class="col-xl-8 mb-3">
                                             <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
@@ -55,38 +72,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-xl-8 mb-3">
-                                            <label class="form-label">Type<span class="text-danger">*</span></label>
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="parent" type="radio" name="type" value="parent" @checked(empty($category->parentcategory))>
-                                                <label class="form-check-label" for="parent">
-                                                    Parent
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="child" type="radio" name="type" value="child" @checked(!empty($category->parentcategory))>
-                                                <label class="form-check-label" for="child">
-                                                    Child
-                                                </label>
-                                            </div>
-                                        </div>
 
-
-                                        <div id="cats-list"
-                                            @class(['col-xl-8 ','mb-3','d-none'=>empty($category->parentcategory)])
-                                        >
-                                            <label class="form-label">Parent Category<span class="text-danger">*</span></label>
-                                            <select class="default-select form-control wide mb-3" name="parent_id" tabindex="null">
-                                                @foreach ($categories as $_category)
-                                                    @if ($category->id!==$_category->id)
-                                                    <option value="{{ $_category->id }}" @selected(old('parent_id')==$_category->id)>{{ $_category->name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            @error('parent_id')
-                                                <div class="text-danger">{{ $message }}</div>
-                                             @enderror
-                                        </div>
 
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Update '>
@@ -109,15 +95,5 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
-    <script>
-        $('.form-check-input').on('click', function() {
-            if ($(this).val() == 'child') {
-                $('#cats-list').removeClass('d-none')
-            }else if ($(this).val() == 'parent') {
-                $('#cats-list').addClass('d-none')
-            }
-        })
-    </script>
-    @endpush
+
 </x-admin-layouts.admin-app>

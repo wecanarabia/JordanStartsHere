@@ -31,19 +31,36 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">English Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="english_name" placeholder="English Name" value="{{ old('english_name') }}">
-                                        @error('english_name')
+                                        <label for="ckeditor" class="form-label">Name-En<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_en" value="{{ old('name_en') }}">
+
+                                        @error('name_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputsecond" class="form-label">Arabic Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputsecond" name="arabic_name" placeholder="Arabic Name" value="{{ old('arabic_name') }}">
-                                        @error('arabic_name')
+                                        <label for="ckeditor1" class="form-label">Name-Ar<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ar" value="{{ old('name_ar') }}">
+
+                                        @error('name_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor2" class="form-label">Name-Fr<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_fr" value="{{ old('name_fr') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor3" class="form-label">Name-Es<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_es" value="{{ old('name_es') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor4" class="form-label">Name-Ko<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko') }}">
+
                                     </div>
 
 
@@ -56,34 +73,7 @@
                                     </div>
 
 
-                                    <div class="col-xl-8 mb-3">
-                                        <label class="form-label">Type<span class="text-danger">*</span></label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" id="parent" type="radio" name="type" value="parent" checked>
-                                            <label class="form-check-label" for="parent">
-                                                Parent
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" id="child" type="radio" name="type" value="child">
-                                            <label class="form-check-label" for="child">
-                                                Child
-                                            </label>
-                                        </div>
-                                    </div>
 
-                                    <div id="cats-list" class="col-xl-8 mb-3 d-none">
-                                        <label class="form-label">Parent Category<span class="text-danger">*</span></label>
-                                        <select class="default-select form-control wide mb-3" name="parent_id" tabindex="null">
-                                            <option selected disabled>Select Parent Category</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}" @selected(old('parent_id')==$category->id)>{{ $category->name }}</option>
-                                            @endforeach
-										</select>
-                                        @error('parent_id')
-                                            <div class="text-danger">{{ $message }}</div>
-                                         @enderror
-                                    </div>
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Save'>
                                     </div>
@@ -105,15 +95,5 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
-    <script>
-        $('.form-check-input').on('click', function() {
-            if ($(this).val() == 'child') {
-                $('#cats-list').removeClass('d-none')
-            }else if ($(this).val() == 'parent') {
-                $('#cats-list').addClass('d-none')
-            }
-        })
-    </script>
-    @endpush
+
 </x-admin-layouts.admin-app>

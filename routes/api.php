@@ -146,6 +146,7 @@ Route::post('category-create', [CategoryController::class, 'save']);
 Route::get('category/{id}', [CategoryController::class, 'view']);
 Route::get('category/delete/{id}', [CategoryController::class, 'delete']);
 Route::post('category/edit/{id}', [CategoryController::class, 'edit']);
+Route::get('category/partners/{id}', [CategoryController::class, 'getParnersByCategory']);
 
 
 //Subcategory
@@ -182,15 +183,6 @@ Route::post('partners-by-name', [PartnerController::class, 'getPartnersByName'])
 Route::post('search/{id}/{name}', [PartnerController::class, 'getPartnersByNameAndCategory']);
 
 
-//getPartners (filter)
-Route::post('filter', [PartnerController::class, 'getPartners']);
-
-
-//getPartnersofsub (filter with subcategory)
-Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubcategory']);
-
-//getMinAndMaxOfPrice
-Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 
 //Branch
 Route::get('branches', [BranchController::class, 'list']);

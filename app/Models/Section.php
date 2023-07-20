@@ -15,7 +15,12 @@ class Section extends Model
     protected static function booted()
     {
         static::deleted(function ($section) {
-            if($section->blogs)$section->blogs()->delete();
+            if($section->blogs){
+                foreach ($section->blogs as $blog) {
+                    unlink($blog->image);
+                }
+                $section->blogs()->delete();
+            }
         });
     }
     public function blogs()

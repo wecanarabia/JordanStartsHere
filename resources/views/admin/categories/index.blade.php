@@ -45,8 +45,8 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>English Name</th>
-                                                                    <th>Arabic Name</th>
+                                                                    <th>Name-En</th>
+                                                                    <th>Name-Ar</th>
 
 
                                                                     <th>actions</th>

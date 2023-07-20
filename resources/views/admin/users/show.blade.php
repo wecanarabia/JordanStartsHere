@@ -27,24 +27,14 @@
                                 <div class="container-fluid">
                                 <h4 class="heading mb-5"> {{$user->first_name}}</h4>
 
-                                    <p class="mb-3"><strong>First Name: </strong> {{ $user->first_name }}</p>
+                                    <p class="mb-3"><strong>First Name: </strong> {{ $user->name }}</p>
                                     <p class="mb-3"><strong>Last Name: </strong> {{ $user->last_name }}</p>
                                     <p class="mb-3"><strong>Email : </strong> {{ $user->email }}</p>
                                     <p class="mb-3"><strong>Phone :</strong> {{ $user->phone }}</p>
                                     <p class="mb-3"><strong>Latitude :</strong> {{ $user->lat }}</p>
                                     <p class="mb-3"><strong>Longitude :</strong> {{ $user->long }}</p>
-                                    <p class="mb-3"><strong>Join Date :</strong> {{ \Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}</p>
-                                    <p class="mb-3"><strong>Total Saving :</strong> {{ $user['saving'] }}</p>
-                                    @if(!empty($user->subscription))
-                                    <p class="mb-3"><strong>Subscreption Expiry date :</strong> {{ $user->subscription->end_date }}</p>
-                                    <p class="mb-3"><strong>Type :</strong>
-                                        @if ($user->subscription->plan->id==4)
-                                        <td>Enterprise</td>
-                                    @else
-                                        <td>Paid</td>
-                                    @endif
-                                    </p>
-                                    @endif
+                                    <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $user->profile->image ) }}" alt="{{ $user->first_name }}">
+
                         </div>
                         </div>
                         </div>
@@ -52,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body p-0">
@@ -134,15 +124,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
-                                    {{-- <x-admin-layouts.alerts /> --}}
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
                                             <h4 class="heading mb-0"> {{ __('Enterprise Copones') }}</h4>
@@ -161,10 +150,10 @@
                                                 @forelse ($user->enterprise_copnes as $copone)
                                                     <tr>
 
-                                                        {{-- <td><span>{{ $copone->start_date }}</span></td>
+                                                       <td><span>{{ $copone->start_date }}</span></td>
                                                         <td>
                                                             <span>{{ $copone->end_date }}</span>
-                                                        </td> --}}
+                                                        </td>
                                                         <td>
                                                             <a href="{{ route('admin.enterprises.show', $copone->enterprise->id) }}">
                                                             <span>{{ $copone->enterprise->enterprise_name }}</span></a>
@@ -197,15 +186,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
-                                    {{-- <x-admin-layouts.alerts /> --}}
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
                                             <h4 class="heading mb-0"> {{ __('Vouchers') }}</h4>
@@ -252,7 +240,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

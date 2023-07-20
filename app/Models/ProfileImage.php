@@ -19,4 +19,13 @@ class ProfileImage extends Model
             $this->attributes['image'] =  'img/profiles/'.$filename;
         }
     }
+
+    protected static function booted()
+    {
+        static::deleted(function ($profile) {
+            if ($profile->image  && \Illuminate\Support\Facades\File::exists($profile->image)) {
+                unlink($profile->image);
+            }
+        });
+    }
 }

@@ -22,7 +22,7 @@
                 </li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Admins') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('dash.admins.create') }}">+ Add Admin</a>
+            <a class="text-primary fs-13" href="{{ route('admin.admins.create') }}">+ Add Admin</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -47,7 +47,6 @@
                                                                 <tr>
                                                                     <th>name</th>
                                                                     <th>Email</th>
-                                                                    <th>Role</th>
 
 
                                                                     <th>actions</th>
@@ -62,9 +61,6 @@
                                                                             <span>{{ $admin->email }}</span>
                                                                         </td>
 
-                                                                        <td>
-                                                                            <span>{{ $admin->adminRole->name }}</span>
-                                                                        </td>
 
 
                                                                         <td>

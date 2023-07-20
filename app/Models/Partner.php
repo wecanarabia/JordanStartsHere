@@ -35,11 +35,27 @@ class Partner extends Model
     protected static function booted()
     {
         static::deleted(function ($partner) {
-                if ($partner->logo  && \Illuminate\Support\Facades\File::exists($partner->logo)) {
-                    unlink($partner->logo);
+
+            if ($partner->branches)$partner->branches()->delete();
+            if ($partner->workdays)$partner->workdays()->delete();
+            if ($partner->portraits){
+                foreach ($partner->portraits as $portrait) {
+                    unlink($portrait->image);
                 }
-                if ($partner->file  && \Illuminate\Support\Facades\File::exists($partner->file)) {
-                    unlink($partner->file);
+                $partner->portraits()->delete();
+            }
+
+            if ($partner->landscapes){
+                foreach ($partner->landscapes as $landscape) {
+                    unlink($landscape->image);
+                }
+                $partner->landscapes()->delete();
+            }
+            if ($partner->logo  && \Illuminate\Support\Facades\File::exists($partner->logo)) {
+                unlink($partner->logo);
+            }
+            if ($partner->file  && \Illuminate\Support\Facades\File::exists($partner->file)) {
+                unlink($partner->file);
             }
         });
     }
@@ -73,17 +89,7 @@ class Partner extends Model
 
     public function reviews()
 {
-    return $this->hasMany(Review::class, 'partner_id')->where('status',1)->orderBy('id', 'desc');
-}
-
-public function areas()
-{
-    return $this->hasManyThrough(Area::class, Branch::class);
-}
-
-public function cities()
-{
-    return $this->hasManyThrough(City::class, Area::class);
+    return $this->hasMany(Review::class, 'partner_id')->where('status',1);
 }
 
 }

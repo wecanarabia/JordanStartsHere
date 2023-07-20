@@ -25,7 +25,7 @@
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
-                                <h4 class="heading mb-5"> {{ $section->title }}</h4>
+                                <h4 class="heading mb-5"> {{ $section->name }}</h4>
 
                                     <p class="mb-3"><strong>Name-En : </strong> {!! $section->getTranslation('name', 'en') !!}</p>
                                     <p class="mb-3"><strong>Name-Ar : </strong> {!! $section->getTranslation('name', 'ar') !!}</p>
