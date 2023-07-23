@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdviceController;
+use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -54,22 +55,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::get('portraits/sort/{id}/{direction}',[PortraitController::class,'sortData'])->name('portraits.sort');
         Route::resource('landscapes', LandscapeController::class)->except(['show']);
         Route::get('landscapes/sort/{id}/{direction}',[LandscapeController::class,'sortData'])->name('landscapes.sort');
-
-        // Route::get('slider/sort/{id}/{direction}',[SliderController::class,'sortData'])->name('slider.sort')->middleware('can:slider');
-        // Route::resource('tags', TagController::class)->except(['show'])->middleware('can:tags');
-        // Route::resource('features', FeatureController::class)->except(['show'])->middleware('can:features');
+        Route::resource('branches', BranchController::class);
         // Route::resource('notifications', NotificationController::class)->except(['edit','update'])->middleware('can:notifications');
-        // Route::resource('offers', OfferController::class)->except(['create','store'])->middleware('can:services');
-        // Route::resource('categories', CategoryController::class)->middleware('can:categories');
-        // Route::resource('partners', ServiceController::class)->names(['index'=>'services.index',
-        // 'store'=>'services.store',
-        // 'create'=>'services.create',
-        // 'edit'=>'services.edit',
-        // 'update'=>'services.update',
-        // 'show'=>'services.show',
-        // 'destroy'=>'services.destroy',
-        // ])->middleware('can:services');
-        // Route::resource('branches', BranchController::class)->middleware('can:services');
+
         // Route::resource('plans', PlanController::class)->middleware('can:plans');
         // Route::resource('promo-codes', PromoCodeController::class)->middleware('can:user-codes');
         // Route::resource('partner-images', ServiceImageController::class);

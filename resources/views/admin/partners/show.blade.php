@@ -134,13 +134,7 @@
                                                                                     <a class="dropdown-item"
                                                                                         href="{{ route('admin.subcategories.edit', $subcategory->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.subcategories.show', $subcategory->id) }}">Show</a>
-                                                                                    <button class="dropdown-item"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $subcategory->id }}"
-                                                                                        data-name="{{ $subcategory->name }}">Delete</button>
-                                                                                </div>
+                                                                                        href="{{ route('admin.subcategories.show', $subcategory->id) }}">Show</a>                                                                                </div>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -264,13 +258,7 @@
                                                                                 </button>
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
-                                                                                        href="{{ route('admin.portraits.edit', $image->id) }}">Edit</a>
-                                                                                    <button class="dropdown-item"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $image->id }}"
-                                                                                        data-name="{{ asset($image->image) }}">Delete</button>
-                                                                                </div>
+                                                                                        href="{{ route('admin.portraits.edit', $image->id) }}">Edit</a>                                                                                </div>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -395,11 +383,7 @@
                                                                                 <div class="dropdown-menu">
                                                                                     <a class="dropdown-item"
                                                                                         href="{{ route('admin.portraits.edit', $image->id) }}">Edit</a>
-                                                                                    <button class="dropdown-item"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#deleteModal"
-                                                                                        data-id="{{ $image->id }}"
-                                                                                        data-name="{{ asset($image->image) }}">Delete</button>
+
                                                                                 </div>
                                                                             </div>
                                                                         </td>

@@ -129,8 +129,16 @@
                             <li><a href="{{ route('admin.partners.index') }}">Partners</a></li>
                             <li><a href="{{ route('admin.portraits.index') }}">Portrait Images</a></li>
                             <li><a href="{{ route('admin.landscapes.index') }}">landscape Images</a></li>
+                            <li><a href="{{ route('admin.branches.index') }}">Branches</a></li>
                         </ul>
 					</li>
+                    {{-- <li><a href="{{ route('admin.notifications.index') }}" class="" href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>                                              </div>
+						<span class="nav-text">Notifications</span>
+						</a>
+
+					</li> --}}
                     {{-- @can('pages')
                     <li><a href="{{ route('admin.pages.index') }}" class="" aria-expanded="false">
                         <div class="menu-icon">

@@ -26,11 +26,13 @@
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
                                 <h4 class="heading mb-5"> {{ $branch->name }}</h4>
-
-                                    <p class="mb-3"><strong>English title : </strong> {{ $branch->getTranslation('name', 'en') }}</p>
-                                    <p class="mb-3"><strong>Arabic Title : </strong> {{ $branch->getTranslation('name', 'ar') }}</p>
-                                    <p class="mb-3"><strong>Partner :</strong> {{ $branch->service->name }}</p>
-                                    <p class="mb-3"><strong>Area :</strong> {{ $branch->area->name }}</p>
+                                    <p class="mb-3"><strong>Name-En : </strong> {!! $branch->getTranslation('name', 'en') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ar : </strong> {!! $branch->getTranslation('name', 'ar') !!}</p>
+                                    <p class="mb-3"><strong>Name-Fr : </strong> {!! $branch->getTranslation('name', 'fr') !!}</p>
+                                    <p class="mb-3"><strong>Name-Es : </strong> {!! $branch->getTranslation('name', 'es') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ko : </strong> {!! $branch->getTranslation('name', 'ko') !!}</p>
+                                    <p class="mb-3"><strong>Partner :</strong> <a href="{{ route('admin.partners.show',$branch->partner->id) }}">{{ $branch->partner->name }}</a></p>
+                                    <p class="mb-3"><strong>Area :</strong> <a href="{{ route('admin.areas.show',$branch->area->id) }}">{{ $branch->area->name }}</a></p>
                                     <p class="mb-3"><strong>Location : </strong> {{ $branch->location }}</p>
                                     <p class="mb-3"><strong>Latitude :</strong> {{ $branch->lat }}</p>
                                     <p class="mb-3"><strong>Longitude :</strong> {{ $branch->long }}</p>

@@ -31,30 +31,48 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">English Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="english_name" placeholder="English Name" value="{{ old('english_name') }}">
-                                        @error('english_name')
+                                        <label for="ckeditor" class="form-label">Name-En<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_en" value="{{ old('name_en') }}">
+
+                                        @error('name_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputsecond" class="form-label">Arabic Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputsecond" name="arabic_name" placeholder="Arabic Name" value="{{ old('arabic_name') }}">
-                                        @error('arabic_name')
+                                        <label for="ckeditor1" class="form-label">Name-Ar<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ar" value="{{ old('name_ar') }}">
+
+                                        @error('name_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor2" class="form-label">Name-Fr<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_fr" value="{{ old('name_fr') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor3" class="form-label">Name-Es<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_es" value="{{ old('name_es') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor4" class="form-label">Name-Ko<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko') }}">
+
+                                    </div>
+
 
                                     <div class="col-xl-8 mb-3">
                                         <label class="form-label">Partner<span class="text-danger">*</span></label>
-                                        <select class="default-select form-control wide mb-3" name="service_id" tabindex="null">
+                                        <select class="default-select form-control wide mb-3" name="partner_id" tabindex="null">
                                             <option selected disabled>Select Partner</option>
-                                            @foreach ($services as $service)
-                                                <option value="{{ $service->id }}" @selected(old('service_id')==$service->id)>{{ $service->name }}</option>
+                                            @foreach ($partners as $partner)
+                                                <option value="{{ $partner->id }}" @selected(old('partner_id')==$partner->id)>{{ $partner->name }}</option>
                                             @endforeach
 										</select>
-                                        @error('service_id')
+                                        @error('partner_id')
                                             <div class="text-danger">{{ $message }}</div>
                                          @enderror
                                     </div>
