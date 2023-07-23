@@ -86,4 +86,40 @@ class LandscapeController extends Controller
         LandscapeImage::findOrFail($request->id)->delete();
         return redirect()->route('admin.landscapes.index')->with('success','Landscape Image has been removed successfully');
     }
+
+    public function sortData($id,$direction = 'up'){
+        $model=LandscapeImage::findOrFail($id);
+        switch ($direction) {
+            case 'up':
+                $this->sortProcess($model,$direction);
+                break;
+            case 'down':
+                $this->sortProcess($model,$direction);
+                break;
+            default:
+                break;
+        }
+        return redirect()->route('admin.partners.show',$model->partner->id);
+    }
+
+    public function sortProcess($model,$direction)
+    {
+        $page = $model;
+        $id = $model->id;
+        $parner = $model->partner->id;
+        if ($direction == 'up') {
+            $order = $model->when($page->order, function ($query, $pageOrder) {
+                return $query->where("order", '<', $pageOrder);
+            })->orderBy('order','desc')->wherePartnerId($parner)->firstOrFail();
+        } else if ($direction == 'down'){
+            $order = $model->when($page->order, function ($query, $pageOrder) {
+                return $query->where("order", '>', $pageOrder);
+            })->orderBy('order','asc')->wherePartnerId($parner)->firstOrFail();
+        }
+        if ($order) {
+            $page->where('id',$id)->update(['order'=>$order->order]);
+            $order->where('id',$order->id)->update(['order'=>$page->order]);
+            return TRUE;
+        }
+    }
 }

@@ -60,7 +60,12 @@ class PartnerController extends Controller
 
     public function show(string $id)
     {
-        $partner = Partner::with('subcategories')->findOrFail($id);
+        $partner = Partner::with(['subcategories','portraits'=>function ($q) {
+            $q->orderBy('order');
+        },'landscapes'=>function ($q) {
+            $q->orderBy('order');
+        }
+        ])->findOrFail($id);
         return view('admin.partners.show',compact('partner'));
     }
 

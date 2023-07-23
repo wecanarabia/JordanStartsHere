@@ -51,7 +51,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::resource('partners', PartnerController::class);
         Route::get('partners/file/{id}', [PartnerController::class, 'openFile'])->name('partners.file');
         Route::resource('portraits', PortraitController::class)->except(['show']);
+        Route::get('portraits/sort/{id}/{direction}',[PortraitController::class,'sortData'])->name('portraits.sort');
         Route::resource('landscapes', LandscapeController::class)->except(['show']);
+        Route::get('landscapes/sort/{id}/{direction}',[LandscapeController::class,'sortData'])->name('landscapes.sort');
 
         // Route::get('slider/sort/{id}/{direction}',[SliderController::class,'sortData'])->name('slider.sort')->middleware('can:slider');
         // Route::resource('tags', TagController::class)->except(['show'])->middleware('can:tags');

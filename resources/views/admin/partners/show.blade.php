@@ -169,6 +169,265 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="offcanvas-body">
+                                <div class="container-fluid">
+                                    <div class="table-responsive active-projects manage-client">
+                                        <div class="tbl-caption">
+                                            <h4 class="heading mb-0"> {{ __('Portrait Images') }}</h4>
+                                        </div>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="Preview" role="tabpanel"
+                                                aria-labelledby="home-tab">
+                                                <div class="card-body pt-0">
+                                                    <div class="table-responsive">
+                                                        <table id="example" class="display table"
+                                                            style="min-width: 845px">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Order</th>
+                                                                    <th>Image</th>
+                                                                    <th>Sort</th>
+
+
+                                                                    <th>actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @forelse ($partner->portraits as $image)
+                                                                    <tr>
+                                                                        <td>{{ $image->order }}</td>
+                                                                        <td><span><img src="{{ asset($image->image) }}"
+                                                                                    width="150"
+                                                                                    alt=""></span></td>
+
+                                                                        <td class="align-center">
+                                                                            @if ($partner->portraits()->count()>1)
+                                                                            <a
+                                                                                href="{{ route('admin.portraits.sort', ['id' => $image->id, 'direction' => 'up']) }}">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="22" height="22"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#000" stroke-width="1"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round">
+                                                                                    <path d="M12 19V6M5 12l7-7 7 7" />
+                                                                                </svg>
+                                                                            </a>
+                                                                            <a
+                                                                                href="{{ route('admin.portraits.sort', ['id' => $image->id, 'direction' => 'down']) }}">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="22" height="22"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#000" stroke-width="1"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round">
+                                                                                    <path d="M12 5v13M5 12l7 7 7-7" />
+                                                                                </svg>
+                                                                            </a>
+                                                                            @endif
+                                                                        </td>
+
+                                                                        <td>
+                                                                            <div class="dropdown">
+                                                                                <button type="button"
+                                                                                    class="btn btn-success light sharp"
+                                                                                    data-bs-toggle="dropdown">
+                                                                                    <svg width="20px" height="20px"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        version="1.1">
+                                                                                        <g stroke="none"
+                                                                                            stroke-width="1"
+                                                                                            fill="none"
+                                                                                            fill-rule="evenodd">
+                                                                                            <rect x="0"
+                                                                                                y="0"
+                                                                                                width="24"
+                                                                                                height="24" />
+                                                                                            <circle fill="#000000"
+                                                                                                cx="5"
+                                                                                                cy="12"
+                                                                                                r="2" />
+                                                                                            <circle fill="#000000"
+                                                                                                cx="12"
+                                                                                                cy="12"
+                                                                                                r="2" />
+                                                                                            <circle fill="#000000"
+                                                                                                cx="19"
+                                                                                                cy="12"
+                                                                                                r="2" />
+                                                                                        </g>
+                                                                                    </svg>
+                                                                                </button>
+                                                                                <div class="dropdown-menu">
+                                                                                    <a class="dropdown-item"
+                                                                                        href="{{ route('admin.portraits.edit', $image->id) }}">Edit</a>
+                                                                                    <button class="dropdown-item"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#deleteModal"
+                                                                                        data-id="{{ $image->id }}"
+                                                                                        data-name="{{ asset($image->image) }}">Delete</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                @empty
+                                                                    <tr>
+                                                                        <th colspan="5">
+                                                                            <h5 class="text-center">There is No data
+                                                                            </h5>
+                                                                        </th>
+                                                                    </tr>
+                                                                @endforelse
+
+                                                            </tbody>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="offcanvas-body">
+                                <div class="container-fluid">
+                                    <div class="table-responsive active-projects manage-client">
+                                        <div class="tbl-caption">
+                                            <h4 class="heading mb-0"> {{ __('Landscapes Images') }}</h4>
+                                        </div>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="Preview" role="tabpanel"
+                                                aria-labelledby="home-tab">
+                                                <div class="card-body pt-0">
+                                                    <div class="table-responsive">
+                                                        <table id="example" class="display table"
+                                                            style="min-width: 845px">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Order</th>
+                                                                    <th>Image</th>
+                                                                    <th>Sort</th>
+
+
+                                                                    <th>actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @forelse ($partner->landscapes as $image)
+                                                                    <tr>
+                                                                        <td>{{ $image->order }}</td>
+                                                                        <td><span><img src="{{ asset($image->image) }}"
+                                                                                    width="150"
+                                                                                    alt=""></span></td>
+
+
+                                                                        <td class="align-center">
+                                                                            @if ($partner->landscapes()->count()>1)
+                                                                            <a
+                                                                                href="{{ route('admin.landscapes.sort', ['id' => $image->id, 'direction' => 'up']) }}">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="22" height="22"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#000" stroke-width="1"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round">
+                                                                                    <path d="M12 19V6M5 12l7-7 7 7" />
+                                                                                </svg>
+                                                                            </a>
+                                                                            <a
+                                                                                href="{{ route('admin.landscapes.sort', ['id' => $image->id, 'direction' => 'down']) }}">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="22" height="22"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="#000" stroke-width="1"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round">
+                                                                                    <path d="M12 5v13M5 12l7 7 7-7" />
+                                                                                </svg>
+                                                                            </a>
+                                                                            @endif
+                                                                        </td>
+
+                                                                        <td>
+                                                                            <div class="dropdown">
+                                                                                <button type="button"
+                                                                                    class="btn btn-success light sharp"
+                                                                                    data-bs-toggle="dropdown">
+                                                                                    <svg width="20px" height="20px"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        version="1.1">
+                                                                                        <g stroke="none"
+                                                                                            stroke-width="1"
+                                                                                            fill="none"
+                                                                                            fill-rule="evenodd">
+                                                                                            <rect x="0"
+                                                                                                y="0"
+                                                                                                width="24"
+                                                                                                height="24" />
+                                                                                            <circle fill="#000000"
+                                                                                                cx="5"
+                                                                                                cy="12"
+                                                                                                r="2" />
+                                                                                            <circle fill="#000000"
+                                                                                                cx="12"
+                                                                                                cy="12"
+                                                                                                r="2" />
+                                                                                            <circle fill="#000000"
+                                                                                                cx="19"
+                                                                                                cy="12"
+                                                                                                r="2" />
+                                                                                        </g>
+                                                                                    </svg>
+                                                                                </button>
+                                                                                <div class="dropdown-menu">
+                                                                                    <a class="dropdown-item"
+                                                                                        href="{{ route('admin.portraits.edit', $image->id) }}">Edit</a>
+                                                                                    <button class="dropdown-item"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#deleteModal"
+                                                                                        data-id="{{ $image->id }}"
+                                                                                        data-name="{{ asset($image->image) }}">Delete</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                @empty
+                                                                    <tr>
+                                                                        <th colspan="5">
+                                                                            <h5 class="text-center">There is No data
+                                                                            </h5>
+                                                                        </th>
+                                                                    </tr>
+                                                                @endforelse
+
+                                                            </tbody>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
