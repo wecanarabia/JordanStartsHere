@@ -184,11 +184,17 @@ Route::post('search/{id}/{name}', [PartnerController::class, 'getPartnersByNameA
 
 
 //filter
-Route::post('filter', [PartnerController::class, 'getPartners']);
+// Route::post('filter', [PartnerController::class, 'getPartners']);
+
+//filter
+Route::post('filter', [PartnerController::class, 'getPartnersInArea']);
+
 
 //filter in specific sub
-Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubcategory']);
+// Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubcategory']);
 
+//filter in category or sub
+Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubOrCategory']);
 
 //range of start price in partner
 Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
