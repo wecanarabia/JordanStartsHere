@@ -32,9 +32,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
     Route::group(['middleware'=>'auth:admin'],function () {
         Route::get('/logout',[AdminLoginController::class, 'logout'])->name('logout');
         Route::get('/dashboard/{period?}',[DashboardController::class, 'index'])->name('dashboard');
-        // Route::resource('subscriptions', SubscriptionController::class)->only(['index','show'])->middleware('can:subscriptions');
-        // Route::resource('user-codes', UserCodeController::class)->only(['index'])->middleware('can:user-codes');
-        // Route::resource('vouchers', VoucherController::class)->only(['index'])->middleware('can:services');
         Route::resource('emergencies', EmergencyController::class);
         Route::resource('introductions', IntroductionController::class);
         Route::resource('advices', AdviceController::class);
@@ -56,12 +53,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::resource('landscapes', LandscapeController::class)->except(['show']);
         Route::get('landscapes/sort/{id}/{direction}',[LandscapeController::class,'sortData'])->name('landscapes.sort');
         Route::resource('branches', BranchController::class);
-        // Route::resource('notifications', NotificationController::class)->except(['edit','update'])->middleware('can:notifications');
-
-        // Route::resource('plans', PlanController::class)->middleware('can:plans');
-        // Route::resource('promo-codes', PromoCodeController::class)->middleware('can:user-codes');
-        // Route::resource('partner-images', ServiceImageController::class);
-        // Route::resource('roles', RoleController::class)->middleware('can:roles');
+        Route::resource('notifications', NotificationController::class)->except(['edit','update']);
         Route::resource('faqs', FaqController::class);
         Route::get('/{any}', function($any){
             return abort('405');

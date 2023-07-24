@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\NotificationRequest;
-use App\Models\User;
+use App\Models\Notification;
 use App\Traits\NotificationTrait;
 
 class NotificationController extends Controller
@@ -17,7 +16,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $data = Notification::with('user')->latest()->get();
+        $data = Notification::latest()->get();
         return view('admin.notifications.index',compact('data'));
     }
 
@@ -26,8 +25,7 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('admin.notifications.create',compact('users'));
+        return view('admin.notifications.create');
     }
 
     /**
@@ -35,11 +33,14 @@ class NotificationController extends Controller
      */
     public function store(NotificationRequest $request)
     {
-        $notification=Notification::create($request->all());
-        // $FcmToken = User::pluck('device_token')->all();
-
-
-
+        if ($request->has('multi_language')) {
+            $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ko];
+            $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ko];
+            $notification=Notification::create($request->only('title','body'));
+        }else{
+            $notification=Notification::create($request->only('title','body'));
+        }
+        $this->send($notification->body, $notification->title);
         return redirect()->route('admin.notifications.index')
                         ->with('success','Notification has been added successfully');
     }
@@ -49,7 +50,7 @@ class NotificationController extends Controller
      */
     public function show(string $id)
     {
-        $notification = Notification::with('user')->findOrFail($id);
+        $notification = Notification::findOrFail($id);
         return view('admin.notifications.show',compact('notification'));
     }
 

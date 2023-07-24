@@ -26,11 +26,24 @@
                             <div class="offcanvas-body">
                                 <div class="container-fluid">
                                 <h4 class="heading mb-5"> {{ $notification->title }}</h4>
-
-                                    <p class="mb-3"><strong>Title : </strong> {{ $notification->title }}</p>
-                                    <p class="mb-3"><strong>body : </strong> {{ $notification->body }}</p>
-                                    <p class="mb-3"><strong>Sending time : </strong> {{ $notification->date_time }}</p>
-                                    <p class="mb-3"><strong>Status : </strong> {{ $notification->sent==1?'sent':'pending' }}</p>
+                                    @php
+                                        $decoded = json_decode($notification,true);
+                                    @endphp
+                                    @if (!empty($decoded['title']['en'])&&!empty($decoded['title']['ar'])&&!empty($decoded['title']['fr'])&&!empty($decoded['title']['es'])&&!empty($decoded['title']['ko']))
+                                        <p class="mb-3"><strong>Title(En) : </strong> {{ $notification->getTranslation('title','en') }}</p>
+                                        <p class="mb-3"><strong>Title(Ar) : </strong> {{ $notification->getTranslation('title','ar') }}</p>
+                                        <p class="mb-3"><strong>Title(Fr) : </strong> {{ $notification->getTranslation('title','fr') }}</p>
+                                        <p class="mb-3"><strong>Title(Es) : </strong> {{ $notification->getTranslation('title','es') }}</p>
+                                        <p class="mb-3"><strong>Title(Ko) : </strong> {{ $notification->getTranslation('title','ko') }}</p>
+                                        <p class="mb-3"><strong>Body-En : </strong> {!! $notification->getTranslation('body', 'en') !!}</p>
+                                        <p class="mb-3"><strong>Body-Ar : </strong> {!! $notification->getTranslation('body', 'ar') !!}</p>
+                                        <p class="mb-3"><strong>Body-Fr : </strong> {!! $notification->getTranslation('body', 'fr') !!}</p>
+                                        <p class="mb-3"><strong>Body-Es : </strong> {!! $notification->getTranslation('body', 'es') !!}</p>
+                                        <p class="mb-3"><strong>Body-Ko : </strong> {!! $notification->getTranslation('body', 'ko') !!}</p>
+                                    @else
+                                        <p class="mb-3"><strong>Title : </strong> {{ $notification->title }}</p>
+                                        <p class="mb-3"><strong>body : </strong> {!! $notification->body !!}</p>
+                                    @endif
 
                         </div>
                         </div>
