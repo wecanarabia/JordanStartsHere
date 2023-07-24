@@ -817,59 +817,54 @@ return $this->returnData('data', $resources, __('Get partners successfully'));
 public function getPartnersOfSubOrCategortInArea(Request $request)
 {
     $resources = [];
+    $partners = Partner::all();
 
-    $partners = Partner::query();
-
-    // Filter by category or subcategory
-    if ($request->is_category == 1) {
-        $partners->whereHas('subcategories', function ($query) use ($request) {
-            $query->where('category_id', $request->category_id);
+    if ($request->is_category == 0) {
+        $subcategoryId = $request->subcategory_id;
+        $partners = $partners->filter(function($partner) use ($subcategoryId) {
+            return $partner->subcategories->contains('id', $subcategoryId);
         });
     } else {
-        $partners->whereHas('subcategories', function ($query) use ($request) {
-            $query->where('id', $request->subcategory_id);
+        $categoryId = $request->category_id;
+        $partners = $partners->filter(function($partner) use ($categoryId) {
+            return $partner->subcategories->contains(function($subcategory) use ($categoryId) {
+                return $subcategory->category_id == $categoryId;
+            });
         });
     }
 
-    // Filter by cities
     if (isset($request->cities)) {
-        $partners->whereHas('branches.area.city', function ($query) use ($request) {
-            $query->whereIn('id', $request->cities);
+        $cityIds = $request->cities;
+        $partners = $partners->filter(function($partner) use ($cityIds) {
+            return $partner->branches->pluck('area.city_id')->intersect($cityIds)->count() > 0;
         });
     }
 
-    // Filter by areas
     if (isset($request->areas)) {
-        $partners->whereHas('branches', function ($query) use ($request) {
-            $query->whereIn('area_id', $request->areas);
+        $areaIds = $request->areas;
+        $partners = $partners->filter(function($partner) use ($areaIds) {
+            return $partner->branches->pluck('area_id')->intersect($areaIds)->count() > 0;
         });
     }
 
-    // Filter by start price
     if (!is_null($request->start_price)) {
-        $partners->where(function ($query) use ($request) {
-            $query->where('start_price', '<=', $request->start_price)
-                  ->orWhereNull('start_price');
+        $partners = $partners->filter(function($partner) use ($request) {
+            return is_null($partner->start_price) || $partner->start_price <= $request->start_price;
         });
     }
 
-    // Filter by average rating
     if (!is_null($request->avg)) {
-        $partners->select('partners.*')
-            ->join(DB::raw('(SELECT partner_id, AVG(points) as avg_points FROM reviews GROUP BY partner_id) as review_avg'), 'partners.id', '=', 'review_avg.partner_id')
-            ->where('review_avg.avg_points', '>=', $request->avg);
+        $partners = $partners->filter(function($partner) use ($request) {
+            $avgPoints = $partner->reviews->avg('points');
+            return !is_null($avgPoints) && $avgPoints >= $request->avg;
+        });
     }
-
-    $partners = $partners->with(['branches' => function ($query) use ($request) {
-        if (isset($request->areas)) {
-            $query->whereIn('area_id', $request->areas);
-        }
-    }])->get();
 
     foreach ($partners as $partner) {
+        $matchingAreaIds = $partner->branches->pluck('area_id')->toArray();
         if (isset($request->areas)) {
-            $matchedAreaIds = $partner->branches->pluck('area_id')->intersect($request->areas);
-            if ($matchedAreaIds->count() === 0) {
+            $areaIds = $request->areas;
+            if (count(array_intersect($areaIds, $matchingAreaIds)) === 0) {
                 continue;
             }
         }
@@ -882,6 +877,5 @@ public function getPartnersOfSubOrCategortInArea(Request $request)
 
     return $this->returnData('data', $resources, __('Get partners successfully'));
 }
-
 
 }
