@@ -607,4 +607,211 @@ return $this->returnData('data', $resources, __('Get partners successfully'));
 
 
 }
+
+public function getPartnersOfSubOrCategortInArea(Request $request)
+{
+
+    if($request->is_category == 0){
+
+        $resources = [];
+
+        if (isset($request->cities)) {
+            $cityIds = $request->cities;
+            $partners = Partner::whereHas('branches.area.city', function ($query) use ($cityIds) {
+                $query->whereIn('id', $cityIds);
+            })->get();
+
+            foreach ($partners as $partner) {
+                if ($partner->subcategories->contains('id', $request->subcategory_id)) {
+                    $resource = new PartnerResource($partner);
+                    $resources[$partner->id] = $resource;
+                }
+            }
+        }
+
+        if (isset($request->areas)) {
+            $areaIds = $request->areas;
+            $partners = Partner::whereHas('branches.area', function ($query) use ($areaIds) {
+                $query->whereIn('id', $areaIds);
+            })->get();
+
+            foreach ($partners as $partner) {
+                if ($partner->subcategories->contains('id', $request->subcategory_id)) {
+                    if (!is_null($request->start_price) && $partner->start_price <= $request->start_price) {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    } else if (is_null($request->start_price)) {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    }
+                }
+            }
+        }
+
+        if (!is_null($request->start_price)) {
+            $partners = Partner::where(function ($query) use ($request) {
+                $query->where('start_price', '<=', $request->start_price)
+                      ->orWhereNull('start_price');
+            })->get();
+
+            foreach ($partners as $partner) {
+                if ($partner->subcategories->contains('id', $request->subcategory_id)) {
+                    if (isset($request->areas)) {
+                        $areaIds = $request->areas;
+                        $areas = $partner->branches->pluck('area_id')->toArray();
+                        if (count(array_intersect($areaIds, $areas)) > 0) {
+                            $resource = new PartnerResource($partner);
+                            $resources[$partner->id] = $resource;
+                        }
+                    } else {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    }
+                }
+            }
+        }
+
+        if (!is_null($request->avg)) {
+            $partners = Partner::select('partners.*')
+            ->join(DB::raw('(SELECT partner_id, AVG(points) as avg_points FROM reviews GROUP BY partner_id) as review_avg'), 'partners.id', '=', 'review_avg.partner_id')
+            ->where('review_avg.avg_points', '>=', $request->avg)
+            ->get();
+
+            foreach ($partners as $partner) {
+                if ($partner->subcategories->contains('id', $request->subcategory_id)) {
+                    if (isset($request->areas)) {
+                        $areaIds = $request->areas;
+                        $areas = $partner->branches->pluck('area_id')->toArray();
+                        if (count(array_intersect($areaIds, $areas)) > 0) {
+                            $resource = new PartnerResource($partner);
+                            $resources[$partner->id] = $resource;
+                        }
+                    } else {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    }
+                }
+            }
+        }
+
+        $resources = array_values($resources);
+
+        return $this->returnData('data', $resources, __('Get partners successfully'));
+
+    }
+
+    if($request->is_category == 1){
+
+        $resources = [];
+
+        if (isset($request->cities)) {
+            $cityIds = $request->cities;
+            $partners = Partner::whereHas('branches.area.city', function ($query) use ($cityIds) {
+                $query->whereIn('id', $cityIds);
+            })->whereHas('subcategories', function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })->get();
+
+            foreach ($partners as $partner) {
+                $resource = new PartnerResource($partner);
+                $resources[$partner->id] = $resource;
+            }
+        }
+
+        if (isset($request->areas)) {
+            $areaIds = $request->areas;
+            $partners = Partner::whereHas('branches.area', function ($query) use ($areaIds) {
+                $query->whereIn('id', $areaIds);
+            })->whereHas('subcategories', function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })->get();
+
+            foreach ($partners as $partner) {
+                if (!is_null($request->start_price) && $partner->start_price <= $request->start_price) {
+                    $resource = new PartnerResource($partner);
+                    $resources[$partner->id] = $resource;
+                } else if (is_null($request->start_price)) {
+                    $resource = new PartnerResource($partner);
+                    $resources[$partner->id] = $resource;
+                }
+            }
+        }
+
+        if (!is_null($request->start_price)) {
+            $partners = Partner::where(function ($query) use ($request) {
+                $query->where('start_price', '<=', $request->start_price)
+                      ->orWhereNull('start_price');
+            })->whereHas('subcategories', function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })->get();
+            foreach ($partners as $partner) {
+                if (isset($request->areas)) {
+                    $areaIds = $request->areas;
+                    $areas = $partner->branches->pluck('area_id')->toArray();
+                    if (count(array_intersect($areaIds, $areas)) > 0) {
+                        if (!is_null($request->start_price) && $partner->start_price <= $request->start_price) {
+                            $resource = new PartnerResource($partner);
+                            $resources[$partner->id] = $resource;
+                        } else if (is_null($request->start_price)) {
+                            $resource = new PartnerResource($partner);
+                            $resources[$partner->id] = $resource;
+                        }
+                    }
+                } else {
+                    if (!is_null($request->start_price) && $partner->start_price <= $request->start_price) {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    } else if (is_null($request->start_price)) {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    }
+                }
+            }
+
+        }
+
+
+
+
+        if (!is_null($request->avg)) {
+            $partners = Partner::select('partners.*')
+            ->join(DB::raw('(SELECT partner_id, AVG(points) as avg_points FROM reviews GROUP BY partner_id) as review_avg'), 'partners.id', '=', 'review_avg.partner_id')
+            ->where('review_avg.avg_points', '>=', $request->avg)
+            ->whereHas('subcategories', function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+           })->get();
+
+            foreach ($partners as $partner) {
+                if (isset($request->areas)) {
+                    $areaIds = $request->areas;
+                    $areas = $partner->branches->pluck('area_id')->toArray();
+                    if (count(array_intersect($areaIds, $areas)) > 0) {
+                        if (!is_null($request->start_price) && $partner->start_price <= $request->start_price) {
+                            $resource = new PartnerResource($partner);
+                            $resources[$partner->id] = $resource;
+                        } else if (is_null($request->start_price)) {
+                            $resource = new PartnerResource($partner);
+                            $resources[$partner->id] = $resource;
+                        }
+                    }
+                } else {
+                    if (!is_null($request->start_price) && $partner->start_price <= $request->start_price) {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    } else if (is_null($request->start_price)) {
+                        $resource = new PartnerResource($partner);
+                        $resources[$partner->id] = $resource;
+                    }
+                }
+            }
+        }
+
+        $resources = array_values($resources);
+
+        return $this->returnData('data', $resources, __('Get partners successfully'));
+
+    }
+
+}
+
 }
