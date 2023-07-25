@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\IntroductionController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileImageController;
+use App\Http\Controllers\Admin\WorkdayController;
 
 Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
     Route::get('/login',[AdminLoginController::class, 'getLogin'])->name('login-page');
@@ -54,6 +55,12 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::get('landscapes/sort/{id}/{direction}',[LandscapeController::class,'sortData'])->name('landscapes.sort');
         Route::resource('branches', BranchController::class);
         Route::resource('notifications', NotificationController::class)->except(['edit','update']);
+        Route::resource('workdays', WorkdayController::class)->except(['destroy']);
+        Route::get('workdays/partner/{id}/edit',[WorkdayController::class,'editShiftWorkdays'])->name('partner.workdays.edit');
+        Route::put('workdays/partner/{id}/update',[WorkdayController::class,'updateShiftWorkdays'])->name('partner.workdays.update');
+
+
+
         Route::resource('faqs', FaqController::class);
         Route::get('/{any}', function($any){
             return abort('405');

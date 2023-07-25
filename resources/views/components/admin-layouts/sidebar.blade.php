@@ -130,6 +130,7 @@
                             <li><a href="{{ route('admin.portraits.index') }}">Portrait Images</a></li>
                             <li><a href="{{ route('admin.landscapes.index') }}">landscape Images</a></li>
                             <li><a href="{{ route('admin.branches.index') }}">Branches</a></li>
+                            <li><a href="{{ route('admin.workdays.index') }}">Workdays</a></li>
                         </ul>
 					</li>
                     <li><a href="{{ route('admin.notifications.index') }}" class="" href="javascript:void(0);" aria-expanded="false">
