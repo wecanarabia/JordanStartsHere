@@ -20,6 +20,8 @@ use App\Http\Controllers\Api\LandscapeImageController;
 use App\Http\Controllers\Api\PartnerSubcategoryController;
 use App\Http\Controllers\Api\WorkdayController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\FavoriteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -161,15 +163,14 @@ Route::post('subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
 Route::get('partners', [PartnerController::class, 'list']);
 Route::get('partners/prices', [PartnerController::class, 'getPrices']);
 Route::post('partner-create', [PartnerController::class, 'save']);
-Route::get('partner/{id}', [PartnerController::class, 'view']);
+
 Route::get('partner/delete/{id}', [PartnerController::class, 'delete']);
 Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
 
 //get suggested partner
 Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner']);
 
-//getPartnerByCity
-Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
+
 
 //getPartnersByCategory
 Route::get('partners-by-category/{id}', [PartnerController::class, 'getPartnersByCategory']);
@@ -255,6 +256,14 @@ Route::post('review/edit/{id}', [ReviewController::class, 'edit']);
 //getReviewsByPartner
 Route::get('reviews-by-partner/{id}', [ReviewController::class, 'getReviewsByPartner']);
 
+//favorite
+
+Route::post('favorite-create', [FavoriteController::class, 'save']);
+Route::get('favorite/delete/{partner_id}/{user_id}', [FavoriteController::class, 'deletebyID']);
+
+//is partner fav
+Route::post('partner-fav', [PartnerController::class, 'isFav']);
+
 
 });
 
@@ -262,5 +271,14 @@ Route::get('reviews-by-partner/{id}', [ReviewController::class, 'getReviewsByPar
 Route::middleware(['auth:api','changeLang'])->group(function () {
 
     Route::post('/user-update', [AuthController::class, 'updateProfile']);
+
+
+    //myFavorites
+Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
+
+Route::get('partner/{id}', [PartnerController::class, 'view']);
+
+//getPartnerByCity
+Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
 
 });
