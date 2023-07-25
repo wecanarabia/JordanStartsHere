@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Auth;
+use App\Models\Favorite;
 
 class PartnerResource extends JsonResource
 {
@@ -15,9 +17,18 @@ class PartnerResource extends JsonResource
     public function toArray(Request $request): array
     {
 
+        $fav = false;
+        if(Auth::user()){
+        $favorite = Favorite::where('user_id',Auth::user()->id)->where('partner_id',$this->id)->first();
+            if($favorite){
+                $fav = true ;
+            }
+        }
+
         return [
 
             'id' => $this->id,
+            'is_favorite'=>$fav,
             'name' => $this->name,
             'logo'=> $this->logo,
             'description' => $this->description,
