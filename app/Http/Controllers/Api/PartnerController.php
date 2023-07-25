@@ -12,6 +12,7 @@ use App\Http\Requests\PartnerRequest;
 use App\Http\Resources\PartnerResource;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
+use App\Http\Resources\PriceResource;
 use Illuminate\Support\Facades\DB;
 
 class PartnerController extends ApiController
@@ -877,5 +878,10 @@ public function getPartnersOfSubOrCategortInArea(Request $request)
 
     return $this->returnData('data', $resources, __('Get partners successfully'));
 }
+
+    public function getPrices() {
+        $partners = Partner::all();
+        return $this->returnData('data', PriceResource::collection($partners), __('Get partners successfully'));
+    }
 
 }
