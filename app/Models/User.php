@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(ProfileImage::class,'profile_image_id','id');
     }
+
+    public function favorites(){
+        return $this->belongsToMany(Partner::class,'favorites','user_id','partner_id');
+    }
 }
