@@ -162,15 +162,14 @@ Route::post('subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
 //partner
 Route::get('partners', [PartnerController::class, 'list']);
 Route::post('partner-create', [PartnerController::class, 'save']);
-Route::get('partner/{id}', [PartnerController::class, 'view']);
+
 Route::get('partner/delete/{id}', [PartnerController::class, 'delete']);
 Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
 
 //get suggested partner
 Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner']);
 
-//getPartnerByCity
-Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
+
 
 //getPartnersByCategory
 Route::get('partners-by-category/{id}', [PartnerController::class, 'getPartnersByCategory']);
@@ -275,5 +274,10 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 
     //myFavorites
 Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
+
+Route::get('partner/{id}', [PartnerController::class, 'view']);
+
+//getPartnerByCity
+Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
 
 });
