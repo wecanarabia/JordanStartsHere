@@ -95,7 +95,7 @@ class Partner extends Model
 
     public function viewCounter()
 	{
-		return $this->hasMany(viewCounter::class);
+		return $this->hasMany(ViewCounter::class);
 	}
 
     public function subcategories(){
