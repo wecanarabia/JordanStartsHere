@@ -91,7 +91,7 @@ class ReviewController extends Controller
     {
         $file = $request->file('file');
 
-        Excel::import(new ReviewImport, $file);
+        Excel::import(new ReviewImport(), $file);
 
         return redirect()->route('admin.reviews.index')->with('success','Reviews have been imported successfully');
     }
