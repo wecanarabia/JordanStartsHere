@@ -12,10 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('view_counters', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('body');
+            $table->integer('count')->default(0);
+            $table->date('date');
+            $table->integer('month');
+            $table->integer('year');
+            $table->integer('partner_id');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('view_counters');
     }
 };
