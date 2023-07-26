@@ -22,6 +22,8 @@ use App\Http\Controllers\Api\WorkdayController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\PageController;
+use App\Http\Controllers\Api\CounterController;
+
 
 
 
