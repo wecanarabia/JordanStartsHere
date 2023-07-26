@@ -49,4 +49,10 @@ class User extends Authenticatable
     public function favorites(){
         return $this->belongsToMany(Partner::class,'favorites','user_id','partner_id');
     }
+    
+    public function reviews(){
+        return $this->HasMany(Review::class);
+    }
+
+
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PortraitRequest extends FormRequest
+class ReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,18 @@ class PortraitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'images'=>'required_without:id|array|min:1',
-            'images.*'=>'required_without:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
-            'image'=>'required_with:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
-            'partner_id'=>'required|exists:partners,id',
+            'content'=>'nullable|min:0|max:10000',
+            'points'=>'required_without:id|numeric|min:0|max:5',
+            'user_id'=>'required_without:id|exists:users,id',
+            'partner_id'=>'required_without:id|exists:partners,id',
+            'status'=>'required|in:0,1',
         ];
     }
-
     public function attributes(): array
     {
         return [
             'partner_id' => 'Partner',
+            'user_id' => 'User',
         ];
     }
 }

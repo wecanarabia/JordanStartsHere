@@ -60,7 +60,7 @@ class PartnerController extends Controller
 
     public function show(string $id)
     {
-        $partner = Partner::with(['subcategories','portraits'=>function ($q) {
+        $partner = Partner::with(['subcategories','whatsappCounter','callCounter','viewCounter','portraits'=>function ($q) {
             $q->orderBy('order');
         },'landscapes'=>function ($q) {
             $q->orderBy('order');

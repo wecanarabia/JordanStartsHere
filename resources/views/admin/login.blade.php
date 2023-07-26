@@ -9,8 +9,8 @@
 	<meta name="author" content="">
 	<meta name="robots" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Golden Card">
-	<meta property="og:title" content="Golden Card">
+	<meta name="description" content="Jordan Starts Here">
+	<meta property="og:title" content="Jordan Starts Here">
 	<meta name="format-detection" content="telephone=no">
 
 

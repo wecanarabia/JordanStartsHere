@@ -38,6 +38,9 @@ class Partner extends Model
 
             if ($partner->branches)$partner->branches()->delete();
             if ($partner->workdays)$partner->workdays()->delete();
+            if ($partner->whatsappCounter)$partner->whatsappCounter()->delete();
+            if ($partner->callCounter)$partner->callCounter()->delete();
+            if ($partner->viewCounter)$partner->viewCounter()->delete();
             if ($partner->portraits){
                 foreach ($partner->portraits as $portrait) {
                     unlink($portrait->image);
@@ -78,6 +81,21 @@ class Partner extends Model
     public function landscapes()
 	{
 		return $this->hasMany(LandscapeImage::class);
+	}
+
+    public function whatsappCounter()
+	{
+		return $this->hasMany(WhatsappCounter::class);
+	}
+
+    public function callCounter()
+	{
+		return $this->hasMany(CallCounter::class);
+	}
+
+    public function viewCounter()
+	{
+		return $this->hasMany(viewCounter::class);
 	}
 
     public function subcategories(){

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PortraitRequest extends FormRequest
+class ImportExcelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,7 @@ class PortraitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'images'=>'required_without:id|array|min:1',
-            'images.*'=>'required_without:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
-            'image'=>'required_with:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
-            'partner_id'=>'required|exists:partners,id',
-        ];
-    }
-
-    public function attributes(): array
-    {
-        return [
-            'partner_id' => 'Partner',
+            'file'=>'required|mimes:xlsx,xlsm,xlsb,xltx,xltm,xlr,xlam,xlw,xlt,xls|max:4000',
         ];
     }
 }

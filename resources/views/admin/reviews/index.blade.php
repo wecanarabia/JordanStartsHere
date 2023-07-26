@@ -7,7 +7,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">{{ __('Users') }}</h5>
+                    <h5 class="bc-title">{{ __('Reviews') }}</h5>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -20,9 +20,9 @@
                         </svg>
                         Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Users') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Reviews') }} </a></li>
             </ol>
-            <a class="text-primary fs-13" href="{{ route('admin.users.create') }}">+ Add User</a>
+            <a class="text-primary fs-13" href="{{ route('admin.reviews.create') }}">+ Add Review</a>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -34,7 +34,8 @@
                                     <x-admin-layouts.alerts />
                                     <div class="table-responsive active-projects manage-client">
                                         <div class="tbl-caption">
-                                            <h4 class="heading mb-0"> {{ __('Users') }}</h4>
+                                            <a class="text-primary fs-13 float-end d-inline" href="{{ route('admin.reviews.upload') }}">+ Import Reviews</a>
+                                            <h4 class="heading mb-0"> {{ __('Reviews') }}</h4>
                                         </div>
                                         <div class="tab-content" id="myTabContent">
 											<div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="home-tab">
@@ -43,11 +44,10 @@
 													<table id="example" class="display table" style="min-width: 845px">
                                                         <thead>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
+                                                    <th>User</th>
+                                                    <th>Partner</th>
+                                                    <th>Status</th>
+                                                    <th>Points</th>
 
 
 
@@ -55,17 +55,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse ($data as $user)
+                                                @forelse ($data as $review)
                                                     <tr>
 
-                                                        <td><span>{{ $user->id }}</span></td>
-                                                        <td><span>{{ $user->name }}</span></td>
-                                                        <td><span>{{ $user->last_name }}</span></td>
+                                                        <td><span><a href="{{ route('admin.users.show',$review->user->id) }}">{{ $review->user->name }} {{ $review->user->last_name }}</a></span></td>
+                                                        <td><span><a href="{{ route('admin.partners.show',$review->partner->id) }}">{{ $review->partner->name }}</a></span></td>
                                                         <td>
-                                                            <span>{{ $user->email }}</span>
+                                                            <span>{{ $review->status==1?'Acceped':'Rejected' }}</span>
                                                         </td>
                                                         <td>
-                                                            <span>{{ $user->phone }}</span>
+                                                            <span>{{ $review->points }}</span>
                                                         </td>
 
 
@@ -91,12 +90,12 @@
                                                                 </button>
                                                                 <div class="dropdown-menu">
                                                                     <a class="dropdown-item"
-                                                                        href="{{ route('admin.users.edit', $user->id) }}">Edit</a>
+                                                                        href="{{ route('admin.reviews.edit', $review->id) }}">Edit</a>
                                                                     <a class="dropdown-item"
-                                                                    href="{{ route('admin.users.show', $user->id) }}">Show</a>
+                                                                    href="{{ route('admin.reviews.show', $review->id) }}">Show</a>
 
                                                                     <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                                    data-id="{{ $user->id }}" data-name="{{ $user->name }}">Delete</button>
+                                                                    data-id="{{ $review->id }}" data-name="{{ $review->user->name }} {{ $review->user->last_name }}">Delete</button>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -135,10 +134,10 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
+          <h5 class="modal-title" id="deleteModalLabel">Delete Review</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('admin.users.destroy','test') }}" method="post">
+        <form action="{{ route('admin.reviews.destroy','test') }}" method="post">
             {{ method_field('delete') }}
             @csrf
             <div class="modal-body">

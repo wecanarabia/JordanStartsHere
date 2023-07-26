@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::with('profile')->findOrFail($id);
+        $user = User::with(['profile','reviews'])->findOrFail($id);
         return view('admin.users.show',compact('user'));
     }
 

@@ -27,6 +27,7 @@
                                 <div class="container-fluid">
                                 <h4 class="heading mb-5"> {{ $partner->name }}</h4>
 
+                                    <p class="mb-3"><strong>Id : </strong> {{  $partner->id  }}</p>
                                     <p class="mb-3"><strong>Name-En : </strong> {!! $partner->getTranslation('name', 'en') !!}</p>
                                     <p class="mb-3"><strong>Name-Ar : </strong> {!! $partner->getTranslation('name', 'ar') !!}</p>
                                     <p class="mb-3"><strong>Name-Fr : </strong> {!! $partner->getTranslation('name', 'fr') !!}</p>
@@ -403,6 +404,210 @@
                                                         </table>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="offcanvas-body">
+                                <div class="container-fluid">
+                                    <x-admin-layouts.alerts />
+                                    <div class="table-responsive active-projects manage-client">
+                                        <div class="tbl-caption">
+                                            <h4 class="heading mb-0"> {{ __('Whatsapp Counter') }}</h4>
+                                        </div>
+                                        <div class="tab-content" id="myTabContent">
+											<div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="home-tab">
+											 <div class="card-body pt-0">
+												<div class="table-responsive">
+													<table id="example" class="display table" style="min-width: 845px">
+                                                        <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Month</th>
+                                                    <th>Year</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($partner->whatsappCounter as $count)
+                                                    <tr>
+
+                                                       
+                                                        <td>
+                                                            <span>{{ $count->date }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ $count->month }}</span>
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <span>{{ $count->year }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ $count->count }}</span>
+                                                        </td>
+
+                                                     
+                                                    </tr>
+
+                                                @empty
+                                                    <tr>
+                                                        <th colspan="5">
+                                                            <h5 class="text-center">There is No data</h5>
+                                                        </th>
+                                                    </tr>
+                                                @endforelse
+
+                                            </tbody>
+
+                                        </table>
+                                                </div>
+                                             </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="offcanvas-body">
+                                <div class="container-fluid">
+                                    <x-admin-layouts.alerts />
+                                    <div class="table-responsive active-projects manage-client">
+                                        <div class="tbl-caption">
+                                            <h4 class="heading mb-0"> {{ __('Call Counter') }}</h4>
+                                        </div>
+                                        <div class="tab-content" id="myTabContent">
+											<div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="home-tab">
+											 <div class="card-body pt-0">
+												<div class="table-responsive">
+													<table id="example" class="display table" style="min-width: 845px">
+                                                        <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Month</th>
+                                                    <th>Year</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($partner->callCounter as $count)
+                                                    <tr>
+
+                                                       
+                                                        <td>
+                                                            <span>{{ $count->date }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ $count->month }}</span>
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <span>{{ $count->year }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ $count->count }}</span>
+                                                        </td>
+
+                                                     
+                                                    </tr>
+
+                                                @empty
+                                                    <tr>
+                                                        <th colspan="5">
+                                                            <h5 class="text-center">There is No data</h5>
+                                                        </th>
+                                                    </tr>
+                                                @endforelse
+
+                                            </tbody>
+
+                                        </table>
+                                                </div>
+                                             </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="offcanvas-body">
+                                <div class="container-fluid">
+                                    <x-admin-layouts.alerts />
+                                    <div class="table-responsive active-projects manage-client">
+                                        <div class="tbl-caption">
+                                            <h4 class="heading mb-0"> {{ __('View Counter') }}</h4>
+                                        </div>
+                                        <div class="tab-content" id="myTabContent">
+											<div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="home-tab">
+											 <div class="card-body pt-0">
+												<div class="table-responsive">
+													<table id="example" class="display table" style="min-width: 845px">
+                                                        <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Month</th>
+                                                    <th>Year</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($partner->viewCounter as $count)
+                                                    <tr>
+
+                                                       
+                                                        <td>
+                                                            <span>{{ $count->date }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ $count->month }}</span>
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <span>{{ $count->year }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ $count->count }}</span>
+                                                        </td>
+
+                                                     
+                                                    </tr>
+
+                                                @empty
+                                                    <tr>
+                                                        <th colspan="5">
+                                                            <h5 class="text-center">There is No data</h5>
+                                                        </th>
+                                                    </tr>
+                                                @endforelse
+
+                                            </tbody>
+
+                                        </table>
+                                                </div>
+                                             </div>
                                             </div>
                                         </div>
                                     </div>
