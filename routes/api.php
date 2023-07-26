@@ -21,6 +21,10 @@ use App\Http\Controllers\Api\PartnerSubcategoryController;
 use App\Http\Controllers\Api\WorkdayController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\PageController;
+use App\Http\Controllers\Api\CounterController;
+
+
 
 
 /*
@@ -264,6 +268,24 @@ Route::get('favorite/delete/{partner_id}/{user_id}', [FavoriteController::class,
 //is partner fav
 Route::post('partner-fav', [PartnerController::class, 'isFav']);
 
+
+//whatsappCounter
+Route::post('whatsapp-counter', [CounterController::class, 'whatsappCounter']);
+
+//callCounter
+Route::post('call-counter', [CounterController::class, 'callCounter']);
+
+//viewCounter
+Route::post('view-counter', [CounterController::class, 'viewCounter']);
+
+
+//pages
+
+Route::get('pages', [PageController::class, 'list']);
+Route::post('page-create', [PageController::class, 'save']);
+Route::get('page/{id}', [PageController::class, 'view']);
+Route::get('page/delete/{id}', [PageController::class, 'delete']);
+Route::post('page/edit/{id}', [PageController::class, 'edit']);
 
 });
 

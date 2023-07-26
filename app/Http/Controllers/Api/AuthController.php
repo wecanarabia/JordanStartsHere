@@ -193,7 +193,7 @@ class AuthController extends Controller
 
             return response(['status' => true, 'code' => 200, 'msg' => 'success', 'data' => [
                 'token' => $accessToken,
-                'user' => $user
+                'user' =>  UserResource::make(Auth::user($user)),
             ]]);
         }
 
