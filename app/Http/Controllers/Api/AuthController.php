@@ -9,6 +9,8 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\Notification;
+use App\Http\Resources\NotificationResource;
 use App\Repositories\UserRepository;
 use App\Traits\ResponseTrait;
 use Exception;
@@ -412,5 +414,15 @@ class AuthController extends Controller
         $user->save();
 
         return $this->returnData('user', UserResource::make(User::find(Auth::user()->id)), 'successful');
+    }
+
+        public function myNotifications()
+    {
+
+
+        // $notifications = Notification::where('user_id',Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        $notifications = Notification::orderBy('created_at', 'DESC')->get();
+        return $this->returnData('data',  NotificationResource::collection( $notifications ), __('Get  succesfully'));
+
     }
 }
