@@ -23,7 +23,7 @@ use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\CounterController;
-
+use App\Http\Controllers\Api\FaqController;
 
 
 
@@ -286,6 +286,17 @@ Route::post('page-create', [PageController::class, 'save']);
 Route::get('page/{id}', [PageController::class, 'view']);
 Route::get('page/delete/{id}', [PageController::class, 'delete']);
 Route::post('page/edit/{id}', [PageController::class, 'edit']);
+
+  //faq
+  Route::get('faqs', [FaqController::class, 'list']);
+  Route::post('faq-create', [FaqController::class, 'save']);
+  Route::get('faq/{id}', [FaqController::class, 'view']);
+  Route::post('faq/edit/{id}', [FaqController::class, 'edit']);
+  Route::get('faq/delete/{id}', [FaqController::class, 'delete']);
+
+
+    //my notifications
+   Route::get('my-notifications', [AuthController::class, 'myNotifications']);
 
 });
 
