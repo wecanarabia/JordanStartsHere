@@ -162,11 +162,11 @@
 
 
                                                             <div class="col-xl-8 mb-3">
-                                                                <label for="ckeditor"
+                                                                <label for="ckeditorrrr"
                                                                     class="form-label">Body-En<span
                                                                         class="text-danger">*</span></label>
                                                                 <div class="card-body custom-ekeditor">
-                                                                    <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
+                                                                    <textarea id="ckeditorrrr" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
                                                                 </div>
                                                                 @error('body_en')
                                                                     <div class="text-danger">{{ $message }}</div>
@@ -250,7 +250,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
         <script>
             ClassicEditor
                 .create(document.querySelector('#ckeditor1'), {
@@ -288,7 +288,7 @@
                     console.error(error);
                 });
 
-        </script>
+        </script> --}}
         <script>
             $(function(){
                 if ($('#multi_lang')..classList.contains('show')) {
