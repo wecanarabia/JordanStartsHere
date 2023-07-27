@@ -29,6 +29,7 @@ class ReviewImport implements ToModel,WithHeadingRow,WithValidation{
         ]);
     }
 
+    
     public function rules(): array
     {
         return [
