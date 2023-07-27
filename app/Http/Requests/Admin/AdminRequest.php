@@ -25,13 +25,11 @@ class AdminRequest extends FormRequest
      */
     public function rules(): array
     {
-        $roles = Role::where('roleable_id',0)->where('roleable_type',get_class(app(Admin::class)))->pluck('id')->toArray();
 
         return [
             'name'=>'required|min:4|max:255',
             'email'=>'required|min:5|email|max:255|email|unique:admins,email,'.$this->id,
             'password' => ['required_without:id', 'nullable',Password::min(8)],
-            'role_id'=>['required',Rule::in($roles)],
         ];
     }
     public function attributes(): array
