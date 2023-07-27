@@ -309,6 +309,73 @@ class AuthController extends Controller
         }
     }
 
+    public function updateById(Request $request)
+    {
+        try {
+
+            $user = User::find($request->user_id);
+            if ($user) {
+
+                if (isset($request->email)) {
+                    $check = User::where('email', $request->email)
+                        ->first();
+
+                    if ($check) {
+
+                        return $this->returnError('The email address is already used!');
+                    }
+                }
+
+                if (isset($request->phone)) {
+                    $check = User::where('phone', $request->phone)
+                        ->first();
+
+                    if ($check) {
+
+                        return $this->returnError('The phone number is already used!');
+                    }
+                }
+
+
+
+
+
+                $this->userRepositry->edit($request, $user);
+
+                if ($request->password) {
+
+                    $user->update([
+                            'password' => Hash::make($request->password),
+                        ]);
+
+                }
+
+
+
+
+
+
+
+
+                return $this->returnData('user', new UserResource($user), 'User updated successfully');
+
+
+            }
+
+
+
+
+            // unset($user->image);
+
+            return $this->returnError('Sorry! Failed to find user');
+        } catch (\Exception $e) {
+
+            // return $e;
+
+            return $this->returnError('Sorry! Failed in updating user');
+        }
+    }
+
     public function logout(Request $request)
     {
         $user = Auth::user()->token();
