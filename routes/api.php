@@ -305,6 +305,8 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 
     Route::post('/user-update', [AuthController::class, 'updateProfile']);
 
+   // updateById
+    Route::post('/user-edit', [AuthController::class, 'updateById']);
 
     //myFavorites
 Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
