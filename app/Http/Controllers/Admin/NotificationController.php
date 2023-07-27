@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Traits\NotificationTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\NotificationRequest;
-use App\Models\Notification;
-use App\Traits\NotificationTrait;
 
 class NotificationController extends Controller
 {
@@ -40,7 +41,9 @@ class NotificationController extends Controller
         }else{
             $notification=Notification::create($request->only('title','body'));
         }
-        $this->send($notification->body, $notification->title);
+        $FcmToken = User::whereNotNull('device_token')->pluck('device_token')->all();
+
+        $this->send($notification->body, $notification->title,$FcmToken);
         return redirect()->route('admin.notifications.index')
                         ->with('success','Notification has been added successfully');
     }

@@ -8,7 +8,7 @@ use Carbon\Carbon;
 trait NotificationTrait
 {
 
-    public function send($content, $title)
+    public function send($content, $title,$token)
     {
         $msg = array
             (
@@ -18,7 +18,8 @@ trait NotificationTrait
         );
 
             $fields = [
-                'to'=>'duZOwx4SkkVWqp7-SIQzea:APA91bEbPJ7e7mkqrtrbmIAmSAzQOdKwCmCtE2FMcib9ho3hMADci8nZ92HgmB3Bqju87g32Erm2hkFZlPXrcycQVSVpeTSHPU_s5ggKjrf2PQuCVPstD1BwrArwRobfSjsMt13eBuaA',
+                'to'=>$token,
+                // 'to'=>'duZOwx4SkkVWqp7-SIQzea:APA91bEbPJ7e7mkqrtrbmIAmSAzQOdKwCmCtE2FMcib9ho3hMADci8nZ92HgmB3Bqju87g32Erm2hkFZlPXrcycQVSVpeTSHPU_s5ggKjrf2PQuCVPstD1BwrArwRobfSjsMt13eBuaA',
                 // 'to'=>'/topics/all',
                 'notification' => $msg,
             ];
