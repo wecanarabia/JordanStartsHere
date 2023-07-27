@@ -49,21 +49,21 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Fr)<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Fr)</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="agency_fr" value="{{ old('agency_fr',$emergency->getTranslation('agency','fr')) }}">
 
                                         </div>
 
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Es)<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Es)</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="agency_es" value="{{ old('agency_es',$emergency->getTranslation('agency','es')) }}">
 
                                         </div>
 
 
                                            <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Ko)<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Ko)</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="agency_ko" value="{{ old('agency_ko',$emergency->getTranslation('agency','ko')) }}">
 
                                         </div>
@@ -86,7 +86,7 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="image" class="form-label">Logo<span class="text-danger">*</span></label>
+                                            <label for="image" class="form-label">Logo</label>
                                             <input class="form-control" type="file" name="logo" id="image">
                                             @error('logo')
                                                 <div class="text-danger">{{ $message }}</div>

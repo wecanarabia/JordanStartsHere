@@ -52,25 +52,25 @@
                                         @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
+                                        <label for="ckeditor2" class="form-label">Body-Fr</label>
                                     <div class="card-body custom-ekeditor">
                                         <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="body_fr">{{ old('body_fr',$advice->getTranslation('body','fr')) }}</textarea>
                                     </div>
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
+                                        <label for="ckeditor3" class="form-label">Body-Es</label>
                                         <div class="card-body custom-ekeditor">
                                         <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="body_es">{{ old('body_es',$advice->getTranslation('body','es')) }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
+                                        <label for="ckeditor4" class="form-label">Body-Ko</label>
                                         <div class="card-body custom-ekeditor">
                                         <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko',$advice->getTranslation('body','ko')) }}</textarea>
                                         </div>
                                     </div>
 
-                                
+
 
 
 

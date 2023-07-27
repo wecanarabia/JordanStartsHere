@@ -50,17 +50,17 @@
                                             @enderror
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor2" class="form-label">Name-Fr<span class="text-danger">*</span></label>
+                                            <label for="ckeditor2" class="form-label">Name-Fr</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_fr" value="{{ old('name_fr',$area->getTranslation('name','fr')) }}">
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor3" class="form-label">Name-Es<span class="text-danger">*</span></label>
+                                            <label for="ckeditor3" class="form-label">Name-Es</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_es" value="{{ old('name_es',$area->getTranslation('name','es')) }}">
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Name-Ko<span class="text-danger">*</span></label>
+                                            <label for="ckeditor4" class="form-label">Name-Ko</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko',$area->getTranslation('name','ko')) }}">
 
                                         </div>

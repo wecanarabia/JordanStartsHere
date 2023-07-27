@@ -50,17 +50,17 @@
                                             @enderror
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor2" class="form-label">Name-Fr<span class="text-danger">*</span></label>
+                                            <label for="ckeditor2" class="form-label">Name-Fr</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_fr" value="{{ old('name_fr',$partner->getTranslation('name','fr')) }}">
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor3" class="form-label">Name-Es<span class="text-danger">*</span></label>
+                                            <label for="ckeditor3" class="form-label">Name-Es</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_es" value="{{ old('name_es',$partner->getTranslation('name','es')) }}">
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Name-Ko<span class="text-danger">*</span></label>
+                                            <label for="ckeditor4" class="form-label">Name-Ko</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko',$partner->getTranslation('name','ko')) }}">
 
                                         </div>
@@ -85,19 +85,19 @@
                                             @enderror
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
+                                            <label for="ckeditor2" class="form-label">Body-Fr</label>
                                         <div class="card-body custom-ekeditor">
                                             <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="description_fr">{{ old('description_fr',$partner->getTranslation('description','fr')) }}</textarea>
                                         </div>
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
+                                            <label for="ckeditor3" class="form-label">Body-Es</label>
                                             <div class="card-body custom-ekeditor">
                                             <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="description_es">{{ old('description_es',$partner->getTranslation('description','es')) }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
+                                            <label for="ckeditor4" class="form-label">Body-Ko</label>
                                             <div class="card-body custom-ekeditor">
                                             <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="description_ko">{{ old('description_ko',$partner->getTranslation('description','ko')) }}</textarea>
                                             </div>
@@ -164,7 +164,7 @@
                                          @enderror
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="image" class="form-label">Logo<span class="text-danger">*</span></label>
+                                            <label for="image" class="form-label">Logo</label>
                                             <input class="form-control" type="file" name="logo" id="image">
                                             @error('logo')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -172,7 +172,7 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="file" class="form-label">Attachement<span class="text-danger">*</span></label>
+                                            <label for="file" class="form-label">Attachement</label>
                                             <input class="form-control" type="file" name="file" id="file">
                                             @error('file')
                                                 <div class="text-danger">{{ $message }}</div>

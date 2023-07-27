@@ -47,7 +47,6 @@
                                                                 <tr>
                                                                     <th>Id</th>
                                                                     <th>Name-En</th>
-                                                                    <th>Name-Ar</th>
                                                                     <th>Phone</th>
                                                                     <th>Start Price</th>
                                                                     <th>Suggest as start</th>
@@ -65,7 +64,7 @@
                                                                         </td>
 
                                                                         <td>
-                                                                            <span>{{ $partner->getTranslation('name', 'ar') }}</span>
+                                                                            <span>{{ $partner->getTranslation('name', 'en') }}</span>
                                                                         </td>
 
                                                                         <td>

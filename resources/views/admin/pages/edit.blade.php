@@ -49,21 +49,21 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Fr)<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Fr)</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_fr" value="{{ old('title_fr',$page->getTranslation('title','fr')) }}">
 
                                         </div>
 
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Es)<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Es)</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_es" value="{{ old('title_es',$page->getTranslation('title','es')) }}">
 
                                         </div>
 
 
                                            <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Ko)<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Ko)</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_ko" value="{{ old('title_ko',$page->getTranslation('title','ko')) }}">
 
                                         </div>
@@ -90,19 +90,19 @@
                                             @enderror
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
+                                            <label for="ckeditor2" class="form-label">Body-Fr</label>
                                         <div class="card-body custom-ekeditor">
                                             <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="body_fr">{{ old('body_fr',$page->getTranslation('body','fr')) }}</textarea>
                                         </div>
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
+                                            <label for="ckeditor3" class="form-label">Body-Es</label>
                                             <div class="card-body custom-ekeditor">
                                             <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="body_es">{{ old('body_es',$page->getTranslation('body','es')) }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
+                                            <label for="ckeditor4" class="form-label">Body-Ko</label>
                                             <div class="card-body custom-ekeditor">
                                             <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko',$page->getTranslation('body','ko')) }}</textarea>
                                             </div>

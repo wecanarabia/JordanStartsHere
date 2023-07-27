@@ -52,7 +52,7 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputthird" class="form-label">Password<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputthird" class="form-label">Password</label>
                                             <input type="password" class="form-control" id="exampleFormControlInputthird" name="password" value="{{ old('password') }}">
                                             @error('password')
                                                 <div class="text-danger">{{ $message }}</div>

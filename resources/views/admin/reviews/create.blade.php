@@ -40,7 +40,7 @@
                                          @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor" class="form-label">Content<span class="text-danger">*</span></label>
+                                        <label for="ckeditor" class="form-label">Content</label>
                                         <div class="card-body custom-ekeditor">
                                         <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="content">{{ old('content') }}</textarea>
                                         </div>

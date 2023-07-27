@@ -49,17 +49,17 @@
                                         @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor2" class="form-label">Name-Fr<span class="text-danger">*</span></label>
+                                        <label for="ckeditor2" class="form-label">Name-Fr</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_fr" value="{{ old('name_fr') }}">
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor3" class="form-label">Name-Es<span class="text-danger">*</span></label>
+                                        <label for="ckeditor3" class="form-label">Name-Es</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_es" value="{{ old('name_es') }}">
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Name-Ko<span class="text-danger">*</span></label>
+                                        <label for="ckeditor4" class="form-label">Name-Ko</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko') }}">
 
                                     </div>
@@ -96,36 +96,36 @@
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Fr)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Fr)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_fr" value="{{ old('title_one_fr') }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Fr)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Fr)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_fr" value="{{ old('title_two_fr') }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Es)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Es)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_es" value="{{ old('title_one_es') }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Es)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Es)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_es" value="{{ old('title_two_es') }}">
 
                                     </div>
                                        <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ko)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ko)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_ko" value="{{ old('title_one_ko') }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ko)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ko)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_ko" value="{{ old('title_two_ko') }}">
 
                                     </div>

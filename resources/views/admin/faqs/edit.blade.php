@@ -49,17 +49,17 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Fr<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Fr</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_fr" value="{{ old('question_fr',$faq->getTranslation('question', 'fr')) }}">
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Es<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Es</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_es" value="{{ old('question_es',$faq->getTranslation('question', 'es')) }}">
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Ko<span class="text-danger">*</span></label>
+                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Ko</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_ko" value="{{ old('question_ko',$faq->getTranslation('question', 'ko')) }}">
 
                                         </div>
@@ -86,7 +86,7 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor2" class="form-label">Answer-Fr<span class="text-danger">*</span></label>
+                                            <label for="ckeditor2" class="form-label">Answer-Fr</label>
                                             <div class="card-body custom-ekeditor">
 
                                             <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="answer_fr">{{ old('answer_ar',$faq->getTranslation('answer', 'fr')) }}</textarea>
@@ -96,7 +96,7 @@
 
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor3" class="form-label">Answer-Es<span class="text-danger">*</span></label>
+                                            <label for="ckeditor3" class="form-label">Answer-Es</label>
                                             <div class="card-body custom-ekeditor">
 
                                             <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="answer_es">{{ old('answer_ar',$faq->getTranslation('answer', 'es')) }}</textarea>
@@ -105,7 +105,7 @@
                                             </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Answer-Ko<span class="text-danger">*</span></label>
+                                            <label for="ckeditor4" class="form-label">Answer-Ko</label>
                                             <div class="card-body custom-ekeditor">
 
                                             <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="answer_ko">{{ old('answer_ar',$faq->getTranslation('answer', 'ko')) }}</textarea>
