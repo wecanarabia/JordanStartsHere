@@ -298,12 +298,16 @@ Route::post('page/edit/{id}', [PageController::class, 'edit']);
     //my notifications
    Route::get('my-notifications', [AuthController::class, 'myNotifications']);
 
+    // updateById
+    Route::post('/user-edit', [AuthController::class, 'updateById']);
+
 });
 
 
 Route::middleware(['auth:api','changeLang'])->group(function () {
 
     Route::post('/user-update', [AuthController::class, 'updateProfile']);
+
 
 
     //myFavorites
