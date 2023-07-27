@@ -6,10 +6,11 @@ namespace App\Imports;
 use App\Models\Review;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 
 
-class ReviewImport implements ToModel,WithHeadingRow{
+class ReviewImport implements ToModel,WithHeadingRow,WithValidation{
 
 
     /**
@@ -28,5 +29,14 @@ class ReviewImport implements ToModel,WithHeadingRow{
         ]);
     }
 
-
+    public function rules(): array
+    {
+        return [
+            'content'=>'required|min:0|max:10000',
+            'points'=>'required|numeric|min:0|max:5',
+            'user_id'=>'required|exists:users,id',
+            'partner_id'=>'required|exists:partners,id',
+            'status'=>'required|in:0,1',
+        ];
+    }
 }
