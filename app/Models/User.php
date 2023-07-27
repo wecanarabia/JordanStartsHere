@@ -49,9 +49,20 @@ class User extends Authenticatable
     public function favorites(){
         return $this->belongsToMany(Partner::class,'favorites','user_id','partner_id');
     }
-    
+
     public function reviews(){
         return $this->HasMany(Review::class);
+    }
+
+    protected static function booted()
+    {
+        static::deleted(function ($user) {
+
+
+            if ($user->favorites()->count()>0)$user->viewCounter()->delete();
+            if ($user->reviews)$user->reviews()->delete();
+
+        });
     }
 
 

@@ -41,6 +41,7 @@ class Partner extends Model
             if ($partner->whatsappCounter)$partner->whatsappCounter()->delete();
             if ($partner->callCounter)$partner->callCounter()->delete();
             if ($partner->viewCounter)$partner->viewCounter()->delete();
+            if ($partner->reviews)$partner->reviews()->delete();
             if ($partner->portraits){
                 foreach ($partner->portraits as $portrait) {
                     unlink($portrait->image);
