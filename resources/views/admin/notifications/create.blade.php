@@ -250,8 +250,8 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    {{-- @push('javasc')
-        <script>
+     @push('javasc')
+       {{-- <script>
             ClassicEditor
                 .create(document.querySelector('#ckeditor1'), {
                     language: 'en'
