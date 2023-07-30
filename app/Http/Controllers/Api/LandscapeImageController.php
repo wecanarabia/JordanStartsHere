@@ -19,6 +19,17 @@ class LandscapeImageController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
+    public function lImages()
+    {
+
+        $data = LandscapeImage::orderBy('order','asc')->get();
+
+        return $this->returnData( 'data' , $this->resource::collection( $data ), __('Succesfully'));
+
+
+    }
+
+
     public function save( Request $request ){
         return $this->store( $request->all() );
     }

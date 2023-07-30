@@ -19,6 +19,16 @@ class PortraitImageController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
+    public function pImages()
+    {
+
+        $data = PortraitImage::orderBy('order','asc')->get();
+
+        return $this->returnData( 'data' , $this->resource::collection( $data ), __('Succesfully'));
+
+
+    }
+
     public function save( Request $request ){
         return $this->store( $request->all() );
     }

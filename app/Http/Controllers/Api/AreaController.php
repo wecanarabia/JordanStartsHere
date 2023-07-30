@@ -19,6 +19,16 @@ class AreaController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
+    public function areas()
+    {
+
+        $data = Area::orderBy('order','asc')->get();
+
+        return $this->returnData( 'data' , $this->resource::collection( $data ), __('Succesfully'));
+
+
+    }
+
     public function save( Request $request ){
         return $this->store( $request->all() );
     }
