@@ -76,7 +76,7 @@ class CityController extends Controller
      */
     public function show(string $id)
     {
-        $city = City::findOrFail($id);
+        $city = City::with('areas')->findOrFail($id);
         return view('admin.cities.show',compact('city'));
     }
 
@@ -85,7 +85,7 @@ class CityController extends Controller
      */
     public function edit(string $id)
     {
-        $city = City::findOrFail($id);
+        $city = City::with('areas')->findOrFail($id);
         return view('admin.cities.edit',compact('city'));
     }
 
