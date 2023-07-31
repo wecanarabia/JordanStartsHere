@@ -10,6 +10,7 @@ use App\Models\PortraitImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Admin\PartnerRequest;
+use App\Models\LandscapeImage;
 
 class PartnerController extends Controller
 {
@@ -67,12 +68,12 @@ class PartnerController extends Controller
             ]);
         }
         foreach($request->landscapes as $image) {
-            if (PortraitImage::where('partner_id',$partner->id)->count()==0) {
+            if (LandscapeImage::where('partner_id',$partner->id)->count()==0) {
                 $order = 1;
             }else{
-                $order = PortraitImage::where('partner_id',$partner->id)->max('order')+1;
+                $order = LandscapeImage::where('partner_id',$partner->id)->max('order')+1;
             }
-            PortraitImage::create([
+            LandscapeImage::create([
                 'image'=>$image,
                 'order'=>$order,
                 'partner_id'=>$partner->id,
