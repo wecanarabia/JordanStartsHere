@@ -70,7 +70,7 @@ class Partner extends Model
 
     public function workdays()
 	{
-		return $this->hasMany(Workday::class);
+		return $this->hasMany(Workday::class)->where('status', 1);
 	}
 
     public function portraits()

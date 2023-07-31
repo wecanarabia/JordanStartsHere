@@ -57,6 +57,7 @@ Route::get('user/{id}', [AuthController::class, 'userProfile']);
 Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 
 
+Route::get('deactivate-user/{id}', [AuthController::class, 'deactivate']);
 
 //forget pw step 1
 Route::post('check-user', [AuthController::class, 'checkUser']);
