@@ -195,6 +195,22 @@
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
+                                        <label for="portraits" class="form-label">Portraits<span class="text-danger">*</span></label>
+                                        <input class="form-control" type="file" name="portraits[]" id="image" multiple>
+                                        @error('portraits')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="landscapes" class="form-label">Landscapes<span class="text-danger">*</span></label>
+                                        <input class="form-control" type="file" name="landscapes[]" id="image" multiple>
+                                        @error('landscapes')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Save'>
                                     </div>
 

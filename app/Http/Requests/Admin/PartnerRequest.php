@@ -37,6 +37,10 @@ class PartnerRequest extends FormRequest
             'video_url'=>'nullable|min:4|max:500|url',
             'subcategories'=>'array|min:1',
             'subcategories.*'=>'required|exists:subcategories,id',
+            'portraits'=>'required_without:id|array|min:1',
+            'portraits.*'=>'required_without:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
+            'landscapes'=>'required_without:id|array|min:1',
+            'landscapes.*'=>'required_without:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
         ];
     }
 

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Models\Partner;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use App\Models\PortraitImage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\PartnerRequest;
 use Illuminate\Support\Facades\File;
-use App\Models\Partner;
+use App\Http\Requests\Admin\PartnerRequest;
 
 class PartnerController extends Controller
 {
@@ -49,9 +50,34 @@ class PartnerController extends Controller
             'description_es',
             'description_ko',
             'subcategories',
+            'portraits',
+            'landscapes',
         ]));
         $partner->subcategories()->attach($request->subcategories);
-
+        foreach($request->portraits as $image) {
+            if (PortraitImage::where('partner_id',$partner->id)->count()==0) {
+                $order = 1;
+            }else{
+                $order = PortraitImage::where('partner_id',$partner->id)->max('order')+1;
+            }
+            PortraitImage::create([
+                'image'=>$image,
+                'order'=>$order,
+                'partner_id'=>$partner->id,
+            ]);
+        }
+        foreach($request->landscapes as $image) {
+            if (PortraitImage::where('partner_id',$partner->id)->count()==0) {
+                $order = 1;
+            }else{
+                $order = PortraitImage::where('partner_id',$partner->id)->max('order')+1;
+            }
+            PortraitImage::create([
+                'image'=>$image,
+                'order'=>$order,
+                'partner_id'=>$partner->id,
+            ]);
+        }
         return redirect()->route('admin.partners.index')
                         ->with('success','Partner has been added successfully');
     }
