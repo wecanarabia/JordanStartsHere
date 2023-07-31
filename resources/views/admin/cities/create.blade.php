@@ -139,7 +139,39 @@
                                         @enderror
                                     </div>
 
+                                    <h4 class="heading mb-0"> {{ __('Add Area') }}</h4>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor" class="form-label">Area Name-En<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="area_name_en" value="{{ old('area_name_en') }}">
 
+                                        @error('area_name_en')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor1" class="form-label">Area Name-Ar<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="area_name_ar" value="{{ old('area_name_ar') }}">
+
+                                        @error('area_name_ar')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor2" class="form-label">Area Name-Fr</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="area_name_fr" value="{{ old('area_name_fr') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor3" class="form-label">Area Name-Es</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="area_name_es" value="{{ old('area_name_es') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor4" class="form-label">Area Name-Ko</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="area_name_ko" value="{{ old('area_name_ko') }}">
+
+                                    </div>
 
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Save'>
