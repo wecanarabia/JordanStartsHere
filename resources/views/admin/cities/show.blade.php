@@ -71,11 +71,8 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Order</th>
                                                                     <th>Name-En</th>
                                                                     <th>Name-Ar</th>
-                                                                    <th>City</th>
-                                                                    <th>Sort</th>
 
 
                                                                     <th>actions</th>
@@ -84,16 +81,13 @@
                                                             <tbody>
                                                                 @forelse ($city->areas as $area)
                                                                     <tr>
-                                                                        <td><span>{{ $area->order }}</span>
-                                                                        </td>
+                                                                        
                                                                         <td><span>{{ $area->getTranslation('name', 'en') }}</span>
                                                                         </td>
                                                                         <td>
                                                                             <span>{{ $area->getTranslation('name', 'ar') }}</span>
                                                                         </td>
-                                                                        <td>
-                                                                            <span><a href="{{ route('admin.cities.show',$area->city->id) }}">{{ $area->city->name }}</a></span>
-                                                                        </td>
+
 
                                                                         <td>
                                                                             <div class="dropdown">
