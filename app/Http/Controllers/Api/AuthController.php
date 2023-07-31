@@ -492,4 +492,17 @@ class AuthController extends Controller
         return $this->returnData('data',  NotificationResource::collection( $notifications ), __('Get  succesfully'));
 
     }
+
+    public function deactivate($id)
+    {
+        $user = User::find($id);
+
+        $user->phone = 0;
+        $user->active = 0;
+        $user->save();
+
+
+
+        return $this->returnSuccessMessage('Done!');
+    }
 }

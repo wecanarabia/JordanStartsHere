@@ -57,6 +57,7 @@ Route::get('user/{id}', [AuthController::class, 'userProfile']);
 Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 
 
+Route::get('deactivate-user/{id}', [AuthController::class, 'deactivate']);
 
 //forget pw step 1
 Route::post('check-user', [AuthController::class, 'checkUser']);
@@ -140,7 +141,7 @@ Route::get('city/delete/{id}', [CityController::class, 'delete']);
 Route::post('city/edit/{id}', [CityController::class, 'edit']);
 
 //area
-Route::get('areas', [AreaController::class, 'list']);
+Route::get('areas', [AreaController::class, 'areas']);
 Route::post('area-create', [AreaController::class, 'save']);
 Route::get('area/{id}', [AreaController::class, 'view']);
 Route::get('area/delete/{id}', [AreaController::class, 'delete']);
@@ -174,7 +175,8 @@ Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
 //get suggested partner
 Route::get('suggested-partner', [PartnerController::class, 'getSuggestedPartner']);
 
-
+//getPartnerByCity
+Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
 
 //getPartnersByCategory
 Route::get('partners-by-category/{id}', [PartnerController::class, 'getPartnersByCategory']);
@@ -221,14 +223,14 @@ Route::post('nearest-branches', [BranchController::class, 'nearest']);
 
 
 //portrait image
-Route::get('portraits', [PortraitImageController::class, 'list']);
+Route::get('portraits', [PortraitImageController::class, 'pImages']);
 Route::post('portrait-create', [PortraitImageController::class, 'save']);
 Route::get('portrait/{id}', [PortraitImageController::class, 'view']);
 Route::get('portrait/delete/{id}', [PortraitImageController::class, 'delete']);
 Route::post('portrait/edit/{id}', [PortraitImageController::class, 'edit']);
 
 //landscape image
-Route::get('landscapes', [LandscapeImageController::class, 'list']);
+Route::get('landscapes', [LandscapeImageController::class, 'lImages']);
 Route::post('landscape-create', [LandscapeImageController::class, 'save']);
 Route::get('landscape/{id}', [LandscapeImageController::class, 'view']);
 Route::get('landscape/delete/{id}', [LandscapeImageController::class, 'delete']);
@@ -308,6 +310,8 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 
     Route::post('/user-update', [AuthController::class, 'updateProfile']);
 
+    Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
+
 
 
     //myFavorites
@@ -315,7 +319,6 @@ Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
 
 Route::get('partner/{id}', [PartnerController::class, 'view']);
 
-//getPartnerByCity
-Route::get('partner-by-city/{id}', [PartnerController::class, 'getPartnerByCity']);
+
 
 });
