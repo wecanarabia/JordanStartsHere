@@ -136,7 +136,7 @@
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label class="form-label">Video Url<span class="text-danger">*</span></label>
+                                            <label class="form-label">Video Url</label>
                                             <input type="url" class="form-control" name="video_url" value="{{ old('video_url',$partner->video_url) }}">
                                             @error('video_url')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -145,7 +145,7 @@
 
 
                                         <div id="cats-list" class="col-xl-8 mb-3">
-                                            <label class="form-label">Subcategories<span class="text-danger">*</span></label>
+                                            <label class="form-label">Subcategories</label>
                                         <div class="dropdown bootstrap-select show-tick default-select form-control wide">
                                             <select name="subcategories[]" multiple="" class="default-select form-control wide" tabindex="null">
                                                 @if (count($subcategories)>0)
