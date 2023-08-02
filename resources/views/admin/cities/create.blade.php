@@ -194,7 +194,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
     <script>
 
         ClassicEditor
@@ -218,5 +218,5 @@
             console.error( error );
         } );
     </script>
-    @endpush
+    @endpush --}}
 </x-admin-layouts.admin-app>

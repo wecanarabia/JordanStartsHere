@@ -59,7 +59,7 @@
                                                                         <td><span>{{ $advice->id }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{!! $advice->getTranslation('body', 'en') !!}</span>
+                                                                            <span>{{ $advice->getTranslation('body', 'en') }}</span>
                                                                         </td>
 
 

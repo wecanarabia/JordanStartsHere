@@ -65,7 +65,7 @@
                                     <div class="col-xl-8 mb-3">
                                     <label for="ckeditor" class="form-label">Answer-En<span class="text-danger">*</span></label>
                                     <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="answer_en">{{ old('answer_en') }}</textarea>
+                                        <textarea class="form-txtarea form-control" rows="8" name="answer_en">{{ old('answer_en') }}</textarea>
                                     </div>
                                         @error('answer_en')
                                             <div class="text-danger">{{ $message }}</div>
@@ -135,7 +135,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
     <script>
     ClassicEditor
     .create( document.querySelector( '#ckeditor1'),{language: 'en'} )
@@ -158,5 +158,5 @@
             console.error( error );
         } );
     </script>
-    @endpush
+    @endpush --}}
 </x-admin-layouts.admin-app>

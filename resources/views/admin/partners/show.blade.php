@@ -28,16 +28,16 @@
                                 <h4 class="heading mb-5"> {{ $partner->name }}</h4>
 
                                     <p class="mb-3"><strong>Id : </strong> {{  $partner->id  }}</p>
-                                    <p class="mb-3"><strong>Name-En : </strong> {!! $partner->getTranslation('name', 'en') !!}</p>
-                                    <p class="mb-3"><strong>Name-Ar : </strong> {!! $partner->getTranslation('name', 'ar') !!}</p>
-                                    <p class="mb-3"><strong>Name-Fr : </strong> {!! $partner->getTranslation('name', 'fr') !!}</p>
-                                    <p class="mb-3"><strong>Name-Es : </strong> {!! $partner->getTranslation('name', 'es') !!}</p>
-                                    <p class="mb-3"><strong>Name-Ko : </strong> {!! $partner->getTranslation('name', 'ko') !!}</p>
-                                    <p class="mb-3"><strong>Body-En : </strong> {!! $partner->getTranslation('description', 'en') !!}</p>
-                                    <p class="mb-3"><strong>Body-Ar : </strong> {!! $partner->getTranslation('description', 'ar') !!}</p>
-                                    <p class="mb-3"><strong>Body-Fr : </strong> {!! $partner->getTranslation('description', 'fr') !!}</p>
-                                    <p class="mb-3"><strong>Body-Es : </strong> {!! $partner->getTranslation('description', 'es') !!}</p>
-                                    <p class="mb-3"><strong>Body-Ko : </strong> {!! $partner->getTranslation('description', 'ko') !!}</p>                                    <p class="mb-3"><strong>Phone :</strong> {{ $partner->phone }}</p>
+                                    <p class="mb-3"><strong>Name-En : </strong> {{ $partner->getTranslation('name', 'en') }}</p>
+                                    <p class="mb-3"><strong>Name-Ar : </strong> {{ $partner->getTranslation('name', 'ar') }}</p>
+                                    <p class="mb-3"><strong>Name-Fr : </strong> {{ $partner->getTranslation('name', 'fr') }}</p>
+                                    <p class="mb-3"><strong>Name-Es : </strong> {{ $partner->getTranslation('name', 'es') }}</p>
+                                    <p class="mb-3"><strong>Name-Ko : </strong> {{ $partner->getTranslation('name', 'ko') }}</p>
+                                    <p class="mb-3"><strong>Body-En : </strong> {{ $partner->getTranslation('description', 'en') }}</p>
+                                    <p class="mb-3"><strong>Body-Ar : </strong> {{ $partner->getTranslation('description', 'ar') }}</p>
+                                    <p class="mb-3"><strong>Body-Fr : </strong> {{ $partner->getTranslation('description', 'fr') }}</p>
+                                    <p class="mb-3"><strong>Body-Es : </strong> {{ $partner->getTranslation('description', 'es') }}</p>
+                                    <p class="mb-3"><strong>Body-Ko : </strong> {{ $partner->getTranslation('description', 'ko') }}</p>
                                     <p class="mb-3"><strong>Phone :</strong> {{ $partner->phone }}</p>
                                     <p class="mb-3"><strong>Whatsapp :</strong> {{ $partner->whatsapp }}</p>
                                     <p class="mb-3"><strong>Suggested as Start :</strong> {{ $partner->start_status == 1? 'Suggested' : 'Not Suggested' }}</p>
@@ -441,14 +441,14 @@
                                                 @forelse ($partner->whatsappCounter as $count)
                                                     <tr>
 
-                                                       
+
                                                         <td>
                                                             <span>{{ $count->date }}</span>
                                                         </td>
                                                         <td>
                                                             <span>{{ $count->month }}</span>
                                                         </td>
-                                                        
+
                                                         <td>
                                                             <span>{{ $count->year }}</span>
                                                         </td>
@@ -456,7 +456,7 @@
                                                             <span>{{ $count->count }}</span>
                                                         </td>
 
-                                                     
+
                                                     </tr>
 
                                                 @empty
@@ -509,14 +509,14 @@
                                                 @forelse ($partner->callCounter as $count)
                                                     <tr>
 
-                                                       
+
                                                         <td>
                                                             <span>{{ $count->date }}</span>
                                                         </td>
                                                         <td>
                                                             <span>{{ $count->month }}</span>
                                                         </td>
-                                                        
+
                                                         <td>
                                                             <span>{{ $count->year }}</span>
                                                         </td>
@@ -524,7 +524,7 @@
                                                             <span>{{ $count->count }}</span>
                                                         </td>
 
-                                                     
+
                                                     </tr>
 
                                                 @empty
@@ -577,14 +577,14 @@
                                                 @forelse ($partner->viewCounter as $count)
                                                     <tr>
 
-                                                       
+
                                                         <td>
                                                             <span>{{ $count->date }}</span>
                                                         </td>
                                                         <td>
                                                             <span>{{ $count->month }}</span>
                                                         </td>
-                                                        
+
                                                         <td>
                                                             <span>{{ $count->year }}</span>
                                                         </td>
@@ -592,7 +592,7 @@
                                                             <span>{{ $count->count }}</span>
                                                         </td>
 
-                                                     
+
                                                     </tr>
 
                                                 @empty

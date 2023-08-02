@@ -31,11 +31,11 @@
                                 <p class="mb-3"><strong>Title(Fr) : </strong> {{ $page->getTranslation('title','fr') }}</p>
                                 <p class="mb-3"><strong>Title(Es) : </strong> {{ $page->getTranslation('title','es') }}</p>
                                 <p class="mb-3"><strong>Title(Ko) : </strong> {{ $page->getTranslation('title','ko') }}</p>
-                                <p class="mb-3"><strong>Body-En : </strong> {!! $page->getTranslation('body', 'en') !!}</p>
-                                <p class="mb-3"><strong>Body-Ar : </strong> {!! $page->getTranslation('body', 'ar') !!}</p>
-                                <p class="mb-3"><strong>Body-Fr : </strong> {!! $page->getTranslation('body', 'fr') !!}</p>
-                                <p class="mb-3"><strong>Body-Es : </strong> {!! $page->getTranslation('body', 'es') !!}</p>
-                                <p class="mb-3"><strong>Body-Ko : </strong> {!! $page->getTranslation('body', 'ko') !!}</p>
+                                <p class="mb-3"><strong>Body-En : </strong> {{ $page->getTranslation('body', 'en') }}</p>
+                                <p class="mb-3"><strong>Body-Ar : </strong> {{ $page->getTranslation('body', 'ar') }}</p>
+                                <p class="mb-3"><strong>Body-Fr : </strong> {{ $page->getTranslation('body', 'fr') }}</p>
+                                <p class="mb-3"><strong>Body-Es : </strong> {{ $page->getTranslation('body', 'es') }}</p>
+                                <p class="mb-3"><strong>Body-Ko : </strong> {{ $page->getTranslation('body', 'ko') }}</p>
 
                         </div>
                         </div>

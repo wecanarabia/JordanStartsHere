@@ -41,9 +41,9 @@
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor1" class="form-label">Body-Ar<span class="text-danger">*</span></label>
+                                        <label class="form-label">Body-Ar<span class="text-danger">*</span></label>
                                         <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="body_ar">{{ old('body_ar') }}</textarea>
+                                        <textarea class="form-txtarea form-control" rows="8" name="body_ar">{{ old('body_ar') }}</textarea>
                                         </div>
                                         @error('body_ar')
                                             <div class="text-danger">{{ $message }}</div>
@@ -89,7 +89,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
     <script>
 
         ClassicEditor
@@ -113,5 +113,5 @@
             console.error( error );
         } );
     </script>
-    @endpush
+    @endpush --}}
 </x-admin-layouts.admin-app>
