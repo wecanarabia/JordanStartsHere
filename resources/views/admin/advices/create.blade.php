@@ -31,10 +31,8 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor" class="form-label">Body-En<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        <label class="form-label">Body-En<span class="text-danger">*</span></label>
                                         <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
-                                        </div>
                                         @error('body_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror

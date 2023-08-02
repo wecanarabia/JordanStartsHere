@@ -63,10 +63,8 @@
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                    <label for="ckeditor" class="form-label">Answer-En<span class="text-danger">*</span></label>
-                                    <div class="card-body custom-ekeditor">
+                                    <label class="form-label">Answer-En<span class="text-danger">*</span></label>
                                         <textarea class="form-txtarea form-control" rows="8" name="answer_en">{{ old('answer_en') }}</textarea>
-                                    </div>
                                         @error('answer_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror

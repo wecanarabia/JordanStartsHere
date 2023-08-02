@@ -162,12 +162,10 @@
 
 
                                                             <div class="col-xl-8 mb-3">
-                                                                <label for="ckeditorrrr"
+                                                                <label 
                                                                     class="form-label">Body-En<span
                                                                         class="text-danger">*</span></label>
-                                                                <div class="card-body custom-ekeditor">
-                                                                    <textarea id="ckeditorrrr" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
-                                                                </div>
+                                                                    <textarea class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
                                                                 @error('body_en')
                                                                     <div class="text-danger">{{ $message }}</div>
                                                                 @enderror
