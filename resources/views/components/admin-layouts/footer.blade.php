@@ -37,7 +37,7 @@
 	<script src="{{ asset('xhtml/vendor/apexchart/apexchart.js') }}"></script>
 	<!-- Dashboard 1 -->
 	<script src="{{ asset('xhtml/js/dashboard/dashboard-1.js') }}"></script>
-    <script src="{{ asset('xhtml/vendor/ckeditor/ckeditor.js') }}"></script>
+    {{-- <script src="{{ asset('xhtml/vendor/ckeditor/ckeditor.js') }}"></script> --}}
     <script src="{{ asset('xhtml/js/custom.js') }}"></script>
     <script src="{{ asset('xhtml/js/map.js') }}"></script>
 	<script src="{{ asset('xhtml/js/deznav-init.js') }}"></script>

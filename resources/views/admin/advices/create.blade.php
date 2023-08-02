@@ -32,7 +32,7 @@
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
                                         <label class="form-label">Body-En<span class="text-danger">*</span></label>
-                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
+                                        <textarea class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en') }}</textarea>
                                         @error('body_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
