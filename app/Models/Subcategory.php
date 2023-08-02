@@ -17,9 +17,9 @@ class Subcategory extends Model
     {
         static::deleted(function ($subcategory) {
             if ($subcategory->partners()->count()>0)$subcategory->partners()->detach();
-        }
+        });
     }
-    
+
     public function category()
 	{
 		return $this->belongsTo(Category::class);
