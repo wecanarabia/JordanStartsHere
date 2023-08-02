@@ -38,6 +38,7 @@ class Partner extends Model
 
             if ($partner->branches)$partner->branches()->delete();
             if ($partner->workdays)$partner->workdays()->delete();
+            if ($partner->subcategories()->count()>0)$partner->subcategories()->detach();
             if ($partner->whatsappCounter)$partner->whatsappCounter()->delete();
             if ($partner->callCounter)$partner->callCounter()->delete();
             if ($partner->viewCounter)$partner->viewCounter()->delete();
