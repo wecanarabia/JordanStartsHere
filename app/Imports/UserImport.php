@@ -16,6 +16,7 @@ class UserImport implements ToModel,WithHeadingRow,WithValidation
     public function model(array $row)
     {
         return new User([
+            "id" => $row['id'],
             "name" => $row['name'],
             "last_name" => $row['last_name'],
             "password" => bcrypt($row['password']),
