@@ -75,30 +75,30 @@
 
                                         <div class="col-xl-8 mb-3">
                                             <label for="ckeditor1" class="form-label">Body-Ar<span class="text-danger">*</span></label>
-                                            <div class="card-body custom-ekeditor">
+                                            {{-- <div class="card-body custom-ekeditor"> --}}
                                             <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="description_ar">{{ old('description_ar',$partner->getTranslation('description','ar')) }}</textarea>
-                                            </div>
+                                            {{-- </div> --}}
                                             @error('description_ar')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="col-xl-8 mb-3">
                                             <label for="ckeditor2" class="form-label">Body-Fr</label>
-                                        <div class="card-body custom-ekeditor">
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
                                             <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="description_fr">{{ old('description_fr',$partner->getTranslation('description','fr')) }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
                                         </div>
                                         <div class="col-xl-8 mb-3">
                                             <label for="ckeditor3" class="form-label">Body-Es</label>
-                                            <div class="card-body custom-ekeditor">
+                                            {{-- <div class="card-body custom-ekeditor"> --}}
                                             <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="description_es">{{ old('description_es',$partner->getTranslation('description','es')) }}</textarea>
-                                            </div>
+                                            {{-- </div> --}}
                                         </div>
                                         <div class="col-xl-8 mb-3">
                                             <label for="ckeditor4" class="form-label">Body-Ko</label>
-                                            <div class="card-body custom-ekeditor">
+                                            {{-- <div class="card-body custom-ekeditor"> --}}
                                             <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="description_ko">{{ old('description_ko',$partner->getTranslation('description','ko')) }}</textarea>
-                                            </div>
+                                            {{-- </div> --}}
                                         </div>
 
                                         <div class="col-xl-8 mb-3">
