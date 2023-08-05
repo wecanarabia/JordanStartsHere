@@ -41,9 +41,9 @@ class PartnerResource extends JsonResource
             'rating'=>(double)$this?->reviews?->avg('points'),
             'category' => $this->subcategories?->first()?->category?->name ?? null,
             'category_image' => $this->subcategories?->first()?->category?->image ?? null,
-            'branches' => BranchResource::collection($this->branches),
-            'portrait_images' => PortraitImageResource::collection($this->portraits),
-            'landscape_images' => LandscapeImageResource::collection($this->landscapes),
+            'branches' => BranchResource::collection($this?->branches),
+            'portrait_images' => PortraitImageResource::collection($this?->portraits),
+            'landscape_images' => LandscapeImageResource::collection($this?->landscapes),
             'workdays' => WorkdayResource::collection($this?->workdays),
             'reviews' => ReviewResource::collection($this?->reviews),
         ];

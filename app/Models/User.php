@@ -59,7 +59,7 @@ class User extends Authenticatable
         static::deleted(function ($user) {
 
 
-            if ($user->favorites()->count()>0)$user->viewCounter()->delete();
+            if ($user->favorites()->count()>0)$user->favorites()->detach();
             if ($user->reviews)$user->reviews()->delete();
 
         });
