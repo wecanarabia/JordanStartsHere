@@ -79,7 +79,7 @@ class FavoriteController extends ApiController
         }else{
             $favorite = Favorite::create([
                 'partner_id'=>$request->partner_id,
-                'user_id'=>$request->user_id,
+                'user_id'=>Auth::user()->id,
             ]);
             return $this->returnData('data',  PartnerResource::make( $favorite ), __('Get  succesfully'));
 
