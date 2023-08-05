@@ -69,5 +69,24 @@ class FavoriteController extends ApiController
 
     }
 
+    public function toggleFavorite(Request $request)
+    {
+
+        $model = Favorite::where('partner_id',$request->partner_id)->where('user_id',Auth::user()->id)->first();
+        if ($model) {
+            $model->delete();
+            return $this->returnSuccessMessage(__('Delete succesfully!'));
+        }else{
+            $favorite = Favorite::create([
+                'partner_id'=>$request->partner_id,
+                'user_id'=>$request->user_id,
+            ]);
+            return $this->returnData('data',  PartnerResource::make( $favorite ), __('Get  succesfully'));
+
+        }
+
+
+    }
+
 
 }

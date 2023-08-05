@@ -316,6 +316,7 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 
     //myFavorites
 Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
+Route::post('toggle-favorite', [FavoriteController::class, 'toggleFavorite']);
 
 Route::get('partner/{id}', [PartnerController::class, 'view']);
 
