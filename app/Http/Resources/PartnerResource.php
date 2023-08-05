@@ -40,7 +40,7 @@ class PartnerResource extends JsonResource
             'start_price' => $this->start_price,
             'rating'=>(double)$this?->reviews?->avg('points'),
             'category' => $this->subcategories->first()?->category?->name ?? null,
-            'category_image' => $this->subcategories->first()?->category?->image ?? null,
+            'category_image' => $this->subcategories?->first()?->category?->image ?? null,
             'branches' => BranchResource::collection($this->branches),
             'portrait_images' => PortraitImageResource::collection($this->portraits),
             'landscape_images' => LandscapeImageResource::collection($this->landscapes),
