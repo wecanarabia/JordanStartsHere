@@ -10,6 +10,7 @@ use App\Http\Resources\FavoriteResource;
 use App\Http\Resources\PartnerResource;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
+use App\Models\Partner;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -75,13 +76,14 @@ class FavoriteController extends ApiController
         $model = Favorite::where('partner_id',$request->partner_id)->where('user_id',Auth::user()->id)->first();
         if ($model) {
             $model->delete();
-            return $this->returnSuccessMessage(__('Delete succesfully!'));
+            $partner = Partner::find($request->partner_id);
+            return $this->returnData('data',  FavoriteResource::make( $partner ), __('Get  succesfully'));
         }else{
             $favorite = Favorite::create([
                 'partner_id'=>$request->partner_id,
                 'user_id'=>Auth::user()->id,
             ]);
-            return $this->returnData('data',  PartnerResource::make( $favorite ), __('Get  succesfully'));
+            return $this->returnData('data',  FavoriteResource::make( $favorite ), __('Get  succesfully'));
 
         }
 
