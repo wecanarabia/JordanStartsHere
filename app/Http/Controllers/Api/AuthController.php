@@ -476,11 +476,12 @@ class AuthController extends Controller
 
     public function updateDeviceToken(Request $request)
     {
-        $user = Auth::user();
+        // $user = Auth::user();
+        $user = User::find($request->user_id);
         $user->device_token = $request->device_token;
         $user->save();
 
-        return $this->returnData('user', UserResource::make(User::find(Auth::user()->id)), 'successful');
+        return $this->returnData('user', UserResource::make($user), 'successful');
     }
 
         public function myNotifications()
