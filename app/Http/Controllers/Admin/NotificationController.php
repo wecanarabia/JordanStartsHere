@@ -41,7 +41,7 @@ class NotificationController extends Controller
         }else{
             $notification=Notification::create($request->only('title','body'));
         }
-        $FcmToken = User::whereNotNull('device_token')->pluck('device_token')->all();
+        $FcmToken = User::whereNotNull('device_token')->pluck('device_token')->toArray();
 
         $this->send($notification->body, $notification->title,$FcmToken);
         return redirect()->route('admin.notifications.index')
