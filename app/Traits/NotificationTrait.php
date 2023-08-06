@@ -18,9 +18,7 @@ trait NotificationTrait
         );
 
             $fields = [
-                'to'=>$token,
-                // 'to'=>'duZOwx4SkkVWqp7-SIQzea:APA91bEbPJ7e7mkqrtrbmIAmSAzQOdKwCmCtE2FMcib9ho3hMADci8nZ92HgmB3Bqju87g32Erm2hkFZlPXrcycQVSVpeTSHPU_s5ggKjrf2PQuCVPstD1BwrArwRobfSjsMt13eBuaA',
-                // 'to'=>'/topics/all',
+                'registration_ids' => $token,
                 'notification' => $msg,
             ];
 
