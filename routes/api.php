@@ -56,6 +56,7 @@ Route::get('user/{id}', [AuthController::class, 'userProfile']);
 
 Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 
+Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
 
 Route::get('deactivate-user/{id}', [AuthController::class, 'deactivate']);
 
@@ -311,7 +312,7 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 
     Route::post('/user-update', [AuthController::class, 'updateProfile']);
 
-    Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
+
 
 
 
