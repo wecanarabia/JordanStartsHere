@@ -58,8 +58,8 @@
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Name-Ko</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko') }}">
+                                        <label for="ckeditor4" class="form-label">Name-Ru</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ru" value="{{ old('name_ru') }}">
 
                                     </div>
 

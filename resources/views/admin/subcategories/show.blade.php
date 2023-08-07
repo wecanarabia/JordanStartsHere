@@ -31,7 +31,7 @@
                                     <p class="mb-3"><strong>Name-Ar : </strong> {!! $subcategory->getTranslation('name', 'ar') !!}</p>
                                     <p class="mb-3"><strong>Name-Fr : </strong> {!! $subcategory->getTranslation('name', 'fr') !!}</p>
                                     <p class="mb-3"><strong>Name-Es : </strong> {!! $subcategory->getTranslation('name', 'es') !!}</p>
-                                    <p class="mb-3"><strong>Name-Ko : </strong> {!! $subcategory->getTranslation('name', 'ko') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ru : </strong> {!! $subcategory->getTranslation('name', 'ru') !!}</p>
                                     <p class="mb-3"><strong>Category : </strong> <a href="{{ route('admin.categories.show', $subcategory->category->id) }}">{{ $subcategory->category->name }}</a></p>
 
                                 </div>

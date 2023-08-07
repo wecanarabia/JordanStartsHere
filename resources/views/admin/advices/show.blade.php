@@ -31,7 +31,7 @@
                                     <p class="mb-3"><strong>Body-Ar : </strong> {{ $advice->getTranslation('body', 'ar') }}</p>
                                     <p class="mb-3"><strong>Body-Fr : </strong> {{ $advice->getTranslation('body', 'fr') }}</p>
                                     <p class="mb-3"><strong>Body-Es : </strong> {{ $advice->getTranslation('body', 'es') }}</p>
-                                    <p class="mb-3"><strong>Body-Ko : </strong> {{ $advice->getTranslation('body', 'ko') }}</p>
+                                    <p class="mb-3"><strong>Body-Ru : </strong> {{ $advice->getTranslation('body', 'ru') }}</p>
 
                                 </div>
 

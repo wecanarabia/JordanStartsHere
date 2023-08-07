@@ -60,7 +60,7 @@
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Name-Ko</label>
+                                            <label for="ckeditor4" class="form-label">Name-Ru</label>
                                             <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko',$subcategory->getTranslation('name','ko')) }}">
 
                                         </div>

@@ -12,13 +12,13 @@ class Workday extends Model
 
     protected $guarded=[];
     public $translatable = ['day'];
-    const WORKDAYS =[['en'=>'Sunday','ar'=>'الأحد','fr'=>'Dimanche','es'=>'Domingo','ko'=>'일요일'],
-        ['en'=>'Monday','ar'=>'الأثنين','fr'=>'Lundi','es'=>'Lunes','ko'=>'월요일'],
-        ['en'=>'Tuesday','ar'=>'الثلاثاء','fr'=>'Mardi','es'=>'Martes','ko'=>'화요일'],
-        ['en'=>'Wednesday','ar'=>'الأربعاء','fr'=>'Mercredi','es'=>'Miércoles','ko'=>'수요일'],
-        ['en'=>'Thursday','ar'=>'الخميس','fr'=>'Jeudi','es'=>'Jueves','ko'=>'목요일'],
-        ['en'=>'Friday','ar'=>'الجمعة','fr'=>'Vendredi','es'=>'Viernes','ko'=>'금요일'],
-        ['en'=>'Saturday','ar'=>'السبت','fr'=>'Samedi','es'=>'Sábado','ko'=>'토요일']
+    const WORKDAYS =[['en'=>'Sunday','ar'=>'الأحد','fr'=>'Dimanche','es'=>'Domingo','ru'=>'Воскресенье'],
+        ['en'=>'Monday','ar'=>'الأثنين','fr'=>'Lundi','es'=>'Lunes','ru'=>'Понедельник'],
+        ['en'=>'Tuesday','ar'=>'الثلاثاء','fr'=>'Mardi','es'=>'Martes','ru'=>'Вторник'],
+        ['en'=>'Wednesday','ar'=>'الأربعاء','fr'=>'Mercredi','es'=>'Miércoles','ru'=>'Среда'],
+        ['en'=>'Thursday','ar'=>'الخميس','fr'=>'Jeudi','es'=>'Jueves','ru'=>'Четверг'],
+        ['en'=>'Friday','ar'=>'الجمعة','fr'=>'Vendredi','es'=>'Viernes','ru'=>'Пятница'],
+        ['en'=>'Saturday','ar'=>'السبت','fr'=>'Samedi','es'=>'Sábado','ru'=>'Суббота']
     ];
 
     public function partner()

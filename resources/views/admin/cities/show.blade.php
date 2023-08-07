@@ -30,17 +30,17 @@
                                     <p class="mb-3"><strong>Name-Ar : </strong> {!! $city->getTranslation('name', 'ar') !!}</p>
                                     <p class="mb-3"><strong>Name-Fr : </strong> {!! $city->getTranslation('name', 'fr') !!}</p>
                                     <p class="mb-3"><strong>Name-Es : </strong> {!! $city->getTranslation('name', 'es') !!}</p>
-                                    <p class="mb-3"><strong>Name-Ko : </strong> {!! $city->getTranslation('name', 'ko') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ru : </strong> {!! $city->getTranslation('name', 'ru') !!}</p>
                                     <p class="mb-3"><strong>Title One(En) : </strong> {{ $city->getTranslation('title_one','en') }}</p>
                                     <p class="mb-3"><strong>Title One(Ar) : </strong> {{ $city->getTranslation('title_one','ar') }}</p>
                                     <p class="mb-3"><strong>Title One(Fr) : </strong> {{ $city->getTranslation('title_one','fr') }}</p>
                                     <p class="mb-3"><strong>Title One(Es) : </strong> {{ $city->getTranslation('title_one','es') }}</p>
-                                    <p class="mb-3"><strong>Title One(Ko) : </strong> {{ $city->getTranslation('title_one','ko') }}</p>
+                                    <p class="mb-3"><strong>Title One(Ru) : </strong> {{ $city->getTranslation('title_one','ru') }}</p>
                                     <p class="mb-3"><strong>Title Two(En) : </strong> {{ $city->getTranslation('title_two','en') }}</p>
                                     <p class="mb-3"><strong>Title Two(Ar) : </strong> {{ $city->getTranslation('title_two','ar') }}</p>
                                     <p class="mb-3"><strong>Title Two(Fr) : </strong> {{ $city->getTranslation('title_two','fr') }}</p>
                                     <p class="mb-3"><strong>Title Two(Es) : </strong> {{ $city->getTranslation('title_two','es') }}</p>
-                                    <p class="mb-3"><strong>Title Two(Ko) : </strong> {{ $city->getTranslation('title_two','ko') }}</p>
+                                    <p class="mb-3"><strong>Title Two(Ru) : </strong> {{ $city->getTranslation('title_two','ru') }}</p>
                                     <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $city->image ) }}" alt="{{ $city->name }}">
 
 
@@ -81,7 +81,7 @@
                                                             <tbody>
                                                                 @forelse ($city->areas as $area)
                                                                     <tr>
-                                                                        
+
                                                                         <td><span>{{ $area->getTranslation('name', 'en') }}</span>
                                                                         </td>
                                                                         <td>

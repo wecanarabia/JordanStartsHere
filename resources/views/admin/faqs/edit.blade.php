@@ -59,8 +59,8 @@
 
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Ko</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_ko" value="{{ old('question_ko',$faq->getTranslation('question', 'ko')) }}">
+                                            <label for="exampleFormControlInputsecond" class="form-label">Question-Ru</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_ru" value="{{ old('question_ru',$faq->getTranslation('question', 'ru')) }}">
 
                                         </div>
 
@@ -103,10 +103,10 @@
                                             </div>
 
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Answer-Ko</label>
+                                            <label for="ckeditor4" class="form-label">Answer-Ru</label>
                                             {{-- <div class="card-body custom-ekeditor"> --}}
 
-                                            <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="answer_ko">{{ old('answer_ar',$faq->getTranslation('answer', 'ko')) }}</textarea>
+                                            <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="answer_ru">{{ old('answer_ar',$faq->getTranslation('answer', 'ru')) }}</textarea>
                                             {{-- </div> --}}
 
                                             </div>
@@ -149,7 +149,7 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );

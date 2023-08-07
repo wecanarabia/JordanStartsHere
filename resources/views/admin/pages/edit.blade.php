@@ -63,8 +63,8 @@
 
 
                                            <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Ko)</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_ko" value="{{ old('title_ko',$page->getTranslation('title','ko')) }}">
+                                            <label for="exampleFormControlInputfirst" class="form-label">Title (Ru)</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_ru" value="{{ old('title_ru',$page->getTranslation('title','ru')) }}">
 
                                         </div>
 
@@ -100,9 +100,9 @@
                                             {{-- </div> --}}
                                         </div>
                                         <div class="col-xl-8 mb-3">
-                                            <label for="ckeditor4" class="form-label">Body-Ko</label>
+                                            <label for="ckeditor4" class="form-label">Body-Ru</label>
                                             {{-- <div class="card-body custom-ekeditor"> --}}
-                                            <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko',$page->getTranslation('body','ko')) }}</textarea>
+                                            <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ru">{{ old('body_ru',$page->getTranslation('body','ru')) }}</textarea>
                                             {{-- </div> --}}
                                         </div>
 
@@ -146,7 +146,7 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );

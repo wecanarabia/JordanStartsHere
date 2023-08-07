@@ -58,8 +58,8 @@
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Name-Ko</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko') }}">
+                                        <label for="ckeditor4" class="form-label">Name-Ru</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ru" value="{{ old('name_ru') }}">
 
                                     </div>
 
@@ -93,9 +93,9 @@
                                         {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Body-Ko</label>
+                                        <label for="ckeditor4" class="form-label">Body-Ru</label>
                                         {{-- <div class="card-body custom-ekeditor"> --}}
-                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="description_ko">{{ old('description_ko') }}</textarea>
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="description_ru">{{ old('description_ru') }}</textarea>
                                         {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
@@ -247,7 +247,7 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );

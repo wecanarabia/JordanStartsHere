@@ -37,19 +37,19 @@ class PartnerController extends Controller
      */
     public function store(PartnerRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ko];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ru];
         $partner=Partner::create($request->except([
             'name_en',
             'name_ar',
             'name_fr',
             'name_es',
-            'name_ko',
+            'name_ru',
             'description_en',
             'description_ar',
             'description_fr',
             'description_es',
-            'description_ko',
+            'description_ru',
             'subcategories',
             'portraits',
             'landscapes',
@@ -119,19 +119,19 @@ class PartnerController extends Controller
         if ($request->has('file')&&$partner->file  && File::exists($partner->file)) {
             unlink($partner->file);
         }
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ko];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ru];
         $partner->update($request->except([
             'name_en',
             'name_ar',
             'name_fr',
             'name_es',
-            'name_ko',
+            'name_ru',
             'description_en',
             'description_ar',
             'description_fr',
             'description_es',
-            'description_ko',
+            'description_ru',
             'subcategories',
         ]));
         $partner->subcategories()->sync($request->subcategories);

@@ -37,13 +37,13 @@ class BranchController extends Controller
      */
     public function store(BranchRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
         Branch::create($request->except([
             'name_en',
             'name_ar',
             'name_fr',
             'name_es',
-            'name_ko',
+            'name_ru',
         ]));
 
 
@@ -77,13 +77,13 @@ class BranchController extends Controller
     {
         $branche = Branch::findOrFail($id);
 
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
         $branche->update($request->except([
             'name_en',
             'name_ar',
             'name_fr',
             'name_es',
-            'name_ko',
+            'name_ru',
         ]));
 
 

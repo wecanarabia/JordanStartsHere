@@ -32,13 +32,13 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
         Category::create($request->except([
             'name_en',
             'name_ar',
             'name_fr',
             'name_es',
-            'name_ko',
+            'name_ru',
         ]));
 
 
@@ -72,13 +72,13 @@ class CategoryController extends Controller
         if ($request->has('image')&&$category->image  && File::exists($category->image)) {
             unlink($category->image);
         }
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ko];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
         $category->update($request->except([
             'name_en',
             'name_ar',
             'name_fr',
             'name_es',
-            'name_ko',
+            'name_ru',
         ]));
 
 

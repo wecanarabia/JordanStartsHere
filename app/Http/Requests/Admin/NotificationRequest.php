@@ -27,12 +27,12 @@ class NotificationRequest extends FormRequest
                 'title_ar' => 'required|min:4|max:255',
                 'title_fr' => 'required|min:4|max:255',
                 'title_es' => 'required|min:4|max:255',
-                'title_ko' => 'required|min:4|max:255',
+                'title_ru' => 'required|min:4|max:255',
                 'body_en' => 'required|min:4|max:10000',
                 'body_ar' => 'required|min:4|max:10000',
                 'body_fr' => 'required|min:4|max:10000',
                 'body_es' => 'required|min:4|max:10000',
-                'body_ko' => 'required|min:4|max:10000',
+                'body_ru' => 'required|min:4|max:10000',
             ];
         } else if($this->has('single_language')){
             return [

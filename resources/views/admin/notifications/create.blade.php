@@ -148,13 +148,13 @@
 
                                                             <div class="col-xl-8 mb-3">
                                                                 <label for="exampleFormControlInputfirst"
-                                                                    class="form-label">Title (Ko)<span
+                                                                    class="form-label">Title (Ru)<span
                                                                         class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control"
                                                                     id="exampleFormControlInputfirst"
-                                                                    name="title_ko"
-                                                                    value="{{ old('title_ko') }}">
-                                                                @error('title_ko')
+                                                                    name="title_ru"
+                                                                    value="{{ old('title_ru') }}">
+                                                                @error('title_ru')
                                                                     <div class="text-danger">{{ $message }}</div>
                                                                 @enderror
                                                             </div>
@@ -206,12 +206,12 @@
                                                             </div>
                                                             <div class="col-xl-8 mb-3">
                                                                 <label for="ckeditor4"
-                                                                    class="form-label">Body-Ko<span
+                                                                    class="form-label">Body-Ru<span
                                                                         class="text-danger">*</span></label>
                                                                 {{-- <div class="card-body custom-ekeditor"> --}}
-                                                                    <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko') }}</textarea>
+                                                                    <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ru">{{ old('body_ru') }}</textarea>
                                                                 {{-- </div> --}}
-                                                                @error('body_ko')
+                                                                @error('body_ru')
                                                                     <div class="text-danger">{{ $message }}</div>
                                                                 @enderror
                                                             </div>
@@ -273,7 +273,7 @@
                 });
             ClassicEditor
                 .create(document.querySelector('#ckeditor4'), {
-                    language: 'ko'
+                    language: 'ru'
                 })
                 .catch(error => {
                     console.error(error);

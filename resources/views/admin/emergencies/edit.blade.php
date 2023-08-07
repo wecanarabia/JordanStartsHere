@@ -63,8 +63,8 @@
 
 
                                            <div class="col-xl-8 mb-3">
-                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Ko)</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="agency_ko" value="{{ old('agency_ko',$emergency->getTranslation('agency','ko')) }}">
+                                            <label for="exampleFormControlInputfirst" class="form-label">Entity responsible (Ru)</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInputfirst" name="agency_ru" value="{{ old('agency_ru',$emergency->getTranslation('agency','ru')) }}">
 
                                         </div>
 

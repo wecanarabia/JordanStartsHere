@@ -30,7 +30,7 @@
                                     <p class="mb-3"><strong>Name-Ar : </strong> {!! $branch->getTranslation('name', 'ar') !!}</p>
                                     <p class="mb-3"><strong>Name-Fr : </strong> {!! $branch->getTranslation('name', 'fr') !!}</p>
                                     <p class="mb-3"><strong>Name-Es : </strong> {!! $branch->getTranslation('name', 'es') !!}</p>
-                                    <p class="mb-3"><strong>Name-Ko : </strong> {!! $branch->getTranslation('name', 'ko') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ru : </strong> {!! $branch->getTranslation('name', 'ru') !!}</p>
                                     <p class="mb-3"><strong>Partner :</strong> <a href="{{ route('admin.partners.show',$branch->partner->id) }}">{{ $branch->partner->name }}</a></p>
                                     <p class="mb-3"><strong>Area :</strong> <a href="{{ route('admin.areas.show',$branch->area->id) }}">{{ $branch->area->name }}</a></p>
                                     <p class="mb-3"><strong>Location : </strong> {{ $branch->location }}</p>

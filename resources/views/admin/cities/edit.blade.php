@@ -60,8 +60,8 @@
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Name-Ko</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko',$city->getTranslation('name','ko')) }}">
+                                        <label for="ckeditor4" class="form-label">Name-Ru</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ru" value="{{ old('name_ru',$city->getTranslation('name','ru')) }}">
 
                                     </div>
                                     <div class="col-xl-6 mb-3">
@@ -120,14 +120,14 @@
 
                                     </div>
                                        <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ko)</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_ko" value="{{ old('title_one_ko',$city->getTranslation('title_one','ko')) }}">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ru)</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_ru" value="{{ old('title_one_ru',$city->getTranslation('title_one','ru')) }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ko)</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_ko" value="{{ old('title_two_ko',$city->getTranslation('title_two','ko')) }}">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ru)</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_ru" value="{{ old('title_two_ru',$city->getTranslation('title_two','ru')) }}">
 
                                     </div>
 

@@ -88,14 +88,14 @@
 
                                     </div>
                                        <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ko)</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_ko" value="{{ old('title_one_ko',$introduction->getTranslation('title_one','ko')) }}">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ru)</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_ru" value="{{ old('title_one_ru',$introduction->getTranslation('title_one','ru')) }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ko)</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_ko" value="{{ old('title_two_ko',$introduction->getTranslation('title_two','ko')) }}">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ru)</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_ru" value="{{ old('title_two_ru',$introduction->getTranslation('title_two','ru')) }}">
 
                                     </div>
 
@@ -129,9 +129,9 @@
                                         {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Body-Ko</label>
+                                        <label for="ckeditor4" class="form-label">Body-Ru</label>
                                         {{-- <div class="card-body custom-ekeditor"> --}}
-                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko',$introduction->getTranslation('body','ko')) }}</textarea>
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ru">{{ old('body_ru',$introduction->getTranslation('body','ru')) }}</textarea>
                                         {{-- </div> --}}
                                     </div>
 
@@ -185,7 +185,7 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );

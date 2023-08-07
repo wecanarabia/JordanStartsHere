@@ -62,9 +62,9 @@
                                         {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Body-Ko</label>
+                                        <label for="ckeditor4" class="form-label">Body-Ru</label>
                                         {{-- <div class="card-body custom-ekeditor"> --}}
-                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko',$advice->getTranslation('body','ko')) }}</textarea>
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ru">{{ old('body_ru',$advice->getTranslation('body','ru')) }}</textarea>
                                         {{-- </div> --}}
                                     </div>
 
@@ -112,7 +112,7 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );
