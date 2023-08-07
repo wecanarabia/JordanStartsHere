@@ -138,7 +138,6 @@ class WorkdayController extends Controller
                 ]);
                 if ($validator->fails()) {
                 $day->update([
-                        'day'=>$day,
                         'from'=>"00:00:00",
                         'to'=>"00:00:00",
                         'status'=>0,
@@ -146,7 +145,6 @@ class WorkdayController extends Controller
                 } else {
 
                     $day->update([
-                        'day'=>$day,
                         'from'=>$request[$day->getTranslation('day','en')."-from"],
                         'to'=>$request[$day->getTranslation('day','en')."-to"],
                         'status'=>1,
@@ -154,7 +152,6 @@ class WorkdayController extends Controller
                 }
             }else{
                 $day->update([
-                    'day'=>$day,
                     'from'=>"00:00:00",
                     'to'=>"00:00:00",
                     'status'=>0,
