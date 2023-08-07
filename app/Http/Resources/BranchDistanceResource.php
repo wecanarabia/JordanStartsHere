@@ -30,8 +30,6 @@ class BranchDistanceResource extends JsonResource
             'lat' => $this->lat,
             'long' => $this->long,
             'location' => $this->location,
-            'latitude' => $this->lat,
-            'longtude' => $this->long,
             'distance' => $this->when(isset($this->distance), $this->distance),
             'area_id' => $this->area?->id,
             'area_name' => $this->area?->name,
