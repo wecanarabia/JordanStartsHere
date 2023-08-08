@@ -211,6 +211,7 @@ Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubOrCat
 
 //range of start price in partner
 Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
+Route::get('single-partner/{id}', [PartnerController::class, 'view']);
 
 
 //Branch
