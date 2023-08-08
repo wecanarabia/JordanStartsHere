@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 
 class AuthController extends Controller
@@ -498,7 +499,11 @@ class AuthController extends Controller
     {
         $user = User::find($id);
 
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $randomCode = Str::random(8, $characters);
+
         $user->phone = 0;
+        $user->email = $randomCode . 0;
         $user->active = 0;
         $user->save();
 
