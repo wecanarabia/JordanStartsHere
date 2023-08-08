@@ -31,8 +31,8 @@ class FaqController extends Controller
      */
     public function store(FaqRequest $request)
     {
-        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,'ko'=>$request->question_ru];
-        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,'ko'=>$request->answer_ru];
+        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,''=>$request->question_ru];
+        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,''=>$request->answer_ru];
         Faq::create($request->except([
             'question_en',
             'question_ar',
@@ -75,8 +75,8 @@ class FaqController extends Controller
     public function update(FaqRequest $request, string $id)
     {
         $faq = Faq::findOrFail($id);
-        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,'ko'=>$request->question_ru];
-        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,'ko'=>$request->answer_ru];
+        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,''=>$request->question_ru];
+        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,''=>$request->answer_ru];
         $faq->update($request->except([
             'question_en',
             'question_ar',

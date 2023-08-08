@@ -34,8 +34,8 @@ class BlogController extends Controller
      */
     public function store(BlogRequest $request)
     {
-        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ru];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ru];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,''=>$request->title_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,''=>$request->description_ru];
         Blog::create($request->except([
             'title_en',
             'title_ar',
@@ -82,8 +82,8 @@ class BlogController extends Controller
         if ($request->has('image')&&$blog->image  && File::exists($blog->image)) {
             unlink($blog->image);
         }
-        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ru];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ru];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,''=>$request->title_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,''=>$request->description_ru];
         $blog->update($request->except([
             'title_en',
             'title_ar',

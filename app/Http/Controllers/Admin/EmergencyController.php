@@ -32,7 +32,7 @@ class EmergencyController extends Controller
      */
     public function store(EmergencyRequest $request)
     {
-        $request['agency']=['en'=>$request->agency_en,'ar'=>$request->agency_ar,'fr'=>$request->agency_fr,'es'=>$request->agency_es,'ko'=>$request->agency_ru];
+        $request['agency']=['en'=>$request->agency_en,'ar'=>$request->agency_ar,'fr'=>$request->agency_fr,'es'=>$request->agency_es,''=>$request->agency_ru];
         Help::create($request->except([
             'agency_en',
             'agency_ar',
@@ -73,7 +73,7 @@ class EmergencyController extends Controller
         if ($request->has('logo')&&$emergency->image  && File::exists($emergency->logo)) {
             unlink($emergency->logo);
         }
-        $request['agency']=['en'=>$request->agency_en,'ar'=>$request->agency_ar,'fr'=>$request->agency_fr,'es'=>$request->agency_es,'ko'=>$request->agency_ru];
+        $request['agency']=['en'=>$request->agency_en,'ar'=>$request->agency_ar,'fr'=>$request->agency_fr,'es'=>$request->agency_es,''=>$request->agency_ru];
         $emergency->update($request->except([
             'agency_en',
             'agency_ar',

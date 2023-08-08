@@ -31,8 +31,8 @@ class PageController extends Controller
      */
     public function store(PageRequest $request)
     {
-        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ru];
-        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ru];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,''=>$request->title_ru];
+        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,''=>$request->body_ru];
         Page::create($request->except([
             'title_en',
             'title_ar',
@@ -75,8 +75,8 @@ class PageController extends Controller
     public function update(PageRequest $request, string $id)
     {
         $page = Page::findOrFail($id);
-        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ru];
-        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ru];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,''=>$request->title_ru];
+        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,''=>$request->body_ru];
         $page->update($request->except([
             'title_en',
             'title_ar',

@@ -37,8 +37,8 @@ class PartnerController extends Controller
      */
     public function store(PartnerRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,''=>$request->description_ru];
         $partner=Partner::create($request->except([
             'name_en',
             'name_ar',
@@ -119,8 +119,8 @@ class PartnerController extends Controller
         if ($request->has('file')&&$partner->file  && File::exists($partner->file)) {
             unlink($partner->file);
         }
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,''=>$request->description_ru];
         $partner->update($request->except([
             'name_en',
             'name_ar',

@@ -31,7 +31,7 @@ class SectionController extends Controller
      */
     public function store(SectionRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
         Section::create($request->except([
             'name_en',
             'name_ar',
@@ -69,7 +69,7 @@ class SectionController extends Controller
     {
         $section = Section::findOrFail($id);
 
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ko'=>$request->name_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
         $section->update($request->except([
             'name_en',
             'name_ar',

@@ -35,8 +35,8 @@ class NotificationController extends Controller
     public function store(NotificationRequest $request)
     {
         if ($request->has('multi_language')) {
-            $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ru];
-            $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ru];
+            $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,''=>$request->title_ru];
+            $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,''=>$request->body_ru];
             $notification=Notification::create($request->only('title','body'));
         }else{
             $notification=Notification::create($request->only('title','body'));
