@@ -215,7 +215,7 @@ Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 Route::middleware('auth:api')->group(function () {
     Route::get('single-partner/{id}', [PartnerController::class, 'view']);
 });
-Route::get('single-partner/{id}', [PartnerController::class, 'view']);
+// Route::get('single-partner/{id}', [PartnerController::class, 'view']);
 
 
 //Branch
