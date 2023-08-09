@@ -212,9 +212,6 @@ Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubOrCat
 
 //range of start price in partner
 Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
-Route::middleware('auth:api')->group(function () {
-    Route::get('single-partner/{id}', [PartnerController::class, 'view']);
-});
 
 
 //Branch
@@ -318,6 +315,7 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 
     Route::post('/user-update', [AuthController::class, 'updateProfile']);
 
+    Route::get('single-partner/{id}', [PartnerController::class, 'view']);
 
 
 
