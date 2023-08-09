@@ -18,8 +18,8 @@ class OptionalAuth
     {
         if (Auth::check()) {
             return $next($request);
-        } else {
-            return $next($request);
         }
+            return $next($request);
+        
     }
 }
