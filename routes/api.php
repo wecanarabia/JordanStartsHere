@@ -58,7 +58,7 @@ Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 
 Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
 
-Route::get('deactivate-user/{id}', [AuthController::class, 'deactivate']);
+Route::post('deactivate-user', [AuthController::class, 'deactivate']);
 
 //forget pw step 1
 Route::post('check-user', [AuthController::class, 'checkUser']);
@@ -171,6 +171,7 @@ Route::middleware('optionalauth')->group(function () {
 Route::get('partners', [PartnerController::class, 'list']);
 Route::get('partners/prices', [PartnerController::class, 'getPrices']);
 Route::post('partner-create', [PartnerController::class, 'save']);
+Route::get('partner/{id}', [PartnerController::class, 'view']);
 
 Route::get('partner/delete/{id}', [PartnerController::class, 'delete']);
 Route::post('partner/edit/{id}', [PartnerController::class, 'edit']);
@@ -272,7 +273,9 @@ Route::post('favorite-create', [FavoriteController::class, 'save']);
 Route::get('favorite/delete/{partner_id}/{user_id}', [FavoriteController::class, 'deletebyID']);
 
 //is partner fav
-Route::post('partner-fav', [PartnerController::class, 'isFav']);
+Route::post('partner-fav', [FavoriteController::class, 'isFav']);
+
+
 
 
 //whatsappCounter
@@ -322,7 +325,7 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
 Route::post('toggle-favorite', [FavoriteController::class, 'toggleFavorite']);
 
-Route::get('partner/{id}', [PartnerController::class, 'view']);
+
 
 
 
