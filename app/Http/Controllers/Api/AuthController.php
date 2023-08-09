@@ -495,20 +495,37 @@ class AuthController extends Controller
 
     }
 
-    public function deactivate($id)
+    public function deactivate(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->user_id);
+
+        //normal user
+        if($request->is_social == 0)
+        {
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         $randomCode = Str::random(8, $characters);
 
         $user->phone = 0;
-        // $user->email = $randomCode . 0;
+        $user->email = $randomCode . 0;
         $user->active = 0;
         $user->save();
 
+        return $this->returnSuccessMessage('Done!');
+        }
 
+        //sosial user
+         if($request->is_social == 1)
+        {
+
+
+        $user->phone = 0;
+        $user->active = 0;
+        $user->save();
 
         return $this->returnSuccessMessage('Done!');
+        }
+
+
     }
 }
