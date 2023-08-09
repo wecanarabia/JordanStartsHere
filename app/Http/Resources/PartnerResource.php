@@ -2,10 +2,14 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Auth;
 use App\Models\Favorite;
+use Illuminate\Http\Request;
+use App\Http\Resources\BranchResource;
+use App\Http\Resources\WorkdayResource;
+use App\Http\Resources\PortraitImageResource;
+use App\Http\Resources\LandscapeImageResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class PartnerResource extends JsonResource
 {
@@ -19,6 +23,7 @@ class PartnerResource extends JsonResource
 
         $fav = false;
         if(Auth::user()){
+            dd('auth');
         $favorite = Favorite::where('user_id',Auth::user()->id)->where('partner_id',$this->id)->first();
             if($favorite){
                 $fav = true ;
