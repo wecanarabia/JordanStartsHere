@@ -58,7 +58,7 @@ Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 
 Route::post('user/token', [AuthController::class, 'updateDeviceToken']);
 
-Route::get('deactivate-user/{id}', [AuthController::class, 'deactivate']);
+Route::post('deactivate-user', [AuthController::class, 'deactivate']);
 
 //forget pw step 1
 Route::post('check-user', [AuthController::class, 'checkUser']);
