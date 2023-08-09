@@ -165,7 +165,6 @@ Route::get('subcategory/{id}', [SubcategoryController::class, 'view']);
 Route::get('subcategory/delete/{id}', [SubcategoryController::class, 'delete']);
 Route::post('subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
 
-Route::middleware('optionalauth')->group(function () {
 
 //partner
 Route::get('partners', [PartnerController::class, 'list']);
@@ -213,7 +212,8 @@ Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubOrCat
 
 //range of start price in partner
 Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
-Route::get('single-partner/{id}', [PartnerController::class, 'view']);
+Route::middleware('optionalauth')->group(function () {
+    Route::get('single-partner/{id}', [PartnerController::class, 'view']);
 });
 
 //Branch
