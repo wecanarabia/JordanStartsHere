@@ -212,9 +212,11 @@ Route::post('partners-filter', [PartnerController::class, 'getPartnersOfSubOrCat
 
 //range of start price in partner
 Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
-Route::middleware('optionalauth')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::get('single-partner/{id}', [PartnerController::class, 'view']);
 });
+Route::get('single-partner/{id}', [PartnerController::class, 'view']);
+
 
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
