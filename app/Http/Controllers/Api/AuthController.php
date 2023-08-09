@@ -503,7 +503,7 @@ class AuthController extends Controller
         $randomCode = Str::random(8, $characters);
 
         $user->phone = 0;
-        $user->email = $randomCode . 0;
+        // $user->email = $randomCode . 0;
         $user->active = 0;
         $user->save();
 
