@@ -208,6 +208,66 @@
                                         @enderror
                                     </div>
 
+                                    <h4 class="heading mb-0"> {{ __('Add Branch') }}</h4>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor" class="form-label">Branch Name-En<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_en" value="{{ old('branch_name_en') }}">
+
+                                        @error('branch_name_en')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor1" class="form-label">Branch Name-Ar<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_ar" value="{{ old('branch_name_ar') }}">
+
+                                        @error('branch_name_ar')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor2" class="form-label">Branch Name-Fr</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_fr" value="{{ old('branch_name_fr') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor3" class="form-label">Branch Name-Es</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_es" value="{{ old('branch_name_es') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor4" class="form-label">Branch Name-Ru</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_ru" value="{{ old('branch_name_ru') }}">
+
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label class="form-label">Area<span class="text-danger">*</span></label>
+                                        <select class="default-select form-control wide mb-3" name="area_id" tabindex="null">
+                                            <option selected disabled>Select Area</option>
+                                            @foreach ($areas as $area)
+                                                <option value="{{ $area->id }}" @selected(old('area_id')==$area->id)>{{ $area->name }}</option>
+                                            @endforeach
+										</select>
+                                        @error('area_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                         @enderror
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="addnote" class="form-label">Location</label><span class="text-danger">*</span></label>
+                                        <input type="text" id="address-input" name="location" value="{{  old('location') }}" class="form-control map-input">
+                                        <input type="hidden" name="lat" id="address-latitude" value="{{  old('lat',0) }}" />
+                                        <input type="hidden" name="long" id="address-longitude" value="{{  old('long',0) }}" />
+                                        <div id="address-map-container" style="width:100%;height:400px; ">
+                                            <div style="width: 100%; height: 100%" id="address-map"></div>
+                                        </div>
+                                        @error('location')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+
+                                       </div>
+
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Save'>
                                     </div>
