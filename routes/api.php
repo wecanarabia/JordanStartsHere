@@ -68,6 +68,7 @@ Route::post('update-password', [AuthController::class, 'changePassword']);
 
 Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 Route::post('update-user', [AuthController::class, 'updateProfile']);
+Route::get('send-otp', [AuthController::class, 'sendFirebaseOtp']);
 
 
 Route::middleware('changeLang')->group(function () {

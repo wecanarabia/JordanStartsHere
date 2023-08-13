@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         \Laravel\Passport\PassportServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        // Brozot\LaravelFCM\FCMServiceProvider::class,
 
         ])->toArray(),
 

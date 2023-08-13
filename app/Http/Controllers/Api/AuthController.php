@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthRequest;
-use App\Http\Requests\PasswordChangeRequest;
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Requests\UserRequest;
-use App\Http\Resources\UserResource;
-use App\Models\User;
-use App\Models\Notification;
-use App\Http\Resources\NotificationResource;
-use App\Repositories\UserRepository;
-use App\Traits\ResponseTrait;
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Firebase\JWT\JWT;
 use Illuminate\Support\Str;
+use App\Models\Notification;
+use Illuminate\Http\Request;
+use App\Traits\ResponseTrait;
+use App\Http\Requests\AuthRequest;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
+use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\PasswordChangeRequest;
+use App\Http\Resources\NotificationResource;
+
 
 
 class AuthController extends Controller
@@ -527,5 +530,20 @@ class AuthController extends Controller
         }
 
 
+    }
+
+    public function sendFirebaseOtp()
+    {
+        $otp = rand(1000, 9999);
+        $user = User::first();
+        $message = new JWT();
+        $message->setPayload($otp);
+        $message->setExpiration(time() + 60);
+        $message->setSecret(env('FIREBASE_API_KEY'));
+        $response = Http::post('https://fcm.googleapis.com/v1/projects/'.env('FIREBASE_PROJECT_ID').'/messages:send', [
+            'content' => $message,
+            ' formatted' => true,
+        ]);
+        return response()->json(['status' => 'success', 'otp' => $otp]);
     }
 }
