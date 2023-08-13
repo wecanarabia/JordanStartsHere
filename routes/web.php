@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-route::get('/verify',function(){
-    return view('verify-otp');
-});
+// route::get('/verify',function(){
+//     return view('verify-otp');
+// });
 require __DIR__ . '/dashboard.php';
