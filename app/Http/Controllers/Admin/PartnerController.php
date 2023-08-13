@@ -40,8 +40,8 @@ class PartnerController extends Controller
      */
     public function store(PartnerRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,''=>$request->description_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ru'=>$request->description_ru];
         $partner=Partner::create($request->except([
             'name_en',
             'name_ar',
@@ -91,7 +91,7 @@ class PartnerController extends Controller
                 'partner_id'=>$partner->id,
             ]);
         }
-        $request['branch_name']=['en'=>$request->branch_name_en,'ar'=>$request->branch_name_ar,'fr'=>$request->branch_name_fr,'es'=>$request->branch_name_es,''=>$request->branch_name_ru];
+        $request['branch_name']=['en'=>$request->branch_name_en,'ar'=>$request->branch_name_ar,'fr'=>$request->branch_name_fr,'es'=>$request->branch_name_es,'ru'=>$request->branch_name_ru];
         Branch::create([
             'name'=>$request['branch_name'],
             'area_id'=>$request->area_id,

@@ -33,10 +33,10 @@ class CityController extends Controller
      */
     public function store(CityRequest $request)
     {
-        $request['title_one']=['en'=>$request->title_one_en,'ar'=>$request->title_one_ar,'fr'=>$request->title_one_fr,'es'=>$request->title_one_es,''=>$request->title_one_ru];
-        $request['title_two']=['en'=>$request->title_two_en,'ar'=>$request->title_two_ar,'fr'=>$request->title_two_fr,'es'=>$request->title_two_es,''=>$request->title_two_ru];
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
-        $request['area']=['en'=>$request->area_name_en,'ar'=>$request->area_name_ar,'fr'=>$request->area_name_fr,'es'=>$request->area_name_es,''=>$request->area_name_ru];
+        $request['title_one']=['en'=>$request->title_one_en,'ar'=>$request->title_one_ar,'fr'=>$request->title_one_fr,'es'=>$request->title_one_es,'ru'=>$request->title_one_ru];
+        $request['title_two']=['en'=>$request->title_two_en,'ar'=>$request->title_two_ar,'fr'=>$request->title_two_fr,'es'=>$request->title_two_es,'ru'=>$request->title_two_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
+        $request['area']=['en'=>$request->area_name_en,'ar'=>$request->area_name_ar,'fr'=>$request->area_name_fr,'es'=>$request->area_name_es,'ru'=>$request->area_name_ru];
         $city = City::create($request->except([
             'title_one_en',
             'title_one_ar',
@@ -98,9 +98,9 @@ class CityController extends Controller
         if ($request->has('image')&&$city->image  && File::exists($city->image)) {
             unlink($city->image);
         }
-        $request['title_one']=['en'=>$request->title_one_en,'ar'=>$request->title_one_ar,'fr'=>$request->title_one_fr,'es'=>$request->title_one_es,''=>$request->title_one_ru];
-        $request['title_two']=['en'=>$request->title_two_en,'ar'=>$request->title_two_ar,'fr'=>$request->title_two_fr,'es'=>$request->title_two_es,''=>$request->title_two_ru];
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
+        $request['title_one']=['en'=>$request->title_one_en,'ar'=>$request->title_one_ar,'fr'=>$request->title_one_fr,'es'=>$request->title_one_es,'ru'=>$request->title_one_ru];
+        $request['title_two']=['en'=>$request->title_two_en,'ar'=>$request->title_two_ar,'fr'=>$request->title_two_fr,'es'=>$request->title_two_es,'ru'=>$request->title_two_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
 
         $city->update($request->except([
             'title_one_en',

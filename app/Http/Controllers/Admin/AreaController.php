@@ -33,7 +33,7 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
         $request['order']=Area::max('order') + 1;
         Area::create($request->except([
             'name_en',
@@ -68,7 +68,7 @@ class AreaController extends Controller
     public function update(AreaRequest $request, string $id)
     {
         $area = Area::findOrFail($id);
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
         $area->update($request->except([
             'name_en',
             'name_ar',

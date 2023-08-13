@@ -33,7 +33,7 @@ class SubCategoryController extends Controller
      */
     public function store(SubCategoryRequest $request)
     {
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
         Subcategory::create($request->except([
             'name_en',
             'name_ar',
@@ -72,7 +72,7 @@ class SubCategoryController extends Controller
     {
         $subcategory = Subcategory::findOrFail($id);
 
-        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,''=>$request->name_ru];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
         $subcategory->update($request->except([
             'name_en',
             'name_ar',
