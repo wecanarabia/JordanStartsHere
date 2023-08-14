@@ -77,7 +77,7 @@ class FavoriteController extends ApiController
         'user_id' => Auth::user()->id,
     ]);
 
-    $partner = Partner::with(['favorites','branches','portraits','landscapes','workdays','reviews'])->find($request->partner_id);
+    $partner = Partner::with(['branches','portraits','landscapes','workdays','reviews'])->find($request->partner_id);
 
     if ($model) {
         $model->delete();
