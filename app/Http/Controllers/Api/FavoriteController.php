@@ -72,7 +72,6 @@ class FavoriteController extends ApiController
 
     public function toggleFavorite(Request $request)
     {
-        dd($request);
         $model = Favorite::where('partner_id',$request->partner_id)->where('user_id',Auth::user()->id)->first();
         $partner = Partner::with(['branches','portraits','landscapes','workdays','reviews'])->find($request->partner_id);
         if ($model) {
