@@ -23,8 +23,8 @@ class PortraitRequest extends FormRequest
     {
         return [
             'images'=>'required_without:id|array|min:1',
-            'images.*'=>'required_without:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
-            'image'=>'required_with:id|max:4000|mimes:jpg,jpeg,gif,png|max:4000',
+            'images.*'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:1000',
+            'image'=>'required_with:id|mimes:jpg,jpeg,gif,png|max:1000',
             'partner_id'=>'required|exists:partners,id',
         ];
     }
