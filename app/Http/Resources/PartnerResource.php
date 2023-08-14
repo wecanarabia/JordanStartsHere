@@ -22,6 +22,8 @@ class PartnerResource extends JsonResource
         $favorite = Favorite::where('user_id',Auth::user()->id)->where('partner_id',$this->id)->first();
             if($favorite){
                 $fav = true ;
+            }else{
+                $fav = false;
             }
         }
 
