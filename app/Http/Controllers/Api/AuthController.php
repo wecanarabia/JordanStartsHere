@@ -202,13 +202,13 @@ class AuthController extends Controller
                 'user' =>  UserResource::make(Auth::user($user)),
             ]]);
         }
-
+        $phone = $request->has('phone')? $request->phone:null;
 
         $user = User::create([
             'name' => $request->name,
             'last_name'=>$request->last_name,
             'email' => $request->email,
-            'phone'=>$request->phone,
+            'phone'=>$phone,
             'profile_image_id'=>'1',
             'password' => Hash::make('1234'),
         ]);
