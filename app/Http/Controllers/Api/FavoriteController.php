@@ -79,7 +79,7 @@ class FavoriteController extends ApiController
             $model->delete();
             return $this->returnData('data',  PartnerResource::make( $partner ), __('Get  succesfully'));
         }else{
-            $favorite = Favorite::create([
+            Favorite::create([
                 'partner_id'=>$request->partner_id,
                 'user_id'=>Auth::user()->id,
             ]);

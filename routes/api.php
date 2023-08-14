@@ -313,6 +313,7 @@ Route::post('page/edit/{id}', [PageController::class, 'edit']);
 
 
 Route::middleware(['auth:api','changeLang'])->group(function () {
+    Route::post('toggle-favorite', [FavoriteController::class, 'toggleFavorite']);
 
     Route::post('/user-update', [AuthController::class, 'updateProfile']);
 
@@ -323,7 +324,6 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
 
     //myFavorites
 Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
-Route::post('toggle-favorite', [FavoriteController::class, 'toggleFavorite']);
 
 
 
