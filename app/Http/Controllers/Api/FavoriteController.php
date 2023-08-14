@@ -76,16 +76,15 @@ class FavoriteController extends ApiController
         $partner = Partner::with(['branches','portraits','landscapes','workdays','reviews'])->find($request->partner_id);
         if ($model) {
             $model->delete();
-            return $this->returnData('data',  PartnerResource::make( $partner ), __('Get  succesfully'));
         }else{
             Favorite::create([
                 'partner_id'=>$request->partner_id,
                 'user_id'=>Auth::user()->id,
             ]);
-            return $this->returnData('data',  PartnerResource::make( $partner ), __('Get  succesfully'));
 
         }
 
+        return $this->returnData('data',  PartnerResource::make( $partner ), __('Get  succesfully'));
 
     }
 
