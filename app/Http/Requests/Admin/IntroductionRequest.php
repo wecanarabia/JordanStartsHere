@@ -22,7 +22,7 @@ class IntroductionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image_number'=>'required:id|integer|min:1|max:6',
+            'image_number'=>'required:id|integer|min:1|max:10',
             'title_one_en' => 'required|min:4|max:255',
             'title_one_ar' => 'required|min:4|max:255',
             'title_two_en' => 'required|min:4|max:255',
