@@ -450,7 +450,7 @@ class AuthController extends Controller
         ]);
 
         Mail::to($user->email)->send(new SendMail($otp));
-
+        return 'Email sent successfully!';
 
         // $client = new \GuzzleHttp\Client();
 
@@ -465,7 +465,7 @@ class AuthController extends Controller
         // ]);
 
 
-        return $response->getBody();
+        // return $response->getBody();
 
         // dd( $response );
 
