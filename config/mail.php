@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'mailersend'),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,6 +44,10 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
+        ],
+
+        'mailersend' => [
+            'transport' => 'mailersend',
         ],
 
         'ses' => [

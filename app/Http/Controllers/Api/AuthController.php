@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Exception;
 use App\Models\User;
 use Firebase\JWT\JWT;
+use App\Mail\SendMail;
 use Illuminate\Support\Str;
 use App\Models\Notification;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\PasswordChangeRequest;
 use App\Http\Resources\NotificationResource;
@@ -434,41 +436,50 @@ class AuthController extends Controller
         return $this->returnSuccessMessage('Code was sent!');
     }
 
-    public function sendOTP($phone)
+    public function sendOTP(Request $request)
     {
         //$otp = 5555;
-         $otp = mt_rand(1000, 9999);
-
-
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', 'http://82.212.81.40:8080/websmpp/websms', [
-            'form_params' => [
-                'user' => 'Wecan',
-                'pass' => 'Suh12346',
-                'sid' => 'Yalla Mazad',
-                'mno' => $phone,
-                'text' => "Your OTP is " . $otp . " for your account",
-                'respformat' => 'json',
-            ],
-            'headers' => [
-                'Authorization' => 'Bearer 2c1d0706b21b715ff1e5a480b8360d90',
-                'Accept'     => 'application/json',
-            ]
+        $characters = '0123456789';
+        $otp = '';
+        for ($i = 0; $i < 6; $i++) {
+          $otp .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        $user = User::where('email',$request->email)->first();
+        $user->update([
+            'otp'=>$otp
         ]);
+
+        Mail::to($user->email)->send(new SendMail($otp));
+
+
+        // $client = new \GuzzleHttp\Client();
+
+        // $response = $client->request('POST', 'https://api.eu.mailgun.net/v3/goldencard.com.jo/messages', [
+        // 'auth' => ['api', env('MAILGUN_SECRET')],
+        //     'form_params' => [
+        //         'from' => 'Golden Card <goldencard@goldencard.com.jo>',
+        //         'to' => Auth::user()->email,
+        //         'subject' => 'OTP Verification',
+        //         'text' => $otp+" is your verification code for " + '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
+        //     ],
+        // ]);
+
+
+        return $response->getBody();
 
         // dd( $response );
 
-        return $otp;
+        // return $otp;
     }
 
 
 
-    public function checkOTP($phone, $otp)
+    public function checkOTP(Request $request)
     {
-        $user = User::where('phone', $phone)->first();
+        $user = User::where('email', $request->email)->first();
 
-        if ((string)$user->otp == (string)$otp) {
-            $user->confirm = 1;
+        if ((string)$user->otp == (string)$request->otp) {
+            $user->active = 1;
             $user->save();
             return true;
 
