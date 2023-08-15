@@ -457,7 +457,7 @@ class AuthController extends Controller
         $response = $client->request('POST', 'https://api.mailersend.com/v1//jordanstartshere.com', [
         'auth' => ['api', env('MAILGUN_SECRET')],
             'form_params' => [
-                'from' => 'Golden Card <goldencard@goldencard.com.jo>',
+                'from' => 'Joradan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
                 'to' => $request->email,
                 'subject' => 'OTP Verification',
                 'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
