@@ -45,8 +45,8 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
+                                                                    <th>Id</th>
                                                                     <th>Name-En</th>
-                                                                    <th>Name-Ar</th>
                                                                     <th>Phone</th>
                                                                     <th>Start Price</th>
                                                                     <th>Suggest as start</th>
@@ -60,11 +60,11 @@
                                                                 @forelse ($data as $partner)
                                                                     <tr>
 
-                                                                        <td><span>{{ $partner->getTranslation('name', 'en') }}</span>
+                                                                        <td><span>{{ $partner->id }}</span>
                                                                         </td>
 
                                                                         <td>
-                                                                            <span>{{ $partner->getTranslation('name', 'ar') }}</span>
+                                                                            <span>{{ $partner->getTranslation('name', 'en') }}</span>
                                                                         </td>
 
                                                                         <td>
@@ -80,7 +80,7 @@
                                                                             <span>{{ $partner->created_at }}</span>
                                                                         </td>
 
-                                                                    
+
 
                                                                         <td>
                                                                             <div class="dropdown">

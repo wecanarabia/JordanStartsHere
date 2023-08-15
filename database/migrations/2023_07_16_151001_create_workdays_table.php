@@ -17,6 +17,7 @@ return new class extends Migration
             $table->time('to');
             $table->string('day');
             $table->integer('partner_id');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

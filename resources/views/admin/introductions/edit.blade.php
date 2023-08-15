@@ -65,45 +65,43 @@
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Fr)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Fr)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_fr" value="{{ old('title_one_fr',$introduction->getTranslation('title_one','fr')) }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Fr)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Fr)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_fr" value="{{ old('title_two_fr',$introduction->getTranslation('title_two','fr')) }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Es)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Es)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_es" value="{{ old('title_one_es',$introduction->getTranslation('title_one','es')) }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Es)<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Es)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_es" value="{{ old('title_two_es',$introduction->getTranslation('title_two','es')) }}">
 
                                     </div>
                                        <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ko)<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_ko" value="{{ old('title_one_ko',$introduction->getTranslation('title_one','ko')) }}">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title One(Ru)</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_one_ru" value="{{ old('title_one_ru',$introduction->getTranslation('title_one','ru')) }}">
 
                                     </div>
 
                                     <div class="col-xl-6 mb-3">
-                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ko)<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_ko" value="{{ old('title_two_ko',$introduction->getTranslation('title_two','ko')) }}">
+                                        <label for="exampleFormControlInputfirst" class="form-label">Title Two(Ru)</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="title_two_ru" value="{{ old('title_two_ru',$introduction->getTranslation('title_two','ru')) }}">
 
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor" class="form-label">Body-En<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en',$introduction->getTranslation('body','en')) }}</textarea>
-                                        </div>
+                                        <label class="form-label">Body-En<span class="text-danger">*</span></label>
+                                        <textarea class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en',$introduction->getTranslation('body','en')) }}</textarea>
                                         @error('body_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -111,30 +109,30 @@
 
                                     <div class="col-xl-8 mb-3">
                                         <label for="ckeditor1" class="form-label">Body-Ar<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="body_ar">{{ old('body_ar',$introduction->getTranslation('body','ar')) }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
                                         @error('body_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
-                                    <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor2" class="form-label">Body-Fr</label>
+                                    {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="body_fr">{{ old('body_fr',$introduction->getTranslation('body','fr')) }}</textarea>
-                                    </div>
+                                    {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor3" class="form-label">Body-Es</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="body_es">{{ old('body_es',$introduction->getTranslation('body','es')) }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko',$introduction->getTranslation('body','ko')) }}</textarea>
-                                        </div>
+                                        <label for="ckeditor4" class="form-label">Body-Ru</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ru">{{ old('body_ru',$introduction->getTranslation('body','ru')) }}</textarea>
+                                        {{-- </div> --}}
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
@@ -169,7 +167,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
     <script>
     ClassicEditor
     .create( document.querySelector( '#ckeditor1'),{language: 'en'} )
@@ -187,10 +185,10 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );
     </script>
-    @endpush
+    @endpush --}}
 </x-admin-layouts.admin-app>

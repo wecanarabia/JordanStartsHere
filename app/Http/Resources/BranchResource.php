@@ -28,6 +28,8 @@ class BranchResource extends JsonResource
             'city_name' => $this->area?->city?->name,
             'partner_id' => $this?->partner?->id,
             'partner_name' => $this?->partner?->name,
+            'category' => $this?->partner?->subcategories?->first()?->category?->name ?? null,
+            'category_image' => $this?->partner?->subcategories?->first()?->category?->image ?? null,
 
 
 

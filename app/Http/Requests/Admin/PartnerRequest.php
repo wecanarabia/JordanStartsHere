@@ -25,18 +25,28 @@ class PartnerRequest extends FormRequest
         return [
             'name_en' => 'required|min:4|max:255',
             'name_ar' => 'required|min:4|max:255',
+            'branch_name_en' => 'required|min:4|max:255',
+            'branch_name_ar' => 'required|min:4|max:255',
             'description_en' => 'required|min:4|max:10000',
             'description_ar' => 'required|min:4|max:10000',
             'logo'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:4000',
             'file'=>'mimes:jpg,gif,jpeg,png,mp4,pdf,txt,mkv,flv,docs,doc,3gb,xlsx,pptx|max:4000',
-            'phone' => 'required|min:9|regex:/^([0-9\s\-\+\(\)]*)$/|unique:partners,phone,'.$this->id,
-            'whatsapp' => 'required|min:9|regex:/^([0-9\s\-\+\(\)]*)$/|unique:partners,whatsapp,'.$this->id,
+            'phone' => 'required|min:9|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'whatsapp' => 'required|min:9|regex:/^([0-9\s\-\+\(\)]*)$/',
             'start_status'=>'nullable|in:0,1',
             'start_price' => 'required|numeric',
             'price_rate' => 'required|integer|min:1|max:5',
             'video_url'=>'nullable|min:4|max:500|url',
             'subcategories'=>'array|min:1',
             'subcategories.*'=>'required|exists:subcategories,id',
+            'portraits'=>'required_without:id|array|min:1',
+            'portraits.*'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:1000',
+            'landscapes'=>'required_without:id|array|min:1',
+            'landscapes.*'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:1000',
+            'area_id'=>'required|exists:areas,id',
+            'lat'=>'required|numeric',
+            'long'=>'required|numeric',
+            'location'=>'required|min:4|max:255',
         ];
     }
 
@@ -45,8 +55,11 @@ class PartnerRequest extends FormRequest
         return [
             'name_en' => 'English Name',
             'name_ar' => 'Arabic Name',
+            'branch_name_en' => 'Branch English Name',
+            'branch_name_ar' => 'Branch Arabic Name',
             'description_en' => 'English Description',
             'description_ar' => 'Arabic Description',
+            'area_id'=>"Area",
         ];
     }
 }

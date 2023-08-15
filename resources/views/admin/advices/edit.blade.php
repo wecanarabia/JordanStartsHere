@@ -33,10 +33,8 @@
                                 <div class="row">
                                     <input type="hidden" name="id" value="{{ $advice->id }}">
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor" class="form-label">Body-En<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en',$advice->getTranslation('body','en')) }}</textarea>
-                                        </div>
+                                        <label class="form-label">Body-En<span class="text-danger">*</span></label>
+                                        <textarea class="form-txtarea form-control" rows="8" name="body_en">{{ old('body_en',$advice->getTranslation('body','en')) }}</textarea>
                                         @error('body_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -44,33 +42,33 @@
 
                                     <div class="col-xl-8 mb-3">
                                         <label for="ckeditor1" class="form-label">Body-Ar<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="body_ar">{{ old('body_ar',$advice->getTranslation('body','ar')) }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
                                         @error('body_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
-                                    <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor2" class="form-label">Body-Fr</label>
+                                    {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="body_fr">{{ old('body_fr',$advice->getTranslation('body','fr')) }}</textarea>
-                                    </div>
+                                    {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor3" class="form-label">Body-Es</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="body_es">{{ old('body_es',$advice->getTranslation('body','es')) }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ko">{{ old('body_ko',$advice->getTranslation('body','ko')) }}</textarea>
-                                        </div>
+                                        <label for="ckeditor4" class="form-label">Body-Ru</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ru">{{ old('body_ru',$advice->getTranslation('body','ru')) }}</textarea>
+                                        {{-- </div> --}}
                                     </div>
 
-                                
+
 
 
 
@@ -96,7 +94,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
     <script>
     ClassicEditor
     .create( document.querySelector( '#ckeditor1'),{language: 'en'} )
@@ -114,10 +112,10 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );
     </script>
-    @endpush
+    @endpush --}}
 </x-admin-layouts.admin-app>

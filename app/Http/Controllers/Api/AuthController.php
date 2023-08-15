@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthRequest;
-use App\Http\Requests\PasswordChangeRequest;
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Requests\UserRequest;
-use App\Http\Resources\UserResource;
-use App\Models\User;
-use App\Repositories\UserRepository;
-use App\Traits\ResponseTrait;
 use Exception;
+use App\Models\User;
+use Firebase\JWT\JWT;
+use App\Mail\SendMail;
+use Illuminate\Support\Str;
+use App\Models\Notification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Traits\ResponseTrait;
+use App\Http\Requests\AuthRequest;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
+use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\PasswordChangeRequest;
+use App\Http\Resources\NotificationResource;
+
 
 
 class AuthController extends Controller
@@ -193,16 +201,16 @@ class AuthController extends Controller
 
             return response(['status' => true, 'code' => 200, 'msg' => 'success', 'data' => [
                 'token' => $accessToken,
-                'user' => $user
+                'user' =>  UserResource::make(Auth::user($user)),
             ]]);
         }
-
+        $phone = $request->has('phone')? $request->phone:null;
 
         $user = User::create([
             'name' => $request->name,
             'last_name'=>$request->last_name,
             'email' => $request->email,
-            'phone'=>$request->phone,
+            'phone'=>$phone,
             'profile_image_id'=>'1',
             'password' => Hash::make('1234'),
         ]);
@@ -245,6 +253,73 @@ class AuthController extends Controller
         try {
 
             $user = Auth::user();
+            if ($user) {
+
+                if (isset($request->email)) {
+                    $check = User::where('email', $request->email)
+                        ->first();
+
+                    if ($check) {
+
+                        return $this->returnError('The email address is already used!');
+                    }
+                }
+
+                if (isset($request->phone)) {
+                    $check = User::where('phone', $request->phone)
+                        ->first();
+
+                    if ($check) {
+
+                        return $this->returnError('The phone number is already used!');
+                    }
+                }
+
+
+
+
+
+                $this->userRepositry->edit($request, $user);
+
+                if ($request->password) {
+
+                    $user->update([
+                            'password' => Hash::make($request->password),
+                        ]);
+
+                }
+
+
+
+
+
+
+
+
+                return $this->returnData('user', new UserResource($user), 'User updated successfully');
+
+
+            }
+
+
+
+
+            // unset($user->image);
+
+            return $this->returnError('Sorry! Failed to find user');
+        } catch (\Exception $e) {
+
+            // return $e;
+
+            return $this->returnError('Sorry! Failed in updating user');
+        }
+    }
+
+    public function updateById(Request $request)
+    {
+        try {
+
+            $user = User::find($request->user_id);
             if ($user) {
 
                 if (isset($request->email)) {
@@ -361,41 +436,50 @@ class AuthController extends Controller
         return $this->returnSuccessMessage('Code was sent!');
     }
 
-    public function sendOTP($phone)
+    public function sendOTP(Request $request)
     {
         //$otp = 5555;
-         $otp = mt_rand(1000, 9999);
-
-
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', 'http://82.212.81.40:8080/websmpp/websms', [
-            'form_params' => [
-                'user' => 'Wecan',
-                'pass' => 'Suh12346',
-                'sid' => 'Yalla Mazad',
-                'mno' => $phone,
-                'text' => "Your OTP is " . $otp . " for your account",
-                'respformat' => 'json',
-            ],
-            'headers' => [
-                'Authorization' => 'Bearer 2c1d0706b21b715ff1e5a480b8360d90',
-                'Accept'     => 'application/json',
-            ]
+        $characters = '0123456789';
+        $otp = '';
+        for ($i = 0; $i < 6; $i++) {
+          $otp .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        $user = User::where('email',$request->email)->first();
+        $user->update([
+            'otp'=>$otp
         ]);
+
+        Mail::to($user->email)->send(new SendMail($otp));
+        return 'Email sent successfully!';
+
+        // $client = new \GuzzleHttp\Client();
+
+        // $response = $client->request('POST', 'https://api.mailersend.com/v1/jordanstartshere.com', [
+        // 'auth' => ['api', env('MAILGUN_SECRET')],
+        //     'form_params' => [
+        //         'from' => 'Joradan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
+        //         'to' => $request->email,
+        //         'subject' => 'OTP Verification',
+        //         'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
+        //     ],
+        // ]);
+
+
+        return $response->getBody();
 
         // dd( $response );
 
-        return $otp;
+        // return $otp;
     }
 
 
 
-    public function checkOTP($phone, $otp)
+    public function checkOTP(Request $request)
     {
-        $user = User::where('phone', $phone)->first();
+        $user = User::where('email', $request->email)->first();
 
-        if ((string)$user->otp == (string)$otp) {
-            $user->confirm = 1;
+        if ((string)$user->otp == (string)$request->otp) {
+            $user->active = 1;
             $user->save();
             return true;
 
@@ -407,10 +491,70 @@ class AuthController extends Controller
 
     public function updateDeviceToken(Request $request)
     {
-        $user = Auth::user();
+        // $user = Auth::user();
+        $user = User::find($request->user_id);
         $user->device_token = $request->device_token;
         $user->save();
 
-        return $this->returnData('user', UserResource::make(User::find(Auth::user()->id)), 'successful');
+        return $this->returnData('user', UserResource::make($user), 'successful');
+    }
+
+        public function myNotifications()
+    {
+
+
+        // $notifications = Notification::where('user_id',Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        $notifications = Notification::orderBy('created_at', 'DESC')->get();
+        return $this->returnData('data',  NotificationResource::collection( $notifications ), __('Get  succesfully'));
+
+    }
+
+    public function deactivate(Request $request)
+    {
+        $user = User::find($request->user_id);
+
+        //normal user
+        if($request->is_social == 0)
+        {
+
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $randomCode = Str::random(8, $characters);
+
+        $user->phone = 0;
+        $user->email = $randomCode . 0;
+        $user->active = 0;
+        $user->save();
+
+        return $this->returnSuccessMessage('Done!');
+        }
+
+        //sosial user
+         if($request->is_social == 1)
+        {
+
+
+        $user->phone = 0;
+        $user->active = 0;
+        $user->save();
+
+        return $this->returnSuccessMessage('Done!');
+        }
+
+
+    }
+
+    public function sendFirebaseOtp()
+    {
+        $otp = rand(1000, 9999);
+        $user = User::first();
+        $message = new JWT();
+        $message->setPayload($otp);
+        $message->setExpiration(time() + 60);
+        $message->setSecret(env('FIREBASE_API_KEY'));
+        $response = Http::post('https://fcm.googleapis.com/v1/projects/'.env('FIREBASE_PROJECT_ID').'/messages:send', [
+            'content' => $message,
+            ' formatted' => true,
+        ]);
+        return response()->json(['status' => 'success', 'otp' => $otp]);
     }
 }

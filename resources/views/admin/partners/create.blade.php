@@ -48,26 +48,24 @@
                                         @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor2" class="form-label">Name-Fr<span class="text-danger">*</span></label>
+                                        <label for="ckeditor2" class="form-label">Name-Fr</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_fr" value="{{ old('name_fr') }}">
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor3" class="form-label">Name-Es<span class="text-danger">*</span></label>
+                                        <label for="ckeditor3" class="form-label">Name-Es</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_es" value="{{ old('name_es') }}">
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Name-Ko<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ko" value="{{ old('name_ko') }}">
+                                        <label for="ckeditor4" class="form-label">Name-Ru</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="name_ru" value="{{ old('name_ru') }}">
 
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor" class="form-label">Body-En<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="description_en">{{ old('description_en') }}</textarea>
-                                        </div>
+                                        <label class="form-label">Body-En<span class="text-danger">*</span></label>
+                                        <textarea class="form-txtarea form-control" rows="8" name="description_en">{{ old('description_en') }}</textarea>
                                         @error('description_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -75,30 +73,30 @@
 
                                     <div class="col-xl-8 mb-3">
                                         <label for="ckeditor1" class="form-label">Body-Ar<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="description_ar">{{ old('description_ar') }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
                                         @error('description_ar')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor2" class="form-label">Body-Fr<span class="text-danger">*</span></label>
-                                    <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor2" class="form-label">Body-Fr</label>
+                                    {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="description_fr">{{ old('description_fr') }}</textarea>
-                                    </div>
+                                    {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor3" class="form-label">Body-Es<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor3" class="form-label">Body-Es</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
                                         <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="description_es">{{ old('description_es') }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Body-Ko<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="description_ko">{{ old('description_ko') }}</textarea>
-                                        </div>
+                                        <label for="ckeditor4" class="form-label">Body-Ru</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="description_ru">{{ old('description_ru') }}</textarea>
+                                        {{-- </div> --}}
                                     </div>
                                     <div class="col-xl-8 mb-3">
                                         <label class="form-label">Phone<span class="text-danger">*</span></label>
@@ -133,7 +131,7 @@
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label class="form-label">Video Url<span class="text-danger">*</span></label>
+                                        <label class="form-label">Video Url</label>
                                         <input type="url" class="form-control" name="video_url" value="{{ old('video_url') }}">
                                         @error('video_url')
                                             <div class="text-danger">{{ $message }}</div>
@@ -169,7 +167,7 @@
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="file" class="form-label">Attachement<span class="text-danger">*</span></label>
+                                        <label for="file" class="form-label">Attachement</label>
                                         <input class="form-control" type="file" name="file" id="file">
                                         @error('file')
                                             <div class="text-danger">{{ $message }}</div>
@@ -195,6 +193,82 @@
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
+                                        <label for="portraits" class="form-label">Portraits<span class="text-danger">*</span></label>
+                                        <input class="form-control" type="file" name="portraits[]" id="image" multiple>
+                                        @error('portraits')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="landscapes" class="form-label">Landscapes<span class="text-danger">*</span></label>
+                                        <input class="form-control" type="file" name="landscapes[]" id="image" multiple>
+                                        @error('landscapes')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <h4 class="heading mb-0"> {{ __('Add Branch') }}</h4>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor" class="form-label">Branch Name-En<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_en" value="{{ old('branch_name_en') }}">
+
+                                        @error('branch_name_en')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor1" class="form-label">Branch Name-Ar<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_ar" value="{{ old('branch_name_ar') }}">
+
+                                        @error('branch_name_ar')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor2" class="form-label">Branch Name-Fr</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_fr" value="{{ old('branch_name_fr') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor3" class="form-label">Branch Name-Es</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_es" value="{{ old('branch_name_es') }}">
+
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="ckeditor4" class="form-label">Branch Name-Ru</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputfirst" name="branch_name_ru" value="{{ old('branch_name_ru') }}">
+
+                                    </div>
+
+                                    <div class="col-xl-8 mb-3">
+                                        <label class="form-label">Area<span class="text-danger">*</span></label>
+                                        <select class="default-select form-control wide mb-3" name="area_id" tabindex="null">
+                                            <option selected disabled>Select Area</option>
+                                            @foreach ($areas as $area)
+                                                <option value="{{ $area->id }}" @selected(old('area_id')==$area->id)>{{ $area->name }}</option>
+                                            @endforeach
+										</select>
+                                        @error('area_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                         @enderror
+                                    </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="addnote" class="form-label">Location</label><span class="text-danger">*</span></label>
+                                        <input type="text" id="address-input" name="location" value="{{  old('location') }}" class="form-control map-input">
+                                        <input type="hidden" name="lat" id="address-latitude" value="{{  old('lat',0) }}" />
+                                        <input type="hidden" name="long" id="address-longitude" value="{{  old('long',0) }}" />
+                                        <div id="address-map-container" style="width:100%;height:400px; ">
+                                            <div style="width: 100%; height: 100%" id="address-map"></div>
+                                        </div>
+                                        @error('location')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+
+                                       </div>
+
+                                    <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Save'>
                                     </div>
 
@@ -215,7 +289,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
     <script>
     ClassicEditor
     .create( document.querySelector( '#ckeditor1'),{language: 'en'} )
@@ -233,10 +307,10 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );
     </script>
-    @endpush
+    @endpush --}}
 </x-admin-layouts.admin-app>

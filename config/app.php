@@ -169,7 +169,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \Laravel\Passport\PassportServiceProvider::class,
-    ])->toArray(),
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        // Brozot\LaravelFCM\FCMServiceProvider::class,
+
+        ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------
@@ -184,6 +187,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

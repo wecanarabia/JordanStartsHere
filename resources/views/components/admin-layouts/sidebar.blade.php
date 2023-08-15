@@ -5,7 +5,7 @@
         <div class="deznav">
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
-					<li class="menu-title">Golden Card</li>
+					<li class="menu-title">Jordan Starts Here</li>
 					<li><a href="{{ route('admin.dashboard') }}" aria-expanded="false">
 						<div class="menu-icon">
 							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +129,26 @@
                             <li><a href="{{ route('admin.partners.index') }}">Partners</a></li>
                             <li><a href="{{ route('admin.portraits.index') }}">Portrait Images</a></li>
                             <li><a href="{{ route('admin.landscapes.index') }}">landscape Images</a></li>
+                            <li><a href="{{ route('admin.branches.index') }}">Branches</a></li>
+                            <li><a href="{{ route('admin.workdays.index') }}">Workdays</a></li>
+                            <li><a href="{{ route('admin.partner.whatsapp.counter') }}">Whatsapp Counter</a></li>
+                            <li><a href="{{ route('admin.partner.call.counter') }}">Call Counter</a></li>
+                            <li><a href="{{ route('admin.partner.view.counter') }}">View Counter</a></li>
                         </ul>
+					</li>
+                    <li><a href="{{ route('admin.notifications.index') }}" class="" href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>                                              </div>
+						<span class="nav-text">Notifications</span>
+						</a>
+
+					</li>
+                    <li><a href="{{ route('admin.reviews.index') }}" class="" href="javascript:void(0);" aria-expanded="false">
+						<div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>                                             </div>
+						<span class="nav-text">Reviews</span>
+						</a>
+
 					</li>
                     {{-- @can('pages')
                     <li><a href="{{ route('admin.pages.index') }}" class="" aria-expanded="false">

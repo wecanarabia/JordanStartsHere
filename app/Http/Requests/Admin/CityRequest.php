@@ -28,6 +28,8 @@ class CityRequest extends FormRequest
             'title_two_ar' => 'required|min:4|max:255',
             'name_en' => 'required|min:4|max:255',
             'name_ar' => 'required|min:4|max:255',
+            'area_name_en' => 'required_without:id|min:4|max:255',
+            'area_name_ar' => 'required_without:id|min:4|max:255',
             'image'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:4000',
         ];
     }
@@ -41,6 +43,8 @@ class CityRequest extends FormRequest
             'title_two_ar' => 'Arabic Second Title',
             'name_en' => 'English Name',
             'name_ar' => 'Arabic Name',
+            'area_name_en' => 'English Area Name',
+            'area_name_ar' => 'Arabic Area Name',
         ];
     }
 }

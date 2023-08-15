@@ -30,12 +30,12 @@
                                 <p class="mb-3"><strong>Title(Ar) : </strong> {{ $blog->getTranslation('title','ar') }}</p>
                                 <p class="mb-3"><strong>Title(Fr) : </strong> {{ $blog->getTranslation('title','fr') }}</p>
                                 <p class="mb-3"><strong>Title(Es) : </strong> {{ $blog->getTranslation('title','es') }}</p>
-                                <p class="mb-3"><strong>Title(Ko) : </strong> {{ $blog->getTranslation('title','ko') }}</p>
-                                <p class="mb-3"><strong>Body-En : </strong> {!! $blog->getTranslation('description', 'en') !!}</p>
-                                <p class="mb-3"><strong>Body-Ar : </strong> {!! $blog->getTranslation('description', 'ar') !!}</p>
-                                <p class="mb-3"><strong>Body-Fr : </strong> {!! $blog->getTranslation('description', 'fr') !!}</p>
-                                <p class="mb-3"><strong>Body-Es : </strong> {!! $blog->getTranslation('description', 'es') !!}</p>
-                                <p class="mb-3"><strong>Body-Ko : </strong> {!! $blog->getTranslation('description', 'ko') !!}</p>
+                                <p class="mb-3"><strong>Title(Ru) : </strong> {{ $blog->getTranslation('title','ru') }}</p>
+                                <p class="mb-3"><strong>Body-En : </strong> {{ $blog->getTranslation('description', 'en') }}</p>
+                                <p class="mb-3"><strong>Body-Ar : </strong> {{ $blog->getTranslation('description', 'ar') }}</p>
+                                <p class="mb-3"><strong>Body-Fr : </strong> {{ $blog->getTranslation('description', 'fr') }}</p>
+                                <p class="mb-3"><strong>Body-Es : </strong> {{ $blog->getTranslation('description', 'es') }}</p>
+                                <p class="mb-3"><strong>Body-Ru : </strong> {{ $blog->getTranslation('description', 'ru') }}</p>
                                 <p class="mb-3"><strong>Section : </strong><a href="{{ route('admin.sections.show',$blog->section->id) }}"> {{ $blog->section->name }}</a></p>
                                 <p class="mb-3"><strong>Number of views : </strong> {{ $blog->number_of_views }}</p>
                                 <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $blog->image ) }}" alt="{{ $blog->title }}">

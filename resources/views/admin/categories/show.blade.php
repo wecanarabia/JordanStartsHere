@@ -31,7 +31,7 @@
                                     <p class="mb-3"><strong>Name-Ar : </strong> {!! $category->getTranslation('name', 'ar') !!}</p>
                                     <p class="mb-3"><strong>Name-Fr : </strong> {!! $category->getTranslation('name', 'fr') !!}</p>
                                     <p class="mb-3"><strong>Name-Es : </strong> {!! $category->getTranslation('name', 'es') !!}</p>
-                                    <p class="mb-3"><strong>Name-Ko : </strong> {!! $category->getTranslation('name', 'ko') !!}</p>
+                                    <p class="mb-3"><strong>Name-Ru : </strong> {!! $category->getTranslation('name', 'ru') !!}</p>
 
                                     <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $category->image ) }}" alt="{{ $category->name }}">
                                 </div>

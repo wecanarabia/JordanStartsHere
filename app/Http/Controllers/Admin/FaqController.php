@@ -31,19 +31,19 @@ class FaqController extends Controller
      */
     public function store(FaqRequest $request)
     {
-        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,'ko'=>$request->question_ko];
-        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,'ko'=>$request->answer_ko];
+        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,'ru'=>$request->question_ru];
+        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,'ru'=>$request->answer_ru];
         Faq::create($request->except([
             'question_en',
             'question_ar',
             'question_fr',
             'question_es',
-            'question_ko',
+            'question_ru',
             'answer_en',
             'answer_ar',
             'answer_fr',
             'answer_es',
-            'answer_ko',
+            'answer_ru',
         ]));
 
 
@@ -75,19 +75,19 @@ class FaqController extends Controller
     public function update(FaqRequest $request, string $id)
     {
         $faq = Faq::findOrFail($id);
-        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,'ko'=>$request->question_ko];
-        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,'ko'=>$request->answer_ko];
+        $request['question']=['en'=>$request->question_en,'ar'=>$request->question_ar,'fr'=>$request->question_fr,'es'=>$request->question_es,'ru'=>$request->question_ru];
+        $request['answer']=['en'=>$request->answer_en,'ar'=>$request->answer_ar,'fr'=>$request->answer_fr,'es'=>$request->answer_es,'ru'=>$request->answer_ru];
         $faq->update($request->except([
             'question_en',
             'question_ar',
             'question_fr',
             'question_es',
-            'question_ko',
+            'question_ru',
             'answer_en',
             'answer_ar',
             'answer_fr',
             'answer_es',
-            'answer_ko',
+            'answer_ru',
         ]));
 
 

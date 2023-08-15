@@ -23,11 +23,10 @@ class BranchRequest extends FormRequest
      */
     public function rules(): array
     {
-        $services = Service::pluck('id')->toArray();
         return [
-            'english_name' => 'required|min:4|max:255',
-            'arabic_name' => 'required|min:4|max:255',
-            'service_id'=>[ 'required', Rule::in($services)],
+            'name_en' => 'required|min:4|max:255',
+            'name_ar' => 'required|min:4|max:255',
+            'partner_id'=>[ 'required', 'exists:partners,id'],
             'area_id'=>'required|exists:areas,id',
             'lat'=>'required|numeric',
             'long'=>'required|numeric',
@@ -35,14 +34,14 @@ class BranchRequest extends FormRequest
         ];
     }
 
-            public function attributes(): array
-        {
-            return [
-                'service_id' => 'Partner',
-                'area_id' => 'Area',
-                'english_name' => 'English Name',
-                'arabic_name' => 'Arabic Name',
-            ];
-        }
+    public function attributes(): array
+    {
+        return [
+            'partner_id' => 'Partner',
+            'area_id' => 'Area',
+            'name_en' => 'English Name',
+            'name_ar' => 'Arabic Name',
+        ];
+    }
 
 }

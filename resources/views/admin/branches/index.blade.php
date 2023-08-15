@@ -45,9 +45,10 @@
                                                             style="min-width: 845px">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>English Name</th>
-                                                                    <th>Arabic Name</th>
+                                                                    <th>Name-En</th>
+                                                                    <th>Name-Ar</th>
                                                                     <th>Partner</th>
+                                                                    <th>Area</th>
                                                                     <th>Location</th>
 
 
@@ -65,7 +66,10 @@
                                                                             <span>{{ $branch->getTranslation('name', 'ar') }}</span>
                                                                         </td>
                                                                         <td>
-                                                                            <span>{{ $branch->service->name }}</span>
+                                                                            <span><a href="{{ route('admin.partners.show',$branch->partner->id) }}">{{ $branch->partner->name }}</a></span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span><a href="{{ route('admin.areas.show',$branch->area->id) }}">{{ $branch->area->name }}</a></span>
                                                                         </td>
                                                                         <td>
                                                                             <span>{{ $branch->location }}</span>
@@ -108,13 +112,11 @@
                                                                                         href="{{ route('admin.branches.edit', $branch->id) }}">Edit</a>
                                                                                     <a class="dropdown-item"
                                                                                         href="{{ route('admin.branches.show', $branch->id) }}">Show</a>
-                                                                                    @if (Auth::user()->can('all-services'))
                                                                                         <button class="dropdown-item"
                                                                                             data-bs-toggle="modal"
                                                                                             data-bs-target="#deleteModal"
                                                                                             data-id="{{ $branch->id }}"
                                                                                             data-name="{{ $branch->name }}">Delete</button>
-                                                                                    @endif
                                                                                 </div>
                                                                             </div>
                                                                         </td>
@@ -149,7 +151,6 @@
     <!--**********************************
             Content body end
         ***********************************-->
-    @if (Auth::user()->can('all-services'))
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -191,5 +192,4 @@
                 })
             </script>
         @endpush
-    @endif
 </x-admin-layouts.admin-app>

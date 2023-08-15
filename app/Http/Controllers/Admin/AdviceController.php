@@ -31,13 +31,13 @@ class AdviceController extends Controller
      */
     public function store(AdviceRequest $request)
     {
-        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ko];
+        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ru'=>$request->body_ru];
         Advice::create($request->except([
             'body_en',
             'body_ar',
             'body_fr',
             'body_es',
-            'body_ko',
+            'body_ru',
         ]));
 
 
@@ -70,13 +70,13 @@ class AdviceController extends Controller
     {
         $advice = Advice::findOrFail($id);
 
-        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ko'=>$request->body_ko];
+        $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,'ru'=>$request->body_ru];
         $advice->update($request->except([
             'body_en',
             'body_ar',
             'body_fr',
             'body_es',
-            'body_ko',
+            'body_ru',
         ]));
 
 

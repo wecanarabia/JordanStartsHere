@@ -38,6 +38,11 @@ class Partner extends Model
 
             if ($partner->branches)$partner->branches()->delete();
             if ($partner->workdays)$partner->workdays()->delete();
+            if ($partner->subcategories()->count()>0)$partner->subcategories()->detach();
+            if ($partner->whatsappCounter)$partner->whatsappCounter()->delete();
+            if ($partner->callCounter)$partner->callCounter()->delete();
+            if ($partner->viewCounter)$partner->viewCounter()->delete();
+            if ($partner->reviews)$partner->reviews()->delete();
             if ($partner->portraits){
                 foreach ($partner->portraits as $portrait) {
                     unlink($portrait->image);
@@ -67,7 +72,7 @@ class Partner extends Model
 
     public function workdays()
 	{
-		return $this->hasMany(Workday::class);
+		return $this->hasMany(Workday::class)->where('status', 1);
 	}
 
     public function portraits()
@@ -80,6 +85,21 @@ class Partner extends Model
 		return $this->hasMany(LandscapeImage::class);
 	}
 
+    public function whatsappCounter()
+	{
+		return $this->hasMany(WhatsappCounter::class);
+	}
+
+    public function callCounter()
+	{
+		return $this->hasMany(CallCounter::class);
+	}
+
+    public function viewCounter()
+	{
+		return $this->hasMany(ViewCounter::class);
+	}
+
     public function subcategories(){
 
         return $this->belongsToMany(Subcategory::class,'partner_subcategories','partner_id','subcategory_id');
@@ -89,7 +109,9 @@ class Partner extends Model
 
     public function reviews()
 {
-    return $this->hasMany(Review::class, 'partner_id')->where('status',1);
+    return $this->hasMany(Review::class)->where('status',1)->orderBy('id', 'desc');
 }
+
+
 
 }

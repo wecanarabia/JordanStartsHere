@@ -34,19 +34,19 @@ class BlogController extends Controller
      */
     public function store(BlogRequest $request)
     {
-        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ko];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ko];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ru'=>$request->title_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ru'=>$request->description_ru];
         Blog::create($request->except([
             'title_en',
             'title_ar',
             'title_fr',
             'title_es',
-            'title_ko',
+            'title_ru',
             'description_en',
             'description_ar',
             'description_fr',
             'description_es',
-            'description_ko',
+            'description_ru',
         ]));
 
 
@@ -82,19 +82,19 @@ class BlogController extends Controller
         if ($request->has('image')&&$blog->image  && File::exists($blog->image)) {
             unlink($blog->image);
         }
-        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ko'=>$request->title_ko];
-        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ko'=>$request->description_ko];
+        $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,'ru'=>$request->title_ru];
+        $request['description']=['en'=>$request->description_en,'ar'=>$request->description_ar,'fr'=>$request->description_fr,'es'=>$request->description_es,'ru'=>$request->description_ru];
         $blog->update($request->except([
             'title_en',
             'title_ar',
             'title_fr',
             'title_es',
-            'title_ko',
+            'title_ru',
             'description_en',
             'description_ar',
             'description_fr',
             'description_es',
-            'description_ko',
+            'description_ru',
         ]));
 
 

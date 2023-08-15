@@ -47,26 +47,24 @@
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputsecond" class="form-label">Question-Fr<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputsecond" class="form-label">Question-Fr</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_fr" value="{{ old('question_fr') }}">
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputsecond" class="form-label">Question-Es<span class="text-danger">*</span></label>
+                                        <label for="exampleFormControlInputsecond" class="form-label">Question-Es</label>
                                         <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_es" value="{{ old('question_es') }}">
 
                                     </div>
                                     <div class="col-xl-8 mb-3">
-                                        <label for="exampleFormControlInputsecond" class="form-label">Question-Ko<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_ko" value="{{ old('question_ko') }}">
+                                        <label for="exampleFormControlInputsecond" class="form-label">Question-Ru</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInputsecond" name="question_ru" value="{{ old('question_ru') }}">
 
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                    <label for="ckeditor" class="form-label">Answer-En<span class="text-danger">*</span></label>
-                                    <div class="card-body custom-ekeditor">
-                                        <textarea id="ckeditor" class="form-txtarea form-control" rows="8" name="answer_en">{{ old('answer_en') }}</textarea>
-                                    </div>
+                                    <label class="form-label">Answer-En<span class="text-danger">*</span></label>
+                                        <textarea class="form-txtarea form-control" rows="8" name="answer_en">{{ old('answer_en') }}</textarea>
                                         @error('answer_en')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -74,40 +72,40 @@
 
                                     <div class="col-xl-8 mb-3">
                                     <label for="ckeditor1" class="form-label">Answer-Ar<span class="text-danger">*</span></label>
-                                    <div class="card-body custom-ekeditor">
+                                    {{-- <div class="card-body custom-ekeditor"> --}}
 
                                     <textarea id="ckeditor1" class="form-txtarea form-control" rows="8" name="answer_ar">{{ old('answer_ar') }}</textarea>
-                                    </div>
+                                    {{-- </div> --}}
                                     @error('answer_ar')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor2" class="form-label">Answer-Fr<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor2" class="form-label">Answer-Fr</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
 
                                         <textarea id="ckeditor2" class="form-txtarea form-control" rows="8" name="answer_fr">{{ old('answer_ar') }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
 
                                         </div>
 
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor3" class="form-label">Answer-Es<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor3" class="form-label">Answer-Es</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
 
                                         <textarea id="ckeditor3" class="form-txtarea form-control" rows="8" name="answer_es">{{ old('answer_ar') }}</textarea>
-                                        </div>
+                                        {{-- </div> --}}
 
                                         </div>
 
                                     <div class="col-xl-8 mb-3">
-                                        <label for="ckeditor4" class="form-label">Answer-Ko<span class="text-danger">*</span></label>
-                                        <div class="card-body custom-ekeditor">
+                                        <label for="ckeditor4" class="form-label">Answer-Ru</label>
+                                        {{-- <div class="card-body custom-ekeditor"> --}}
 
-                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="answer_ko">{{ old('answer_ar') }}</textarea>
-                                        </div>
+                                        <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="answer_ru">{{ old('answer_ar') }}</textarea>
+                                        {{-- </div> --}}
 
                                         </div>
 
@@ -135,7 +133,7 @@
     <!--**********************************
         Content body end
     ***********************************-->
-    @push('javasc')
+    {{-- @push('javasc')
     <script>
     ClassicEditor
     .create( document.querySelector( '#ckeditor1'),{language: 'en'} )
@@ -153,10 +151,10 @@
             console.error( error );
         } );
     ClassicEditor
-    .create( document.querySelector( '#ckeditor4'),{language: 'ko'} )
+    .create( document.querySelector( '#ckeditor4'),{language: 'ru'} )
         .catch( error => {
             console.error( error );
         } );
     </script>
-    @endpush
+    @endpush --}}
 </x-admin-layouts.admin-app>

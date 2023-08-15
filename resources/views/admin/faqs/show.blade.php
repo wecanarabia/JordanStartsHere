@@ -31,12 +31,12 @@
                                     <p class="mb-3"><strong>Question-Ar : </strong> {{ $faq->getTranslation('question', 'ar') }}</p>
                                     <p class="mb-3"><strong>Question-Fr : </strong> {{ $faq->getTranslation('question', 'fr') }}</p>
                                     <p class="mb-3"><strong>Question-Es : </strong> {{ $faq->getTranslation('question', 'es') }}</p>
-                                    <p class="mb-3"><strong>Question-Ko : </strong> {{ $faq->getTranslation('question', 'ko') }}</p>
-                                    <p class="mb-3"><strong>Answer-En : </strong> {!! $faq->getTranslation('answer', 'en') !!}</p>
-                                    <p class="mb-3"><strong>Answer-An :</strong> {!! $faq->getTranslation('answer', 'ar') !!}</p>
-                                    <p class="mb-3"><strong>Answer-Fr :</strong> {!! $faq->getTranslation('answer', 'fr') !!}</p>
-                                    <p class="mb-3"><strong>Answer-Es :</strong> {!! $faq->getTranslation('answer', 'es') !!}</p>
-                                    <p class="mb-3"><strong>Answer-Ko :</strong> {!! $faq->getTranslation('answer', 'ko') !!}</p>
+                                    <p class="mb-3"><strong>Question-Ru : </strong> {{ $faq->getTranslation('question', 'ru') }}</p>
+                                    <p class="mb-3"><strong>Answer-En : </strong> {{ $faq->getTranslation('answer', 'en') }}</p>
+                                    <p class="mb-3"><strong>Answer-An :</strong> {{ $faq->getTranslation('answer', 'ar') }}</p>
+                                    <p class="mb-3"><strong>Answer-Fr :</strong> {{ $faq->getTranslation('answer', 'fr') }}</p>
+                                    <p class="mb-3"><strong>Answer-Es :</strong> {{ $faq->getTranslation('answer', 'es') }}</p>
+                                    <p class="mb-3"><strong>Answer-Ru :</strong> {{ $faq->getTranslation('answer', 'ru') }}</p>
 
                         </div>
                         </div>

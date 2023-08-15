@@ -30,7 +30,7 @@
                                 <p class="mb-3"><strong>Entity responsible(Ar) : </strong> {{ $emergency->getTranslation('agency','ar') }}</p>
                                 <p class="mb-3"><strong>Entity responsible(Fr) : </strong> {{ $emergency->getTranslation('agency','fr') }}</p>
                                 <p class="mb-3"><strong>Entity responsible(Es) : </strong> {{ $emergency->getTranslation('agency','es') }}</p>
-                                <p class="mb-3"><strong>Entity responsible(Ko) : </strong> {{ $emergency->getTranslation('agency','ko') }}</p>
+                                <p class="mb-3"><strong>Entity responsible(Ru) : </strong> {{ $emergency->getTranslation('agency','ru') }}</p>
                                 <p class="mb-3"><strong>Phone : </strong> {{ $emergency->phone }}</p>
                                 <p class="mb-3"><strong>Whatsapp : </strong> {{ $emergency->whatsapp }}</p>
 

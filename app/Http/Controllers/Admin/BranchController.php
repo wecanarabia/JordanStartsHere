@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Area;
 use App\Models\Branch;
+use App\Models\Partner;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,12 +18,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->can('all-services')) {
-            $data = Branch::with('service')->latest()->get();
-        }elseif(Auth::user()->can('services')){
-            $services = Service::where('admin_id',Auth::user()->id)->latest()->get();
-            $data = Branch::with('service')->whereBelongsTo($services)->latest()->get();
-        }
+        $data = Branch::with('partner')->latest()->get();
         return view('admin.branches.index',compact('data'));
     }
 
@@ -31,13 +27,9 @@ class BranchController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->can('all-services')) {
-            $services = Service::all();
-        }elseif(Auth::user()->can('services')){
-            $services = Service::where('admin_id',Auth::user()->id)->latest()->get();
-        }
+        $partners = Partner::all();
         $areas = Area::all();
-        return view('admin.branches.create',compact('services','areas'));
+        return view('admin.branches.create',compact('partners','areas'));
     }
 
     /**
@@ -45,10 +37,13 @@ class BranchController extends Controller
      */
     public function store(BranchRequest $request)
     {
-        $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
         Branch::create($request->except([
-            'english_name',
-            'arabic_name',
+            'name_en',
+            'name_ar',
+            'name_fr',
+            'name_es',
+            'name_ru',
         ]));
 
 
@@ -60,13 +55,7 @@ class BranchController extends Controller
 
     public function show(string $id)
     {
-        if (Auth::user()->can('all-services')) {
-            $branch = Branch::with(['service','area'])->findOrFail($id);
-        }elseif(Auth::user()->can('services')){
-            $services = Service::where('admin_id',Auth::user()->id)->latest()->get();
-            $branch = Branch::with(['service','area'])->whereBelongsTo($services)->findOrFail($id);
-
-        }
+        $branch = Branch::with(['partner','area'])->findOrFail($id);
         return view('admin.branches.show',compact('branch'));
     }
 
@@ -75,15 +64,10 @@ class BranchController extends Controller
      */
     public function edit(string $id)
     {
-        if (Auth::user()->can('all-services')) {
-            $branch = Branch::with(['service','area'])->findOrFail($id);
-            $services = Service::all();
-        }elseif(Auth::user()->can('services')){
-            $services = Service::where('admin_id',Auth::user()->id)->latest()->get();
-            $branch = Branch::with(['service','area'])->whereBelongsTo($services)->findOrFail($id);
-        }
+        $branch = Branch::with(['partner','area'])->findOrFail($id);
+        $partners = Partner::all();
         $areas = Area::all();
-        return view('admin.branches.edit',compact('branch','services','areas'));
+        return view('admin.branches.edit',compact('branch','partners','areas'));
     }
 
     /**
@@ -93,10 +77,13 @@ class BranchController extends Controller
     {
         $branche = Branch::findOrFail($id);
 
-        $request['name']=['en'=>$request->english_name,'ar'=>$request->arabic_name];
+        $request['name']=['en'=>$request->name_en,'ar'=>$request->name_ar,'fr'=>$request->name_fr,'es'=>$request->name_es,'ru'=>$request->name_ru];
         $branche->update($request->except([
-            'english_name',
-            'arabic_name',
+            'name_en',
+            'name_ar',
+            'name_fr',
+            'name_es',
+            'name_ru',
         ]));
 
 
@@ -109,9 +96,7 @@ class BranchController extends Controller
      */
     public function destroy(Request $request)
     {
-        if (Auth::user()->can('all-services')) {
-            Branch::findOrFail($request->id)->delete();
-        }
+        Branch::findOrFail($request->id)->delete();
         return redirect()->route('admin.branches.index')->with('success','Branch has been removed successfully');
     }
 }

@@ -43,6 +43,7 @@
 													<table id="example" class="display table" style="min-width: 845px">
                                                         <thead>
                                                 <tr>
+                                                    <th>Id</th>
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
                                                     <th>Email</th>
@@ -57,6 +58,7 @@
                                                 @forelse ($data as $user)
                                                     <tr>
 
+                                                        <td><span>{{ $user->id }}</span></td>
                                                         <td><span>{{ $user->name }}</span></td>
                                                         <td><span>{{ $user->last_name }}</span></td>
                                                         <td>
