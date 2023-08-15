@@ -458,7 +458,7 @@ class AuthController extends Controller
         'auth' => ['api', env('MAILGUN_SECRET')],
             'form_params' => [
                 'from' => 'Golden Card <goldencard@goldencard.com.jo>',
-                'to' => Auth::user()->email,
+                'to' => $request->email,
                 'subject' => 'OTP Verification',
                 'text' => $otp+" is your verification code for " + '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
             ],
