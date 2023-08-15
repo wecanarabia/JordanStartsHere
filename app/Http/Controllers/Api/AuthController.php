@@ -449,23 +449,23 @@ class AuthController extends Controller
             'otp'=>$otp
         ]);
 
-        Mail::to($user->email)->send(new SendMail($otp));
-        return 'Email sent successfully!';
+        // Mail::to($user->email)->send(new SendMail($otp));
+        // return 'Email sent successfully!';
 
-        // $client = new \GuzzleHttp\Client();
+        $client = new \GuzzleHttp\Client();
 
-        // $response = $client->request('POST', 'https://api.eu.mailgun.net/v3/goldencard.com.jo/messages', [
-        // 'auth' => ['api', env('MAILGUN_SECRET')],
-        //     'form_params' => [
-        //         'from' => 'Golden Card <goldencard@goldencard.com.jo>',
-        //         'to' => Auth::user()->email,
-        //         'subject' => 'OTP Verification',
-        //         'text' => $otp+" is your verification code for " + '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
-        //     ],
-        // ]);
+        $response = $client->request('POST', 'https://smtp.mailersend.net/jordanstartshere.com/messages', [
+        'auth' => ['api', env('MAILERSEND_API_KEY')],
+            'form_params' => [
+                'from' => 'Jordan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
+                'to' => $user->email,
+                'subject' => 'OTP Verification',
+                'text' => $otp+" is your verification code for " + '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
+            ],
+        ]);
 
 
-        // return $response->getBody();
+        return $response->getBody();
 
         // dd( $response );
 
