@@ -460,7 +460,7 @@ class AuthController extends Controller
                 'from' => 'Jordan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
                 'to' => $user->email,
                 'subject' => 'OTP Verification',
-                'text' => $otp+' is your verification code for jordanstartshere.com',
+                'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
             ],
         ]);
 
