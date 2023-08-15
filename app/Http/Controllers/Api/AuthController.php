@@ -453,7 +453,11 @@ class AuthController extends Controller
         // return 'Email sent successfully!';
 
         $client = new \GuzzleHttp\Client();
-
+        $client->setConfig([
+            'curl' => [
+                'sslversion' => 'TLSv1.2',
+            ],
+        ]);
         $response = $client->request('POST', 'https://smtp.mailersend.net:587/jordanstartshere.com/messages', [
             'auth' => ['api', env('MAILERSEND_API_KEY')],
             'form_params' => [
