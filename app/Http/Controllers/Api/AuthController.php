@@ -458,7 +458,7 @@ class AuthController extends Controller
                 'sslversion' => 'TLSv1.2',
             ],
         ]);
-        $response = $client->request('POST', 'https://smtp.mailersend.net:587/jordanstartshere.com/messages', [
+        $response = $client->request('POST', get_url('https://smtp.mailersend.net:587/jordanstartshere.com/messages'), [
             'auth' => ['api', env('MAILERSEND_API_KEY')],
             'form_params' => [
                 'from' => 'Jordan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
