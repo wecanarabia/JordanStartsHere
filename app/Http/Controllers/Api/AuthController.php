@@ -449,20 +449,20 @@ class AuthController extends Controller
             'otp'=>$otp
         ]);
 
-        // Mail::to($user->email)->send(new SendMail($otp));
-        // return 'Email sent successfully!';
+        Mail::to($user->email)->send(new SendMail($otp));
+        return 'Email sent successfully!';
 
-        $client = new \GuzzleHttp\Client();
+        // $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('POST', 'https://api.mailersend.com/v1/jordanstartshere.com', [
-        'auth' => ['api', env('MAILGUN_SECRET')],
-            'form_params' => [
-                'from' => 'Joradan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
-                'to' => $request->email,
-                'subject' => 'OTP Verification',
-                'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
-            ],
-        ]);
+        // $response = $client->request('POST', 'https://api.mailersend.com/v1/jordanstartshere.com', [
+        // 'auth' => ['api', env('MAILGUN_SECRET')],
+        //     'form_params' => [
+        //         'from' => 'Joradan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
+        //         'to' => $request->email,
+        //         'subject' => 'OTP Verification',
+        //         'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
+        //     ],
+        // ]);
 
 
         return $response->getBody();

@@ -37,15 +37,15 @@ class SendMail extends Mailable
     /**
      * Get the message content definition.
      */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'email',
-            with: [
-                'otp' => $this->otp,
-            ],
-        );
-    }
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         view: 'email',
+    //         with: [
+    //             'otp' => $this->otp,
+    //         ],
+    //     );
+    // }
 
     /**
      * Get the attachments for the message.
@@ -56,4 +56,36 @@ class SendMail extends Mailable
     // {
     //     return [];
     // }
+
+    public function build()
+    {
+        $to = Arr::get($this->to, '0.address');
+
+        return $this->view('email')
+            ->mailersend(
+                null,
+                [
+                    new Variable($to, ['name' => 'Jordan Starts Here'])
+                ],
+                ['tag'],
+                [
+                    new Personalization($to, [
+                        'var' => 'variable',
+                        'number' => 123,
+                        'object' => [
+                            'key' => 'object-value'
+                        ],
+                        'objectCollection' => [
+                            [
+                                'name' => 'MailerSend'
+                            ],
+                            [
+                                'name' => 'Guru'
+                            ]
+                        ],
+                    ])
+                ]
+            );
+    }
 }
+
