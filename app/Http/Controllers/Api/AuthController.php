@@ -452,17 +452,17 @@ class AuthController extends Controller
         Mail::to($user->email)->send(new SendMail($otp));
         return 'Email sent successfully!';
 
-        // $client = new \GuzzleHttp\Client();
+        $client = new \GuzzleHttp\Client();
 
-        // $response = $client->request('POST', 'https://api.mailersend.com/v1/jordanstartshere.com', [
-        // 'auth' => ['api', env('MAILGUN_SECRET')],
-        //     'form_params' => [
-        //         'from' => 'Joradan Starts Here <MS_Pfwqyx@jordanstartshere.com>',
-        //         'to' => $request->email,
-        //         'subject' => 'OTP Verification',
-        //         'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
-        //     ],
-        // ]);
+        $response = $client->request('POST', 'https://api.eu.mailgun.net/v3/sandbox87820be5de754238bc98f4b201e135fd.mailgun.org/messages', [
+            'auth' => ['api', env('MAILGUN_SECRET')],
+                'form_params' => [
+                'from' => 'Jordan Starts Here <jordanstartshere@gmail.com>',
+                'to' => $request->email,
+                'subject' => 'OTP Verification',
+                'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
+            ],
+        ]);
 
 
         return $response->getBody();
