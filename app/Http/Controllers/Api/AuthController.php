@@ -454,7 +454,7 @@ class AuthController extends Controller
 
         $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('POST', 'https://api.eu.mailgun.net/v3/sandbox87820be5de754238bc98f4b201e135fd.mailgun.org/messages', [
+        $response = $client->request('POST', 'https://api.mailgun.net/v3/sandbox87820be5de754238bc98f4b201e135fd.mailgun.org/messages', [
             'auth' => ['api', env('MAILGUN_SECRET')],
                 'form_params' => [
                 'from' => 'Jordan Starts Here <jordanstartshere@gmail.com>',
