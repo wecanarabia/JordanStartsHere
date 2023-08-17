@@ -169,9 +169,7 @@ class AuthController extends Controller
     {
         $user = User::where('phone',$request->phone)->orWhere('email',$request->email)->first();
 
-        if ($user) {
-
-
+        if ($user && $request->password!=null) {
                 $user->update([
                     'password' => Hash::make($request->password),
                 ]);
