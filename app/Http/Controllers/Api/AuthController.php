@@ -168,7 +168,7 @@ class AuthController extends Controller
     public function changePassword(Request $request)
     {
         $user = User::where('phone',$request->phone)->orWhere('email',$request->email)->first();
-
+        return $user;
 
         if ($user) {
 
