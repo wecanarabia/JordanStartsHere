@@ -493,12 +493,10 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if ($user) {
-            $password = bcrypt($request->new_password);
-            ($user->update([
-                'password'=> $password
+            $user->update([
+                'password' => Hash::make($request->password),
             ]);
 
-            $user->save();
         return $this->returnSuccessMessage('Password has been updated successfully!');
 
     }
