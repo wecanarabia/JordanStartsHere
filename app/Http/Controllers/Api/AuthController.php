@@ -173,7 +173,10 @@ class AuthController extends Controller
             $user = User::where('email',$request->email)->first();
         }
 
-        if ($user && $request->password!=null) {
+        if ($user) {
+            if ( $request->password==null) {
+                return $this->returnError('Password field is required!');
+            }
                 $user->update([
                     'password' => Hash::make($request->password),
                 ]);
