@@ -497,8 +497,7 @@ class AuthController extends Controller
                 'password' => $password,
             ]);
 
-        return $this->returnSuccessMessage($password);
-        // return $this->returnSuccessMessage('Password has been updated successfully!');
+        return $this->returnSuccessMessage('Password has been updated successfully!');
 
     }
 
