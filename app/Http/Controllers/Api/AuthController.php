@@ -488,7 +488,7 @@ class AuthController extends Controller
         return false;
     }
 
-    public function updatePasswordEmail(Request $request)
+    public function updatePass(Request $request)
     {
         $user = User::where('email', $request->email)->first();
 
