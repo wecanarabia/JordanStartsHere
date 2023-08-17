@@ -494,7 +494,7 @@ class AuthController extends Controller
 
         if ($user) {
             $user->update([
-                'password' => Hash::make($request->password),
+                'password' => Hash::make($request->new_password),
             ]);
 
         return $this->returnSuccessMessage('Password has been updated successfully!');
