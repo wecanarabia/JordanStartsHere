@@ -455,10 +455,10 @@ class AuthController extends Controller
 
             $client = new \GuzzleHttp\Client();
 
-            $response = $client->request('POST', 'https://api.mailgun.net/v3/sandbox87820be5de754238bc98f4b201e135fd.mailgun.org/messages', [
+            $response = $client->request('POST', 'https://api.mailgun.net/v3/jordanstartshere.com/messages', [
                 'auth' => ['api', env('MAILGUN_SECRET')],
                     'form_params' => [
-                    'from' => 'Jordan Starts Here <jordanstartshere@gmail.com>',
+                    'from' => 'Jordan Starts Here <jordanstartshere@jordanstartshere.com>',
                     'to' => $request->email,
                     'subject' => 'OTP Verification',
                     'text' => $otp." is your verification code for " . '<a href="https://jordanstartshere.com">jordanstartshere.com</a>',
