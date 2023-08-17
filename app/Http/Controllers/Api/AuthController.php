@@ -489,22 +489,7 @@ class AuthController extends Controller
         return false;
     }
 
-    public function updatePass(Request $request)
-    {
-        $user = User::where('email', $request->email)->first();
-        if ($user && $request->password) {
-            $password = Hash::make($request->password);
-            $user->update([
-                'password' => $password,
-            ]);
-
-        return $this->returnSuccessMessage('Password has been updated successfully!');
-
-    }
-
-    return $this->returnError('Something has been wrong');
-    }
-
+    
 
     public function updateDeviceToken(Request $request)
     {
