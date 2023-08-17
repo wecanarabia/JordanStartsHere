@@ -494,7 +494,10 @@ class AuthController extends Controller
 
         if ($user) {
             $password = bcrypt($request->new_password);
-            $user->password = $password;
+            ($user->update([
+                'password'=> $password
+            ]);
+
             $user->save();
         return $this->returnSuccessMessage('Password has been updated successfully!');
 
