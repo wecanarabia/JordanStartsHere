@@ -491,7 +491,7 @@ class AuthController extends Controller
     public function updatePass(Request $request)
     {
         $user = User::where('email', $request->email)->first();
-
+        dd($request->password);
         if ($user && $request->password) {
             $password = Hash::make($request->password);
             $user->update([
