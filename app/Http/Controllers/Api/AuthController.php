@@ -179,9 +179,10 @@ class AuthController extends Controller
                 ]);
 
             return $this->returnSuccessMessage('Password has been changed');
+        }else{
+            return $this->returnError('User not found!');
         }
 
-        return $this->returnError('User not found!');
     }
 
 
