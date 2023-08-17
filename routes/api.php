@@ -65,6 +65,7 @@ Route::post('check-user', [AuthController::class, 'checkUser']);
 
 
 Route::post('update-password', [AuthController::class, 'changePassword']);
+Route::post('update-password-email', [AuthController::class, 'updatePasswordEmail']);
 
 Route::get('delete-user/{id}', [AuthController::class, 'delete']);
 Route::post('update-user', [AuthController::class, 'updateProfile']);

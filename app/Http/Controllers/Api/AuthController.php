@@ -488,6 +488,21 @@ class AuthController extends Controller
         return false;
     }
 
+    public function updatePasswordEmail(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        if ($user) {
+            $password = bcrypt($request->new_password);
+            $user->password = $password;
+            $user->save();
+        return $this->returnSuccessMessage('Password has been updated successfully!');
+
+    }
+
+    return $this->returnError('Something has been wrong');
+    }
+
 
     public function updateDeviceToken(Request $request)
     {
