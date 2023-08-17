@@ -493,12 +493,13 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if ($user && $request->password) {
-            dd(Hash::make($request->password));
+            $password = Hash::make($request->password);
             $user->update([
-                'password' => Hash::make($request->password),
+                'password' => $password,
             ]);
 
-        return $this->returnSuccessMessage('Password has been updated successfully!');
+        return $this->returnSuccessMessage($password);
+        // return $this->returnSuccessMessage('Password has been updated successfully!');
 
     }
 
