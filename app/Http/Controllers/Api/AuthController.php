@@ -461,7 +461,7 @@ class AuthController extends Controller
                     'from' => 'Jordan Starts Here <jordanstartshere@jordanstartshere.com>',
                     'to' => $request->email,
                     'subject' => 'OTP Verification',
-                    'text' => " is your verification code for jordanstartshere.com" .$otp,
+                    'text' => "$otp is your verification code for jordanstartshere.com",
                 ],
             ]);
             return $response->getBody();
