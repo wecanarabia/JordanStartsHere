@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
 
         // If the user is logged in, update the transient
         if ($login_status) {
-          Cache::put('user_login_status', true, 60 * 60 * 12); // 12 hours
+          Cache::put('user_login_status', true, 60 * 60 * 24); // 12 hours
         }
     }
 }
