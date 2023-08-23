@@ -43,10 +43,10 @@ class PartnerRequest extends FormRequest
             'portraits.*'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:1000',
             'landscapes'=>'required_without:id|array|min:1',
             'landscapes.*'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:1000',
-            'area_id'=>'required|exists:areas,id',
-            'lat'=>'required|numeric',
-            'long'=>'required|numeric',
-            'location'=>'required|min:4|max:255',
+            'area_id'=>'required_without:id|exists:areas,id',
+            'lat'=>'required_without:id|numeric',
+            'long'=>'required_without:id|numeric',
+            'location'=>'required_without:id|min:4|max:255',
         ];
     }
 
