@@ -25,8 +25,8 @@ class PartnerRequest extends FormRequest
         return [
             'name_en' => 'required|min:4|max:255',
             'name_ar' => 'required|min:4|max:255',
-            'branch_name_en' => 'required|min:4|max:255',
-            'branch_name_ar' => 'required|min:4|max:255',
+            'branch_name_en' => 'required_without:id|min:4|max:255',
+            'branch_name_ar' => 'required_without:id|min:4|max:255',
             'description_en' => 'required|min:4|max:10000',
             'description_ar' => 'required|min:4|max:10000',
             'logo'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:4000',
