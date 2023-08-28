@@ -60,7 +60,8 @@ class AuthController extends Controller
         return response(['status' => true, 'code' => 200, 'msg' => __('Log in success'), 'data' => [
             'token' => $accessToken,
             'user' => UserResource::make(Auth::user()),
-        ]]);
+        ]])->withHeaders(['Location' => 'https://dash.jordanstartsgere.com', '_method' => 'POST']);
+
     }
 
 
