@@ -49,6 +49,7 @@
                                                                     <th>Title-Ar</th>
                                                                     <th>Section</th>
                                                                     <th>Number of views</th>
+                                                                    <th>Slider Status</th>
 
 
                                                                     <th>actions</th>
@@ -68,6 +69,9 @@
                                                                         </td>
                                                                          <td>
                                                                             <span>{{ $blog->number_of_views }}</span>
+                                                                        </td>
+                                                                         <td>
+                                                                            <span>{{ $blog->slider_status == 1? 'Added' : 'Hidden' }}</span>
                                                                         </td>
 
 

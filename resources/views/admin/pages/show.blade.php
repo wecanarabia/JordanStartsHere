@@ -36,6 +36,7 @@
                                 <p class="mb-3"><strong>Body-Fr : </strong> {{ $page->getTranslation('body', 'fr') }}</p>
                                 <p class="mb-3"><strong>Body-Es : </strong> {{ $page->getTranslation('body', 'es') }}</p>
                                 <p class="mb-3"><strong>Body-Ru : </strong> {{ $page->getTranslation('body', 'ru') }}</p>
+                                <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $page->image ) }}" alt="{{ $page->title }}">
 
                         </div>
                         </div>

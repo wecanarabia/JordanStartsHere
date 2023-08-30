@@ -34,6 +34,7 @@ class PartnerRequest extends FormRequest
             'phone' => 'required|min:9|regex:/^([0-9\s\-\+\(\)]*)$/',
             'whatsapp' => 'required|min:9|regex:/^([0-9\s\-\+\(\)]*)$/',
             'start_status'=>'nullable|in:0,1',
+            'status'=>'nullable|in:0,1',
             'start_price' => 'required|numeric',
             'price_rate' => 'required|integer|min:1|max:5',
             'video_url'=>'nullable|min:4|max:500|url',

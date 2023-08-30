@@ -191,6 +191,24 @@
                                         <div class="text-danger">{{ $message }}</div>
                                          @enderror
                                     </div>
+                                    <div class="col-xl-8 mb-3">
+                                        <label class="form-label">Status<span class="text-danger">*</span></label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="notsuggested" type="radio" name="status" value="0" @checked(old('status')==0)>
+                                            <label class="form-check-label" for="notsuggested">
+                                                InActive
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="suggested" type="radio" name="status" value="1" @checked(old('status')==1)>
+                                            <label class="form-check-label" for="suggested">
+                                                Active
+                                            </label>
+                                        </div>
+                                        @error('status')
+                                        <div class="text-danger">{{ $message }}</div>
+                                         @enderror
+                                    </div>
 
                                     <div class="col-xl-8 mb-3">
                                         <label for="portraits" class="form-label">Portraits<span class="text-danger">*</span></label>

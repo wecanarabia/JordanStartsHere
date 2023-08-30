@@ -27,7 +27,7 @@
                                 <div class="container-fluid">
                                 <h4 class="heading mb-0"> {{ __('Edit Page') }}</h4>
 
-                            <form method="POST" action="{{ route("admin.pages.update",$page->id) }}">
+                            <form method="POST" action="{{ route("admin.pages.update",$page->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
@@ -105,7 +105,13 @@
                                             <textarea id="ckeditor4" class="form-txtarea form-control" rows="8" name="body_ru">{{ old('body_ru',$page->getTranslation('body','ru')) }}</textarea>
                                             {{-- </div> --}}
                                         </div>
-
+                                        <div class="col-xl-8 mb-3">
+                                            <label for="image" class="form-label">Image</label>
+                                            <input class="form-control" type="file" name="image" id="image">
+                                            @error('image')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Update '>

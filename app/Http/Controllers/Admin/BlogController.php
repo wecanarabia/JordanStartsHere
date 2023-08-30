@@ -108,6 +108,6 @@ class BlogController extends Controller
     public function destroy(Request $request)
     {
         Blog::findOrFail($request->id)->delete();
-        return redirect()->route('admin.advices.index')->with('success','Advice has been removed successfully');
+        return redirect()->route('admin.advices.index')->with('success','Blog has been removed successfully');
     }
 }

@@ -28,6 +28,7 @@ class BlogRequest extends FormRequest
             'description_ar' => 'required|min:4|max:10000',
             'section_id'=> 'required|exists:sections,id',
             'image'=>'required_without:id|mimes:jpg,jpeg,gif,png|max:1000',
+            'slider_status'=>'nullable|in:0,1',
         ];
     }
 

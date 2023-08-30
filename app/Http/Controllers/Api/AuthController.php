@@ -42,15 +42,7 @@ class AuthController extends Controller
 
     public function login(AuthRequest $request)
     {
-        use GuzzleHttp\Client;
 
-$client = new Client();
-$response = $client->post('http://dash.jordanstartshere.com', [
-    'form_params' => [
-        'phone' => $request->phone,
-        'password' => $request->password,
-    ]
-]);
         if (!Auth::attempt(
             $request->only([
                 'phone',

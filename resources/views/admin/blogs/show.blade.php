@@ -38,6 +38,7 @@
                                 <p class="mb-3"><strong>Body-Ru : </strong> {{ $blog->getTranslation('description', 'ru') }}</p>
                                 <p class="mb-3"><strong>Section : </strong><a href="{{ route('admin.sections.show',$blog->section->id) }}"> {{ $blog->section->name }}</a></p>
                                 <p class="mb-3"><strong>Number of views : </strong> {{ $blog->number_of_views }}</p>
+                                <p class="mb-3"><strong>Slider Status : </strong> {{ $blog->slider_status == 1? 'Added' : 'Hidden' }}</p>
                                 <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $blog->image ) }}" alt="{{ $blog->title }}">
 
 

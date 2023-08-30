@@ -27,7 +27,7 @@
                                 <div class="container-fluid">
                                 <h4 class="heading mb-0"> {{ __('Add Page') }}</h4>
 
-                            <form method="POST" action="{{ route('admin.pages.store') }}">
+                            <form method="POST" action="{{ route('admin.pages.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
@@ -105,7 +105,13 @@
                                     </div>
 
 
-
+                                    <div class="col-xl-8 mb-3">
+                                        <label for="image" class="form-label">Image</label>
+                                        <input class="form-control" type="file" name="image" id="image">
+                                        @error('image')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
 
                                     <div class="col-xl-8 mb-3">
                                         <input type="submit" class="btn btn-primary me-1" value='Save'>

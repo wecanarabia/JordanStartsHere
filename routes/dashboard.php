@@ -44,7 +44,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::resource('advices', AdviceController::class);
         Route::resource('sections', SectionController::class);
         Route::resource('blogs', BlogController::class);
-        Route::resource('pages', PageController::class)->except(['destroy']);
+        Route::resource('pages', PageController::class);
         Route::resource('admins', AdminController::class)->except(['show']);
 
         // users

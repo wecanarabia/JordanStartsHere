@@ -41,6 +41,7 @@
                                     <p class="mb-3"><strong>Phone :</strong> {{ $partner->phone }}</p>
                                     <p class="mb-3"><strong>Whatsapp :</strong> {{ $partner->whatsapp }}</p>
                                     <p class="mb-3"><strong>Suggested as Start :</strong> {{ $partner->start_status == 1? 'Suggested' : 'Not Suggested' }}</p>
+                                    <p class="mb-3"><strong>Status :</strong> {{ $partner->status == 1? 'Active' : 'InActive' }}</p>
                                     <p class="mb-3"><strong>Start Price :</strong> {{ $partner?->start_price}}</p>
                                     <p class="mb-3"><strong>Pricce Rate : </strong> {{ $partner->price_rate }}</p>
                                     <p class="mb-3"><strong>Video Url : </strong> {{ $partner->video_url }}</p>

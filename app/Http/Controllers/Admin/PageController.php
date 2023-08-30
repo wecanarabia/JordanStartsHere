@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\Admin\PageRequest;
 
 class PageController extends Controller
@@ -75,6 +76,9 @@ class PageController extends Controller
     public function update(PageRequest $request, string $id)
     {
         $page = Page::findOrFail($id);
+        if ($request->has('image')&&$page->image  && File::exists($page->image)) {
+            unlink($page->image);
+        }
         $request['title']=['en'=>$request->title_en,'ar'=>$request->title_ar,'fr'=>$request->title_fr,'es'=>$request->title_es,''=>$request->title_ru];
         $request['body']=['en'=>$request->body_en,'ar'=>$request->body_ar,'fr'=>$request->body_fr,'es'=>$request->body_es,''=>$request->body_ru];
         $page->update($request->except([
@@ -93,6 +97,15 @@ class PageController extends Controller
 
         return redirect()->route('admin.pages.index')
                         ->with('success','Page has been updated successfully');
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request)
+    {
+        Page::findOrFail($request->id)->delete();
+        return redirect()->route('admin.pages.index')->with('success','Page has been removed successfully');
     }
 
 }

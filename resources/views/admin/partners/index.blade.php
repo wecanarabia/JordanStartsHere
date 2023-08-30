@@ -50,6 +50,7 @@
                                                                     <th>Phone</th>
                                                                     <th>Start Price</th>
                                                                     <th>Suggest as start</th>
+                                                                    <th>Status</th>
                                                                     <th>Created At</th>
 
 
@@ -75,6 +76,9 @@
                                                                         </td>
                                                                         <td>
                                                                             <span>{{ $partner->start_status == 1? 'Suggested' : 'Not Suggested' }}</span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span>{{ $partner->status == 1? 'Active' : 'InActive' }}</span>
                                                                         </td>
                                                                         <td>
                                                                             <span>{{ $partner->created_at }}</span>
