@@ -21,6 +21,7 @@ class BlogResource extends JsonResource
             'description'=> $this->description,
             // 'number_of_views'=> $this->number_of_views,
             'image'=> $this->image,
+            'slider_status'=> $this->slider_status,
             'created_at'=> $this->created_at,
             'section_id'=> $this->section?->id,
             'section_name'=> $this->section?->name,
