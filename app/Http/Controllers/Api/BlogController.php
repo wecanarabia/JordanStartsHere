@@ -54,7 +54,6 @@ class BlogController extends ApiController
 
 
         $data=Blog::orderBy('id', 'DESC')->take(5)->get();
-        return $data;
         return $this->returnData('data',  BlogResource::collection( $data ), __('Get  succesfully'));
 
        }
