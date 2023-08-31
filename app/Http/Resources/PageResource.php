@@ -18,6 +18,7 @@ class PageResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
+            'image' => $this->image,
         ];
     }
 }
