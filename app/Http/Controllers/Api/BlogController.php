@@ -74,8 +74,8 @@ class BlogController extends ApiController
 {
     $section = Section::find($section_id);
     if ($section && $section->blogs()->count() > 0) {
-        return $data;
         $data = $section->blogs()->inRandomOrder()->take(5)->get();
+        return $data;
         return $this->returnData('data', BlogResource::collection($data), __('Get successfully'));
     }
     return $this->returnError(__('Sorry! Failed to get!'));
