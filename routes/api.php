@@ -169,7 +169,7 @@ Route::post('subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
 
 
 //partner
-Route::get('partners', [PartnerController::class, 'list']);
+Route::get('partners', [PartnerController::class, 'partners']);
 Route::get('partners/prices', [PartnerController::class, 'getPrices']);
 Route::post('partner-create', [PartnerController::class, 'save']);
 Route::get('partner/{id}', [PartnerController::class, 'view']);
