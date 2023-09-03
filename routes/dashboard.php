@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\BlogController;
@@ -11,22 +12,22 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdviceController;
 use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\WorkdayController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PortraitController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmergencyController;
 use App\Http\Controllers\Admin\LandscapeController;
 use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\IntroductionController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileImageController;
-use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\Admin\WorkdayController;
 
 Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
     Route::get('/login',[AdminLoginController::class, 'getLogin'])->name('login-page');
@@ -85,6 +86,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function (){
         Route::get('reviews/upload/sheet',[ReviewController::class,'upload'])->name('reviews.upload');
         Route::post('reviews/import',[ReviewController::class,'import'])->name('reviews.import');
 
+        Route::get('ads/show', [AdController::class, 'show'])->name('ads.show');
+        Route::get('ads/edit', [AdController::class, 'edit'])->name('ads.edit');
+        Route::put('ads/update', [AdController::class, 'update'])->name('ads.update');
 
 
         // 404 not found
