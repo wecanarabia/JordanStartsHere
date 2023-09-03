@@ -37,14 +37,14 @@ class PartnerController extends ApiController
 
 
     public function partners() {
-        $partners = Partner::where('status', 1)->get();
+        $partners = Partner::all();
         return $this->returnData('data', PartnerResource::collection($partners), __('Get partners successfully'));
     }
 
 
     public function getSuggestedPartner()
     {
-        $model = Partner::where('status',1)->where('start_status', 1)->inRandomOrder()->first();
+        $model = Partner::where('start_status', 1)->inRandomOrder()->first();
 
         if ($model) {
             return $this->returnData('data', new $this->resource($model), __('Get successfully'));
@@ -109,7 +109,7 @@ public function getPartnerByCity($id)
                     ->from('areas')
                     ->where('city_id', $city->id);
             });
-    })->where('status', 1)->get();
+    })->get();
 
     if ($partners->isEmpty()) {
         return $this->returnError(__('No partners found for the specified city!'));
@@ -122,7 +122,7 @@ public function getPartnersByCategory($id)
     {
         $partners = Partner::whereHas('subcategories', function ($query) use ($id) {
         $query->where('category_id', $id);
-    })->where('status', 1)->get();
+    })->get();
         return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
     }
 
@@ -130,7 +130,7 @@ public function getPartnersByCategory($id)
 {
 $partners = Partner::whereHas('subcategories', function ($query) use ($id) {
 $query->where('subcategory_id', $id);
-})->where('status', 1)->get();
+})->get();
 return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
 }
 
@@ -140,7 +140,7 @@ return $this->returnData('data', $this->resource::collection($partners), __('Get
 
 
 
-            $partners = Partner::where('status', 1)->where( "name->".$request->header('X-localization'), 'like', '%' . $request->name . '%' )->get();
+            $partners = Partner::where( "name->".$request->header('X-localization'), 'like', '%' . $request->name . '%' )->get();
             return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
 
      }
@@ -150,7 +150,7 @@ return $this->returnData('data', $this->resource::collection($partners), __('Get
 {
     $partners = Partner::whereHas('subcategories', function ($query) use ($id) {
         $query->where('category_id', $id);
-    })->where("name->".$request->header('X-localization'), 'like', '%'.$name.'%')->where('status', 1)->get();
+    })->where("name->".$request->header('X-localization'), 'like', '%'.$name.'%')->get();
 
     return $this->returnData('data', $this->resource::collection($partners), __('Get successfully'));
 }
@@ -234,20 +234,12 @@ public function getPartners(Request $request)
 
 
 
-    // $resources = array_values($resources);
+    $resources = array_values($resources);
 
-    // return $this->returnData('data', $resources, __('Get partners successfully'));
+    return $this->returnData('data', $resources, __('Get partners successfully'));
 
-        // Filter partners by status = 1
-        $filteredPartners = [];
-        foreach ($resources as $resource) {
-            $partner = $resource->getPartner(); // Assuming the PartnerResource class has a method to get the partner instance
-            if ($partner->status == 1) {
-                $filteredPartners[] = $resource;
-            }
-        }
 
-        return $this->returnData('data', $filteredPartners, __('Get partners successfully'));
+
 }
 
 
@@ -300,18 +292,11 @@ public function getPartnersInArea(Request $request){
             }
         }
 
-        // $resource = new PartnerResource($partner);
-        // $resources[$partner->id] = $resource;
+        $resource = new PartnerResource($partner);
+        $resources[$partner->id] = $resource;
 
 
-
-        // Filter partners by status = 1
-        if ($partner->status == 1) {
-            $resource = new PartnerResource($partner);
-            $resources[$partner->id] = $resource;
-        }
     }
-
     $resources = array_values($resources);
 
     return $this->returnData('data', $resources, __('Get partners successfully'));
@@ -320,7 +305,7 @@ public function getPartnersInArea(Request $request){
 
 public function getMinAndMaxOfPrice(Request $request)
 {
-    $partners = Partner::where('status',1)->get();
+    $partners = Partner::all();
 
     $min = $partners->min('start_price');
     $max = $partners->max('start_price');
@@ -540,10 +525,6 @@ public function getPartnersOfSubOrCategory(Request $request)
 
         $resources = array_values($resources);
 
-          // Filter partners by status = 1
-        $resources = array_filter($resources, function ($partner) {
-            return $partner->status == 1;
-        });
 
 
         return $this->returnData('data', $resources, __('Get partners successfully'));
@@ -623,10 +604,7 @@ if (!is_null($request->avg)) {
 
 $resources = array_values($resources);
 
-  // Filter partners by status = 1
-  $resources = array_filter($resources, function ($partner) {
-    return $partner->status == 1;
-});
+
 
 
 return $this->returnData('data', $resources, __('Get partners successfully'));
@@ -845,7 +823,7 @@ return $this->returnData('data', $resources, __('Get partners successfully'));
 public function getPartnersOfSubOrCategortInArea(Request $request)
 {
     $resources = [];
-    $partners = Partner::where('status', 1)->get();
+    $partners = Partner::all();
 
     if ($request->is_category == 0) {
         $subcategoryId = $request->subcategory_id;
@@ -907,7 +885,7 @@ public function getPartnersOfSubOrCategortInArea(Request $request)
 }
 
     public function getPrices() {
-        $partners = Partner::where('status', 1)->get();
+        $partners = Partner::all();
         return $this->returnData('data', PriceResource::collection($partners), __('Get partners successfully'));
     }
 
