@@ -55,7 +55,7 @@ public function nearest(Request $request)
     $resources = [];
 
     foreach ($branches as $branch) {
-        if ($branch->partner->status == 1) {
+        // if ($branch->partner->status == 1) {
         $distance = $this->distance($request->lat_user, $request->long_user, $branch->lat, $branch->long);
 
         if ($distance <= 1) { // Check if the distance is within 5 kilometers
@@ -63,7 +63,7 @@ public function nearest(Request $request)
 
             $resources[] = $resource;
         }
-    }
+    // }
 }
 
     // Sort the resources by their distance from the user's location
