@@ -39,13 +39,15 @@
                         <x-admin-layouts.alerts />
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
+
                                 <div class="container-fluid">
+
                                     <h4 class="heading mb-5"> {{ __('Panner Ad') }}</h4>
 
                                     <p class="mb-3"><strong>Link : </strong> <a
-                                            href="{{ $ad->link }}">{{ $ad->link }}</a></p>
-                                    <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px"
-                                        src="{{ asset($ad->image) }}" alt="{{ __('Panner Ad') }}">
+                                            href="{{ $ad->link }}">Click Here</a></p>
+                                    <img class="card-img-bottom img-thumbnail mb-3" width="500"
+                                        src="{{ asset($ad->image) }}" alt="Panner Ad">
                                 </div>
 
                             </div>
@@ -61,5 +63,5 @@
         <!--**********************************
         Content body end
     ***********************************-->
-
+    </div>
 </x-admin-layouts.admin-app>
