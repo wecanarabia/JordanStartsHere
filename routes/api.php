@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\CounterController;
 use App\Http\Controllers\Api\FaqController;
+use App\Http\Controllers\Api\AdController;
 
 
 
@@ -309,6 +310,9 @@ Route::post('page/edit/{id}', [PageController::class, 'edit']);
 
     // updateById
     Route::post('/user-edit', [AuthController::class, 'updateById']);
+
+    //ad
+  Route::get('ads', [AdController::class, 'list']);
 
 });
 
