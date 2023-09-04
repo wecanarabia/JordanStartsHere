@@ -33,10 +33,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12">
-
-
+                    <x-admin-layouts.alerts />
                     <div class="card">
-                        <x-admin-layouts.alerts />
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
 
@@ -62,6 +60,5 @@
 
         <!--**********************************
         Content body end
-    ***********************************-->
     </div>
 </x-admin-layouts.admin-app>
