@@ -7,7 +7,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">{{ __('Panner Ad') }}</h5>
+                    <h5 class="bc-title">Panner Ad</h5>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -20,7 +20,7 @@
                         </svg>
                         Home </a>
                 </li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Panner Ad') }} </a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Panner Ad</a></li>
             </ol>
             <a class="text-primary fs-13" href="{{ route('admin.ads.edit') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -33,32 +33,27 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12">
-                    <x-admin-layouts.alerts />
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
-
                                 <div class="container-fluid">
+                                <h4 class="heading mb-5">Panner Ad</h4>
 
-                                    <h4 class="heading mb-5"> {{ __('Panner Ad') }}</h4>
+                                <p class="mb-3"><strong>Link : </strong> <a href="{{ $ad->link }}">Click Here</a></p>
 
-                                    <p class="mb-3"><strong>Link : </strong> <a
-                                            href="{{ $ad->link }}">Click Here</a></p>
-                                    <img class="card-img-bottom img-thumbnail mb-3" width="500"
-                                        src="{{ asset($ad->image) }}" alt="Panner Ad">
+
+                                    <img class="card-img-bottom img-thumbnail mb-3" style="width: 1100px" src="{{ asset( $ad->image ) }}" alt="Panner Ad">
                                 </div>
 
-                            </div>
-
+                        </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
-        </div>
 
-        <!--**********************************
-        Content body end
+
+        </div>
     </div>
 </x-admin-layouts.admin-app>
+
+
