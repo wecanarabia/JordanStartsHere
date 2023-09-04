@@ -23,15 +23,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12">
+                    <x-admin-layouts.alerts />
+
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="offcanvas-body">
-                                <x-admin-layouts.alerts />
                                 <div class="container-fluid">
                                 <h4 class="heading mb-5"> {{ __('Panner Ad') }}</h4>
 
                                     <p class="mb-3"><strong>Link : </strong> <a href="{{  $ad->link  }}">{{  $ad->link  }}</a></p>
-                                    <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{ asset( $ad->image ) }}" alt="{{ __('Panner Ad') }}">
+                                    <img class="card-img-bottom img-thumbnail mb-3" style="width: 500px" src="{{asset( $ad->image )}}" alt="{{ __('Panner Ad') }}">
                                 </div>
 
                         </div>
