@@ -40,9 +40,7 @@
                                 <h4 class="heading mb-5">Panner Ad</h4>
 
                                 <p class="mb-3"><strong>Link : </strong> <a href="{{ $ad->link }}">Click Here</a></p>
-
-
-                                    <img class="card-img-bottom img-thumbnail mb-3" style="width: 1100px" src="{{ asset( $ad->image ) }}" alt="Panner Ad">
+                                <img class="card-img-bottom img-thumbnail mb-3" style="width: 1169px;height:748px;" src="{{ asset( $ad->image ) }}" alt="Panner Ad">
                                 </div>
 
                         </div>
