@@ -63,7 +63,7 @@ public function nearest(Request $request)
         // if ($branch->partner->status == 1) {
         $distance = $this->distance($request->lat_user, $request->long_user, $branch->lat, $branch->long);
 
-        if ($distance <= 100) { // Check if the distance is within 5 kilometers
+        if ($distance <= 1) { // Check if the distance is within 5 kilometers
             $resource = new BranchDistanceResource($branch, $distance);
 
             $resources[] = $resource;
