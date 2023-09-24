@@ -45,13 +45,13 @@ class BranchController extends ApiController
 
 
 
-    public function nearest(Request $request) {
+    public function TnearestOLD(Request $request) {
 
         $branches = Branch::all();
         return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
     }
 
-public function nearestOldFun(Request $request)
+public function nearest(Request $request)
 {
 
 
@@ -63,7 +63,7 @@ public function nearestOldFun(Request $request)
         // if ($branch->partner->status == 1) {
         $distance = $this->distance($request->lat_user, $request->long_user, $branch->lat, $branch->long);
 
-        if ($distance <= 9000) { // Check if the distance is within 5 kilometers
+        if ($distance <= 100) { // Check if the distance is within 5 kilometers
             $resource = new BranchDistanceResource($branch, $distance);
 
             $resources[] = $resource;
