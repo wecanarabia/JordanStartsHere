@@ -62,33 +62,33 @@ class BranchController extends ApiController
     // }
 
 
-public function old(Request $request)
-{
+// public function old(Request $request)
+// {
 
 
-    $branches = Branch::all();
+//     $branches = Branch::all();
 
-    $resources = [];
+//     $resources = [];
 
-    foreach ($branches as $branch) {
-        // if ($branch->partner->status == 1) {
-        $distance = $this->distance($request->lat_user, $request->long_user, $branch->lat, $branch->long);
+//     foreach ($branches as $branch) {
+//         // if ($branch->partner->status == 1) {
+//         $distance = $this->distance($request->lat_user, $request->long_user, $branch->lat, $branch->long);
 
-        if ($distance <= 9) { // Check if the distance is within 5 kilometers
-            $resource = new BranchDistanceResource($branch, $distance);
+//         if ($distance <= 9) { // Check if the distance is within 5 kilometers
+//             $resource = new BranchDistanceResource($branch, $distance);
 
-            $resources[] = $resource;
-        }
-    // }
-}
+//             $resources[] = $resource;
+//         }
+//     // }
+// }
 
-    // Sort the resources by their distance from the user's location
-    usort($resources, function($a, $b) {
-        return $a->distance <=> $b->distance;
-    });
+//     // Sort the resources by their distance from the user's location
+//     usort($resources, function($a, $b) {
+//         return $a->distance <=> $b->distance;
+//     });
 
-    return $this->returnData('data', $resources, __('Get nearby branches successfully'));
-}
+//     return $this->returnData('data', $resources, __('Get nearby branches successfully'));
+// }
 
 
 }
