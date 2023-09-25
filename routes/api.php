@@ -75,7 +75,7 @@ Route::post('check-otp', [AuthController::class, 'checkOTP']);
 
 Route::middleware('changeLang')->group(function () {
 
-Route::get('nearest-branches', [BranchController::class, 'getnear']);
+Route::get('near-branch', [BranchController::class, 'behind']);
 //Introduction
 Route::get('introductions', [IntroductionController::class, 'list']);
 Route::post('introduction-create', [IntroductionController::class, 'save']);

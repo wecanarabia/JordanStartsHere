@@ -32,6 +32,10 @@ class BranchController extends ApiController
 
     }
 
+    public function behind(){
+        return 'sdfsdf';
+    }
+
 
 
     public function distance($lat1, $lon1, $lat2, $lon2)
@@ -47,15 +51,15 @@ class BranchController extends ApiController
 
 
 
-    public function getnear() {
-        return 'sdfsdf';
-        // $lat=$request->lat_user;
-        // $long=$request->long_user;
+    // public function getnear() {
+    //     return 'sdfsdf';
+    //     // $lat=$request->lat_user;
+    //     // $long=$request->long_user;
 
-        // $branches = Branch::all();
-        // return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
+    //     // $branches = Branch::all();
+    //     // return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
 
-    }
+    // }
 
 
 public function old(Request $request)
