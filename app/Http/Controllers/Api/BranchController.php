@@ -47,7 +47,15 @@ class BranchController extends ApiController
 
 
 
+    public function getnear() {
+        return 'sdfsdf';
+        // $lat=$request->lat_user;
+        // $long=$request->long_user;
 
+        // $branches = Branch::all();
+        // return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
+
+    }
 
 
 public function old(Request $request)
@@ -78,13 +86,5 @@ public function old(Request $request)
     return $this->returnData('data', $resources, __('Get nearby branches successfully'));
 }
 
-public function getnear() {
-    return 'sdfsdf';
-    // $lat=$request->lat_user;
-    // $long=$request->long_user;
 
-    $branches = Branch::all();
-    return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
-
-}
 }
