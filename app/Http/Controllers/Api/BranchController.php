@@ -31,7 +31,7 @@ class BranchController extends ApiController
 
     }
 
-    public function nearBranch(Request $request) {
+    public function nearest(Request $request) {
 
         // try {
 
