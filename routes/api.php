@@ -72,6 +72,7 @@ Route::post('update-user', [AuthController::class, 'updateProfile']);
 Route::post('send-otp', [AuthController::class, 'sendOtp']);
 Route::post('check-otp', [AuthController::class, 'checkOTP']);
 
+Route::get('near', [PartnerController::class, 'behind']);
 
 Route::middleware('changeLang')->group(function () {
 
@@ -220,7 +221,6 @@ Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
-Route::get('near', [PartnerController::class, 'behind']);
 //nearbyBranchesIn5 kilometers
 Route::get('branch/{id}', [BranchController::class, 'view']);
 Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
