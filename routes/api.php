@@ -220,6 +220,7 @@ Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
+Route::get('branch-near', [PartnerController::class, 'behind']);
 //nearbyBranchesIn5 kilometers
 Route::get('branch/{id}', [BranchController::class, 'view']);
 Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
@@ -313,7 +314,6 @@ Route::post('page/edit/{id}', [PageController::class, 'edit']);
 
     //ad
   Route::get('ads', [AdController::class, 'list']);
-  Route::get('branch-near', [PartnerController::class, 'behind']);
 
 });
 
