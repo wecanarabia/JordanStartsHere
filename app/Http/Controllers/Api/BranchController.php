@@ -20,7 +20,9 @@ class BranchController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
-
+    public function getBehind(){
+        return 'sdfsdf';
+    }
     public function save( Request $request ){
         return $this->store( $request->all() );
     }
@@ -32,7 +34,7 @@ class BranchController extends ApiController
 
     }
 
-  
+
 
 
 
