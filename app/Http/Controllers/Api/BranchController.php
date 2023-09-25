@@ -55,7 +55,7 @@ class BranchController extends ApiController
         $branches = Branch::all();
         return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
     } catch (\Exception $e) {
-        dd($e);
+    return $e;
     }
 }
 
