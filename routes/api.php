@@ -218,7 +218,7 @@ Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 
 
 //Branch
-Route::post('nearest-branches', [BranchController::class, 'getNearest']);
+Route::post('branches/nearest', [BranchController::class, 'getNearest']);
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
 //nearbyBranchesIn5 kilometers
