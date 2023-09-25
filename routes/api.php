@@ -224,7 +224,7 @@ Route::post('branch-create', [BranchController::class, 'save']);
 Route::get('branch/{id}', [BranchController::class, 'view']);
 Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
 Route::post('branch/edit/{id}', [BranchController::class, 'edit']);
-Route::post('branches/nearest', [BranchController::class, 'getNearest']);
+Route::post('branch/nearest', [BranchController::class, 'closeBranch']);
 
 
 
