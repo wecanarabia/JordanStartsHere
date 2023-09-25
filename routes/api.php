@@ -226,6 +226,7 @@ Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
 Route::post('branch/edit/{id}', [BranchController::class, 'edit']);
 Route::post('nearest-branches', [BranchController::class, 'nearest']);
 
+Route::get('tests', [BranchController::class, 'test']);
 
 
 //portrait image
