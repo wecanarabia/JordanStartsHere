@@ -20,7 +20,7 @@ class BranchController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
-    public function getBehind(){
+    public function nearBy(){
         return 'sdfsdf';
     }
     public function save( Request $request ){
