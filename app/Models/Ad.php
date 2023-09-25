@@ -14,8 +14,8 @@ class Ad extends Model
             $file = $value;
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $filename =time().mt_rand(1000,9999).'.'.$extension;
-            $file->move(base_path('../img/ads/'), $filename);
-            $this->attributes['image'] =  'img/ads/'.$filename;
+            $file->move(base_path("../img/panners/"), $filename);
+            $this->attributes['image'] =  'img/panners/'.$filename;
         }
     }
 
