@@ -46,12 +46,18 @@ class BranchController extends ApiController
 
 
     public function nearest(Request $request) {
+
+        try {
+
         $lat=$request->lat_user;
         $long=$request->long_user;
 
         $branches = Branch::all();
         return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
+    } catch (\Exception $e) {
+        dd($e);
     }
+}
 
 public function old(Request $request)
 {
