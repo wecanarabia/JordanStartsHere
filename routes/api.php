@@ -72,7 +72,6 @@ Route::post('update-user', [AuthController::class, 'updateProfile']);
 Route::post('send-otp', [AuthController::class, 'sendOtp']);
 Route::post('check-otp', [AuthController::class, 'checkOTP']);
 
-Route::get('near', [PartnerController::class, 'behind']);
 
 Route::middleware('changeLang')->group(function () {
 
@@ -331,6 +330,7 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
     //myFavorites
 Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
 
+Route::get('branch/closer', [PartnerController::class, 'behind']);
 
 
 
