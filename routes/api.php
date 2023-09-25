@@ -220,7 +220,7 @@ Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 //Branch
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
-Route::get('branch-near', [PartnerController::class, 'behind']);
+Route::get('near', [PartnerController::class, 'behind']);
 //nearbyBranchesIn5 kilometers
 Route::get('branch/{id}', [BranchController::class, 'view']);
 Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
