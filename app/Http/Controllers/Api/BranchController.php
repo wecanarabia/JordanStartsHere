@@ -20,6 +20,7 @@ class BranchController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
+
     public function save( Request $request ){
         return $this->store( $request->all() );
     }
@@ -31,7 +32,11 @@ class BranchController extends ApiController
 
     }
 
-    function distance($lat1, $lon1, $lat2, $lon2)
+
+
+
+
+    public function distance($lat1, $lon1, $lat2, $lon2)
     {
         $theta = $lon1 - $lon2;
         $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
@@ -41,6 +46,7 @@ class BranchController extends ApiController
 
         return $miles * 1.609344;
     }
+
 
 
 
@@ -56,19 +62,51 @@ class BranchController extends ApiController
 
 }
 
-    public function nearest(Request $request) {
+    // public function getnear() {
+    //     return 'sdfsdf';
+    //     // $lat=$request->lat_user;
+    //     // $long=$request->long_user;
 
 
+    //     // $branches = Branch::all();
+    //     // return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
 
-        $lat=$request->lat_user;
-        $long=$request->long_user;
+
+    // }
 
         $branches = Branch::all();
         return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
 
 }
 
-public function old(Request $request)
+// public function old(Request $request)
+// {
+
+
+
+//     $branches = Branch::all();
+
+//     $resources = [];
+
+//     foreach ($branches as $branch) {
+//         // if ($branch->partner->status == 1) {
+//         $distance = $this->distance($request->lat_user, $request->long_user, $branch->lat, $branch->long);
+
+//         if ($distance <= 9) { // Check if the distance is within 5 kilometers
+//             $resource = new BranchDistanceResource($branch, $distance);
+
+//             $resources[] = $resource;
+//         }
+//     // }
+// }
+
+//     // Sort the resources by their distance from the user's location
+//     usort($resources, function($a, $b) {
+//         return $a->distance <=> $b->distance;
+//     });
+
+//     return $this->returnData('data', $resources, __('Get nearby branches successfully'));
+// }public function nearest(Request $request)
 {
 
 
@@ -80,7 +118,7 @@ public function old(Request $request)
         // if ($branch->partner->status == 1) {
         $distance = $this->distance($request->lat_user, $request->long_user, $branch->lat, $branch->long);
 
-        if ($distance <= 9) { // Check if the distance is within 5 kilometers
+        if ($distance <= 1) { // Check if the distance is within 5 kilometers
             $resource = new BranchDistanceResource($branch, $distance);
 
             $resources[] = $resource;
@@ -95,5 +133,7 @@ public function old(Request $request)
 
     return $this->returnData('data', $resources, __('Get nearby branches successfully'));
 }
+
+
 
 }
