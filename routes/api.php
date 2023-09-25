@@ -75,6 +75,7 @@ Route::post('check-otp', [AuthController::class, 'checkOTP']);
 
 Route::middleware('changeLang')->group(function () {
 
+Route::post('nearest', [BranchController::class, 'closeBranch']);
 //Introduction
 Route::get('introductions', [IntroductionController::class, 'list']);
 Route::post('introduction-create', [IntroductionController::class, 'save']);
@@ -221,7 +222,6 @@ Route::get('partners-range', [PartnerController::class, 'getMinAndMaxOfPrice']);
 Route::get('branches', [BranchController::class, 'list']);
 Route::post('branch-create', [BranchController::class, 'save']);
 //nearbyBranchesIn5 kilometers
-Route::post('nearest', [BranchController::class, 'closeBranch']);
 Route::get('branch/{id}', [BranchController::class, 'view']);
 Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
 Route::post('branch/edit/{id}', [BranchController::class, 'edit']);

@@ -20,19 +20,6 @@ class BranchController extends ApiController
         $this->repositry =  new Repository($this->model);
     }
 
-    public function closeBranch(Request $request) {
-
-        // try {
-
-            $lat=$request->lat_user;
-            $long=$request->long_user;
-
-            $branches = Branch::all();
-            return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
-        // } catch (\Exception $e) {
-        // return $e;
-        // }
-    }
 
     public function save( Request $request ){
         return $this->store( $request->all() );
@@ -45,7 +32,14 @@ class BranchController extends ApiController
 
     }
 
+    public function closeBranch(Request $request) {
+        $lat=$request->lat_user;
+        $long=$request->long_user;
 
+        $branches = Branch::all();
+        return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
+
+    }
 
     public function distance($lat1, $lon1, $lat2, $lon2)
     {
