@@ -330,9 +330,9 @@ Route::middleware(['auth:api','changeLang'])->group(function () {
     //myFavorites
 Route::get('my-favorites', [FavoriteController::class, 'myFavorites']);
 
-Route::get('closer-branches', [PartnerController::class, 'behind']);
 
 
 
 
 });
+Route::get('closer-branches', [PartnerController::class, 'behind']);
