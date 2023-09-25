@@ -32,9 +32,10 @@ class BranchController extends ApiController
 
     }
 
-    public function closeBranch(Request $request) {
-        $lat=$request->lat_user;
-        $long=$request->long_user;
+    public function closeBranch() {
+        return 'sdfsdf';
+        // $lat=$request->lat_user;
+        // $long=$request->long_user;
 
         $branches = Branch::all();
         return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
