@@ -225,7 +225,7 @@ Route::get('branch/delete/{id}', [BranchController::class, 'delete']);
 Route::post('branch/edit/{id}', [BranchController::class, 'edit']);
 
 //nearbyBranchesIn5 kilometers
-Route::post('nearest-branches', [BranchController::class, 'nearest']);
+Route::post('nearest-branches', [BranchController::class, 'nearestBranch']);
 
 
 //portrait image
