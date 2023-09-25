@@ -889,4 +889,8 @@ public function getPartnersOfSubOrCategortInArea(Request $request)
         return $this->returnData('data', PriceResource::collection($partners), __('Get partners successfully'));
     }
 
+    public function behind(){
+        return 'sdfsdf';
+    }
+
 }

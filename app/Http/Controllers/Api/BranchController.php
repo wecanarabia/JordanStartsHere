@@ -32,9 +32,7 @@ class BranchController extends ApiController
 
     }
 
-    public function behind(){
-        return 'sdfsdf';
-    }
+  
 
 
 
