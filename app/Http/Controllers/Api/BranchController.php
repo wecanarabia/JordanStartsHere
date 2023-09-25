@@ -32,7 +32,7 @@ class BranchController extends ApiController
 
     }
 
-    public function closeBranch() {
+    public function nearPlaces() {
         return 'sdfsdf';
         // $lat=$request->lat_user;
         // $long=$request->long_user;
