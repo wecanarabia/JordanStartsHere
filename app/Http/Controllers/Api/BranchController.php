@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Http\Requests\BranchRequest;
 use App\Http\Resources\BranchResource;
+use App\Http\Resources\PartnerDistResource;
 use App\Http\Resources\BranchDistanceResource;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
@@ -50,12 +51,12 @@ class BranchController extends ApiController
 
 
 
-    public function test(Request $request) {
+    public function nearest(Request $request) {
 
 
 
-        $lat=$request->lat_user;
-        $long=$request->long_user;
+        // $lat=$request->lat_user;
+        // $long=$request->long_user;
 
         $branches = Branch::all();
         return $this->returnData('data', BranchDistanceResource::collection($branches), __('Get partners successfully'));
@@ -79,7 +80,7 @@ class BranchController extends ApiController
 
 // }
 
-public function nearest(Request $request)
+public function Oldnearest(Request $request)
 {
 
 
