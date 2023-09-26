@@ -107,6 +107,8 @@ public function nearest(Request $request)
 
     return $this->returnData('data', $resources, __('Get nearby branches successfully'));
 }
+
+
 // public function nearest(Request $request)
 // {
 
